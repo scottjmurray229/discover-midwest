@@ -1,0 +1,64 @@
+{
+  "destinations": {
+    "chicago": {
+      "title": "Chicago",
+      "tagline": "The Windy City on Lake Michigan",
+      "region": "great-lakes",
+      "bestMonths": ["May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+      "budgetPerDay": { "backpacker": 80, "midRange": 180, "luxury": 400 },
+      "gettingThere": "Fly into O'Hare (ORD) or Midway (MDW). Both have CTA train connections to downtown.",
+      "highlights": ["Millennium Park & Cloud Gate", "Art Institute of Chicago", "Deep-dish pizza", "Architecture river cruise", "Wrigley Field"],
+      "essentials": {
+        "gettingAround": "CTA trains and buses cover the city well. Ventra card for transit.",
+        "airport": "O'Hare (ORD) / Midway (MDW)",
+        "language": "English"
+      }
+    },
+    "detroit": {
+      "title": "Detroit",
+      "tagline": "Motor City Renaissance",
+      "region": "great-lakes",
+      "bestMonths": ["May", "Jun", "Jul", "Aug", "Sep"],
+      "budgetPerDay": { "backpacker": 60, "midRange": 140, "luxury": 300 },
+      "gettingThere": "Fly into Detroit Metro (DTW). Drive or take the People Mover downtown.",
+      "highlights": ["Motown Museum", "Detroit Institute of Arts", "Eastern Market", "Belle Isle", "Corktown dining"],
+      "essentials": {
+        "gettingAround": "Car recommended. People Mover and QLine streetcar downtown.",
+        "airport": "Detroit Metro (DTW)",
+        "language": "English"
+      }
+    },
+    "kansas-city": {
+      "title": "Kansas City",
+      "tagline": "BBQ Capital of the World",
+      "region": "plains",
+      "bestMonths": ["Apr", "May", "Jun", "Sep", "Oct"],
+      "budgetPerDay": { "backpacker": 60, "midRange": 140, "luxury": 300 },
+      "gettingThere": "Fly into Kansas City International (MCI). About 20 minutes to downtown.",
+      "highlights": ["BBQ trail", "Country Club Plaza", "National WWI Museum", "Nelson-Atkins Museum", "Jazz District"],
+      "essentials": {
+        "gettingAround": "Car recommended. Streetcar runs through downtown for free.",
+        "airport": "Kansas City International (MCI)",
+        "language": "English"
+      }
+    }
+  },
+  "connections": {
+    "chicago-milwaukee": { "mode": "drive/train", "duration": "1.5 hours", "operator": "Amtrak Hiawatha", "cost": "$25-45" },
+    "chicago-detroit": { "mode": "drive", "duration": "4.5 hours", "operator": "I-94", "cost": "Gas + tolls ~$40" },
+    "chicago-indianapolis": { "mode": "drive", "duration": "3 hours", "operator": "I-65", "cost": "Gas ~$30" },
+    "chicago-st-louis": { "mode": "drive/train", "duration": "4.5-5.5 hours", "operator": "Amtrak Lincoln Service", "cost": "$25-60" },
+    "chicago-minneapolis": { "mode": "drive/flight", "duration": "6 hours drive / 1.5 hr flight", "operator": "Various airlines", "cost": "$80-200 flight" },
+    "detroit-cleveland": { "mode": "drive", "duration": "2.5 hours", "operator": "I-90", "cost": "Gas + tolls ~$25" },
+    "cleveland-columbus": { "mode": "drive", "duration": "2.5 hours", "operator": "I-71", "cost": "Gas ~$20" },
+    "columbus-cincinnati": { "mode": "drive", "duration": "1.5 hours", "operator": "I-71", "cost": "Gas ~$15" },
+    "kansas-city-omaha": { "mode": "drive", "duration": "3 hours", "operator": "I-29", "cost": "Gas ~$25" },
+    "minneapolis-madison": { "mode": "drive", "duration": "4 hours", "operator": "I-94", "cost": "Gas ~$30" }
+  },
+  "travelTips": {
+    "currency": "US Dollar (USD/$).",
+    "bestOverallMonths": "May to October for warm weather. September-October for fall colors.",
+    "winterWarning": "November to March can be brutally cold. Lake-effect snow near the Great Lakes.",
+    "transportation": "A car is essential for most Midwest travel outside Chicago."
+  }
+}

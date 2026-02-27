@@ -1,0 +1,920 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import EmailCapture from '../../components/EmailCapture.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'The Finer Things', url: '/finer-things/' },
+];
+
+const pageTitle = 'The Finer Things — Midwest Craft Beer, Bourbon, Nightlife & Sports Bar Guide 2026';
+const pageDescription = 'Craft breweries, bourbon trails, live music scenes, rooftop bars, sports culture, and the nightlife that makes each Midwest city worth staying out late for.';
+
+interface TopicSection {
+  id: string;
+  icon: string;
+  title: string;
+  gradient: string;
+  items: { label: string; text: string; link?: string }[];
+}
+
+const topics: TopicSection[] = [
+  {
+    id: 'beer',
+    icon: '🍺',
+    title: 'Midwest Craft Beer',
+    gradient: 'linear-gradient(135deg, #78350F 0%, #D4A574 100%)',
+    items: [
+      { label: 'The Craft Beer Capital', text: 'The Midwest is a craft beer powerhouse. Michigan alone has 400+ breweries. Wisconsin, Ohio, and Illinois are close behind. Every city on this guide has a thriving craft beer scene -- from taprooms in converted warehouses to brewpubs on Main Street. Pints typically run $6-9 at breweries, cheaper than coastal cities.' },
+      { label: 'Chicago', link: '/destinations/chicago/', text: '<strong>Revolution Brewing</strong> makes the best beer in the city (their Anti-Hero IPA is a classic). <strong>Half Acre</strong> has an excellent taproom with food. <strong>Goose Island</strong> is the OG (now AB InBev owned, but their Bourbon County Stout is still legendary). The Malt Row neighborhood in Ravenswood has multiple breweries within walking distance.' },
+      { label: 'Milwaukee', link: '/destinations/milwaukee/', text: 'Beer City USA. <strong>Lakefront Brewery</strong> has the best tour in the Midwest (Friday night fish fry + tour is a must). <strong>Good City Brewing</strong> near Fiserv Forum. The old Pabst Brewery is now a mixed-use development with bars. Miller and Molson Coors still operate here -- the macro and micro scenes coexist.' },
+      { label: 'Detroit', link: '/destinations/detroit/', text: '<strong>Atwater Brewery</strong> in the Rivertown district is the flagship. <strong>Batch Brewing</strong> in Corktown for experimental styles. <strong>Jolly Pumpkin</strong> for sour and farmhouse ales. Detroit\'s beer scene has exploded alongside the city\'s broader renaissance -- many breweries are in revitalized industrial spaces.' },
+      { label: 'Minneapolis', link: '/destinations/minneapolis/', text: '<strong>Surly Brewing</strong> has a massive beer hall that\'s a destination in itself. <strong>Indeed Brewing</strong> and <strong>Modist Brewing</strong> in the Northeast neighborhood. <strong>Fair State Brewing Cooperative</strong> for sours. The NE Minneapolis brewery district is walkable and has 10+ breweries within a mile.' },
+      { label: 'Other Must-Visit Breweries', text: '<strong>Rhinegeist</strong> (Cincinnati) -- massive taproom in a former bottling plant. <strong>Great Lakes Brewing</strong> (Cleveland) -- Christmas Ale is legendary. <strong>Boulevard Brewing</strong> (Kansas City) -- Tank 7 is world-class. <strong>Toppling Goliath</strong> (Decorah, Iowa) -- worth the detour for some of the best IPAs in America.' },
+    ],
+  },
+  {
+    id: 'spirits',
+    icon: '🥃',
+    title: 'Bourbon, Whiskey & Cocktails',
+    gradient: 'linear-gradient(135deg, #1A2332 0%, #78350F 100%)',
+    items: [
+      { label: 'Bourbon Country', text: 'Kentucky\'s Bourbon Trail is just south of the Ohio Valley cities. Cincinnati and Indianapolis are perfect launch points. But the Midwest has its own distilling scene -- <strong>Koval</strong> in Chicago, <strong>J. Rieger & Co.</strong> in Kansas City (their whiskey is outstanding), and <strong>Journeyman Distillery</strong> in southwestern Michigan.' },
+      { label: 'Cocktail Culture', text: 'Chicago has a world-class cocktail scene. <strong>The Aviary</strong> and <strong>Lost Lake</strong> are destinations. Kansas City\'s <strong>Tom\'s Town Distilling</strong> has a Prohibition-era speakeasy vibe. Minneapolis has <strong>Marvel Bar</strong> and <strong>Tattersall Distilling</strong>. Expect $12-18 for craft cocktails at upscale bars.' },
+      { label: 'Dive Bars', text: 'The Midwest perfected the dive bar. Cheap beer, no pretense, and usually a pool table. Chicago\'s <strong>Old Town Ale House</strong>, Milwaukee\'s <strong>Wolski\'s Tavern</strong> (get the bumper sticker), Detroit\'s <strong>Bronx Bar</strong> -- every city has legendary dives where locals have been drinking for decades. PBR tallboys for $3-4.' },
+      { label: 'Wine Regions', text: 'Michigan\'s Traverse City region produces excellent wines -- Rieslings and pinot noirs that rival Oregon\'s. The Lake Michigan shore wine trail has 15+ tasting rooms. Missouri\'s Hermann region along the Missouri River is another surprise wine destination. Not what most people expect from the Midwest.' },
+    ],
+  },
+  {
+    id: 'nightlife',
+    icon: '🌃',
+    title: 'Nightlife Districts',
+    gradient: 'linear-gradient(135deg, #4C1D95 0%, #E8654A 100%)',
+    items: [
+      { label: 'Chicago', link: '/destinations/chicago/', text: 'Wicker Park and Bucktown for indie bars and live music. River North for upscale cocktail bars and clubs. <strong>Kingston Mines</strong> and <strong>Buddy Guy\'s Legends</strong> for blues -- Chicago is the blues capital of the world. Logan Square for the craft cocktail and brewery scene. Expect last call at 2am (4am at some spots on weekends).' },
+      { label: 'Kansas City', link: '/destinations/kansas-city/', text: 'The <strong>Power & Light District</strong> is the entertainment hub -- bars, restaurants, and live music in a pedestrian-friendly zone. The <strong>18th & Vine</strong> jazz district is where KC\'s legendary jazz heritage lives. <strong>Westport</strong> for a more local, dive-bar-and-live-music vibe.' },
+      { label: 'Minneapolis', link: '/destinations/minneapolis/', text: '<strong>First Avenue</strong> -- the legendary venue where Prince filmed Purple Rain -- is still the best live music spot. <strong>NE Minneapolis</strong> for brewery hopping. The <strong>North Loop</strong> for upscale bars and restaurants. Minneapolis punches way above its weight for nightlife.' },
+      { label: 'Detroit', link: '/destinations/detroit/', text: '<strong>Corktown</strong> is the revitalized heart of Detroit nightlife -- craft cocktails, live music, and great food. <strong>Eastern Market</strong> area for weekend energy. The <strong>Heidelberg Project</strong> neighborhood for art-driven culture. Detroit\'s techno heritage means excellent DJ nights at clubs like <strong>TV Lounge</strong>.' },
+      { label: 'Cincinnati', link: '/destinations/cincinnati/', text: '<strong>Over-the-Rhine (OTR)</strong> is one of the best nightlife neighborhoods in the Midwest -- beautifully restored 19th-century buildings packed with bars, restaurants, and breweries. <strong>Vine Street</strong> is the main strip. <strong>Rhinegeist</strong> and <strong>Taft\'s Ale House</strong> anchor the scene.' },
+      { label: 'St. Louis', link: '/destinations/st-louis/', text: '<strong>The Grove</strong> is the trendy strip with bars, restaurants, and live music. <strong>Soulard</strong> for the historic bar district and weekend Mardi Gras energy. <strong>The Delmar Loop</strong> in University City for college-town nightlife. <strong>Broadway Oyster Bar</strong> for live blues and Cajun food.' },
+    ],
+  },
+  {
+    id: 'livemusic',
+    icon: '🎵',
+    title: 'Live Music & Entertainment',
+    gradient: 'linear-gradient(135deg, #E8654A 0%, #FB923C 100%)',
+    items: [
+      { label: 'Blues & Jazz', text: 'Chicago is the blues capital. <strong>Kingston Mines</strong> and <strong>Buddy Guy\'s Legends</strong> have live blues every night. Kansas City\'s <strong>18th & Vine</strong> jazz district is where Charlie Parker and Count Basie played. The <strong>Green Mill</strong> in Chicago is a former speakeasy with live jazz since the 1920s.' },
+      { label: 'Rock & Indie', text: '<strong>First Avenue</strong> (Minneapolis) is iconic -- Prince, The Replacements, and Husker Du all came out of this scene. <strong>Metro</strong> (Chicago) has hosted every major act. <strong>The Beachland Ballroom</strong> (Cleveland) is one of the best small venues in America. <strong>Saint Andrew\'s Hall</strong> (Detroit) for rock and electronic.' },
+      { label: 'Country & Americana', text: 'Indianapolis\' <strong>Hi-Fi</strong> and <strong>The Vogue</strong> book excellent Americana acts. Nashville is only 4 hours from Cincinnati if you want to extend the trip south. Missouri and Iowa have a strong country and folk tradition with summer outdoor concerts.' },
+      { label: 'Comedy', text: 'Chicago is the comedy capital of America. <strong>Second City</strong> and <strong>iO Theater</strong> launched the careers of Tina Fey, Bill Murray, Amy Poehler, and dozens more. <strong>The Laugh Factory</strong> and <strong>Zanies</strong> book national headliners. Shows run $15-30 -- some of the best entertainment value in any city.' },
+    ],
+  },
+  {
+    id: 'sports',
+    icon: '🏟️',
+    title: 'Sports & Game Day Culture',
+    gradient: 'linear-gradient(135deg, #1A2332 0%, #4A3728 50%, #D4A574 100%)',
+    items: [
+      { label: 'The Midwest Lives for Sports', text: 'Sports aren\'t a hobby here -- they\'re a way of life. Bears, Packers, Chiefs, Reds, Cardinals, Cubs, Tigers, Cavaliers, Pacers -- game days transform entire cities. Tailgating in parking lots before NFL games is a Midwest tradition. Even if you don\'t care about the sport, the atmosphere is worth experiencing.' },
+      { label: 'Must-Do Game Day Experiences', text: '<strong>Wrigley Field</strong> (Chicago Cubs) -- one of the oldest and most iconic ballparks in America. <strong>Lambeau Field</strong> (Green Bay Packers) -- the frozen tundra, worth the pilgrimage. <strong>Arrowhead Stadium</strong> (KC Chiefs) -- loudest stadium in the NFL. <strong>Great American Ball Park</strong> (Cincinnati Reds) -- beautiful riverfront ballpark.' },
+      { label: 'College Football', text: 'Big Ten football is massive. <strong>Ohio State</strong> (Columbus), <strong>Michigan</strong> (Ann Arbor), <strong>Wisconsin</strong> (Madison), <strong>Iowa</strong> (Iowa City), and <strong>Nebraska</strong> (Lincoln) all sell out 80,000+ seat stadiums every Saturday in fall. The atmosphere at a Big Ten game is unmatched -- arrive early for the tailgate.' },
+      { label: 'Sports Bars', text: 'Every Midwest city has legendary sports bars. Chicago\'s <strong>Murphy\'s Bleachers</strong> across from Wrigley. Cleveland\'s bars near Progressive Field. Detroit\'s <strong>Nemo\'s Bar</strong> near Comerica Park. These aren\'t just bars -- they\'re community institutions where generations have watched games together.' },
+    ],
+  },
+  {
+    id: 'souvenirs',
+    icon: '🎁',
+    title: 'What to Bring Home',
+    gradient: 'linear-gradient(135deg, #1565C0 0%, #42A5F5 100%)',
+    items: [
+      { label: 'Local Beer & Spirits', text: 'Most Midwest breweries sell cans and bottles to go. Grab a 4-pack of your favorites at each stop. <strong>Boulevard Tank 7</strong> (KC), <strong>Great Lakes Christmas Ale</strong> (Cleveland), <strong>Toppling Goliath Pseudo Sue</strong> (Iowa), and <strong>Revolution Anti-Hero</strong> (Chicago) all travel well. Check airline luggage rules for alcohol quantity limits.' },
+      { label: 'BBQ Sauces & Rubs', text: 'KC and St. Louis BBQ joints sell their signature sauces and dry rubs. <strong>Joe\'s KC sauce</strong>, <strong>Pappy\'s rub</strong>, and <strong>Gates BBQ sauce</strong> are all available at the restaurants and local grocery stores. They make great gifts and pack easily.' },
+      { label: 'Cheese', text: 'Wisconsin cheese is legendary. Buy direct from cheese shops in Milwaukee or Madison -- aged cheddars, cheese curds, and specialty varieties. Many shops will vacuum-seal and pack for travel. <strong>Fromagination</strong> on the Capitol Square in Madison is the best cheese shop in the Midwest.' },
+      { label: 'City-Specific Souvenirs', text: 'Chicago\'s Garrett Popcorn (the Chicago Mix). Cincinnati\'s Skyline Chili cans. Kansas City BBQ sauce sets. Wisconsin cheese boards and curds. Detroit-style Buddy\'s Pizza kits. Every city has something iconic you can take home.' },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageType="destination"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero -->
+  <header class="ft-hero">
+    <div class="ft-hero-gradient"></div>
+    <div class="ft-hero-noise"></div>
+    <div class="ft-hero-content">
+      <h1 class="ft-hero-title">The Finer Things</h1>
+      <p class="ft-hero-subtitle">Craft breweries that rival anything on the coasts, bourbon bars, legendary blues clubs, game-day atmospheres you can't replicate, and nightlife districts that keep getting better -- this is the after-dark side of the Midwest.</p>
+      <div class="ft-hero-meta">
+        <div class="ft-hero-meta-item">
+          <span class="ft-hero-meta-label">Topics</span>
+          <span class="ft-hero-meta-value">6</span>
+        </div>
+        <div class="ft-hero-meta-item">
+          <span class="ft-hero-meta-label">Nightlife Districts</span>
+          <span class="ft-hero-meta-value">6</span>
+        </div>
+        <div class="ft-hero-meta-item">
+          <span class="ft-hero-meta-label">Breweries</span>
+          <span class="ft-hero-meta-value">20+</span>
+        </div>
+      </div>
+    </div>
+    <div class="ft-scroll-hint">Scroll<br />&#8595;</div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="container-content">
+    <Breadcrumb items={breadcrumbs} />
+  </div>
+
+  <!-- Personal intro -->
+  <section class="ft-personal ft-reveal">
+    <div class="container-content">
+      <blockquote class="ft-personal-quote">
+        <p>I didn't expect the Midwest to have one of the best craft beer scenes in America -- but it does. Michigan alone has more breweries than most states have bars. Add in Kansas City's bourbon scene, Chicago's world-class cocktail bars, and the live music that runs from blues clubs to stadium rock, and you've got a region that knows how to have a good time. The best part? Everything costs about half what you'd pay in NYC or LA.</p>
+        <cite>— Scott</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Quick Facts Strip -->
+  <section class="ft-quickfacts ft-reveal">
+    <div class="container-content">
+      <div class="ft-quickfacts-bar">
+        <div class="ft-quickfact">
+          <span class="ft-quickfact-label">Drinking Age</span>
+          <span class="ft-quickfact-value">21</span>
+        </div>
+        <div class="ft-quickfact-divider"></div>
+        <div class="ft-quickfact">
+          <span class="ft-quickfact-label">Craft Pint</span>
+          <span class="ft-quickfact-value">$6–9</span>
+        </div>
+        <div class="ft-quickfact-divider"></div>
+        <div class="ft-quickfact">
+          <span class="ft-quickfact-label">Cocktail (Chicago)</span>
+          <span class="ft-quickfact-value">$12–18</span>
+        </div>
+        <div class="ft-quickfact-divider"></div>
+        <div class="ft-quickfact">
+          <span class="ft-quickfact-label">Dive Bar PBR</span>
+          <span class="ft-quickfact-value">$3–4</span>
+        </div>
+        <div class="ft-quickfact-divider"></div>
+        <div class="ft-quickfact">
+          <span class="ft-quickfact-label">Tipping</span>
+          <span class="ft-quickfact-value">18–20%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Nav -->
+  <section class="ft-quicknav ft-reveal">
+    <div class="container-content">
+      <div class="ft-quicknav-grid">
+        {topics.map((t) => (
+          <a href={`#${t.id}`} class="ft-quicknav-chip">
+            <span class="ft-quicknav-icon">{t.icon}</span>
+            <span class="ft-quicknav-label">{t.title.split(' ').slice(0, 2).join(' ')}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Topic Sections -->
+  {topics.map((topic) => (
+    <section class="ft-topic ft-reveal" id={topic.id}>
+      <div class="container-content">
+        <div class="ft-topic-header" style={`background: ${topic.gradient};`}>
+          <div class="ft-topic-header-inner">
+            <span class="ft-topic-icon">{topic.icon}</span>
+            <h2 class="ft-topic-title">{topic.title}</h2>
+            <span class="ft-topic-count">{topic.items.length} tips</span>
+          </div>
+        </div>
+
+        <div class="ft-tip-grid">
+          {topic.items.map((item) => (
+            <div class="ft-tip-card">
+              <h3 class="ft-tip-label">{item.label}</h3>
+              <p class="ft-tip-text" set:html={item.text} />
+              {item.link && (
+                <a href={item.link} class="ft-tip-link">Explore {item.label.split(':')[0]} &rarr;</a>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Scott's Pro Tips -->
+  <section class="ft-protips ft-reveal">
+    <div class="container-content">
+      <div class="ft-protips-card">
+        <h2 class="ft-protips-heading">Scott's Pro Tips</h2>
+        <div class="scott-tips">
+          <ul>
+            <li><strong>Happy Hours:</strong> Most Midwest bars have happy hour specials from 4-6pm -- $1-2 off pints and $3-5 off cocktails. Wednesday and Thursday nights often have drink specials too. Ask the bartender -- they'll tell you what's on deal.</li>
+            <li><strong>Brewery Flights:</strong> Always start with a flight (4-6 small pours) at a new brewery -- you'll find your favorites faster and you won't commit to a full pint of something you don't love. Most flights are $8-14.</li>
+            <li><strong>Safety at Night:</strong> Use Uber/Lyft after dark in unfamiliar areas. Stick to well-lit entertainment districts. Most Midwest nightlife areas are very safe, but standard city awareness applies. Ask your bartender which neighborhoods to avoid if you're walking.</li>
+            <li><strong>Tailgating:</strong> If you're going to a game, arrive 2-3 hours early for the tailgate. Bring a cooler, a portable grill, and something to share. Midwest tailgating is a social event -- neighbors will share food and beer with you. It's the best way to meet locals.</li>
+            <li><strong>Best Value Night Out:</strong> A brewery taproom with a food truck outside. $6 pints, $10-12 for great food, and a fun atmosphere. Most Midwest cities have 5-10 brewery taprooms with this setup -- it's the region's answer to the expensive cocktail bar.</li>
+            <li><strong>Bringing Beer Home:</strong> Most breweries sell 4-packs and 6-packs to go. Pack them in the center of your checked bag surrounded by clothes. Cans travel better than bottles. Some breweries ship -- ask at the counter.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Affiliate Disclosure -->
+  <div class="container-content ft-reveal" style="padding-bottom: 0;">
+    <p class="ft-affiliate-disclosure">Some links on this page are affiliate links — I earn a small commission if you purchase through them, at no extra cost to you. I only recommend places and gear I personally use. <a href="/legal/affiliate-disclosure/">Full disclosure</a>.</p>
+  </div>
+
+  <!-- Bottom CTA -->
+  <section class="ft-cta-section ft-reveal">
+    <div class="container-content">
+      <div class="ft-cta-card">
+        <h2 class="ft-cta-heading">Plan Your Night Out</h2>
+        <p class="ft-cta-text">Tell our AI planner your dates and interests — it'll build a custom itinerary with the best bars, nightlife districts, and local experiences.</p>
+        <a href="/plan/" class="ft-cta-button">Start Planning &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Email Capture -->
+  <div class="container-content ft-reveal" style="padding-bottom: var(--space-6);">
+    <EmailCapture
+      leadMagnet="Get Our Free Midwest Nightlife Guide"
+      description="Craft breweries, bourbon bars, live music venues, and nightlife districts -- packed into one PDF."
+      bullets={[
+        'Best breweries and taprooms in every Midwest city',
+        'Nightlife district guides for Chicago, KC, Minneapolis, and more',
+        'Live music venues -- blues, jazz, rock, and comedy',
+        'Game day guide with tailgating tips and best sports bars',
+      ]}
+      guideTag="pillar-finer-things"
+    />
+  </div>
+
+  <!-- Cross-links -->
+  <section class="ft-crosslinks ft-reveal">
+    <div class="container-content">
+      <h3 class="ft-crosslinks-heading">Explore More</h3>
+      <div class="ft-crosslinks-grid">
+        <a href="/cuisine/" class="ft-crosslink-card">
+          <span class="ft-crosslink-icon">&#127860;</span>
+          <span class="ft-crosslink-label">Food & Cuisine</span>
+          <span class="ft-crosslink-desc">23 dishes across 3 regions, city by city</span>
+        </a>
+        <a href="/festivals/" class="ft-crosslink-card">
+          <span class="ft-crosslink-icon">&#127914;</span>
+          <span class="ft-crosslink-label">Festival Calendar</span>
+          <span class="ft-crosslink-desc">Midwest festivals, fairs, and events month by month</span>
+        </a>
+        <a href="/history/" class="ft-crosslink-card">
+          <span class="ft-crosslink-icon">&#127963;</span>
+          <span class="ft-crosslink-label">History & Heritage</span>
+          <span class="ft-crosslink-desc">The events, places, and stories that shaped the Midwest</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+</BaseLayout>
+
+<!-- Scroll Reveal Observer (uses ft-reveal/ft-visible to avoid Tailwind .visible conflict) -->
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const ftRevealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('ft-visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.ft-reveal').forEach((el) => ftRevealObserver.observe(el));
+  } else {
+    document.querySelectorAll('.ft-reveal').forEach((el) => el.classList.add('ft-visible'));
+  }
+</script>
+
+<style>
+  /* ================================================================
+     HERO — Warm amber/whiskey gradient
+     ================================================================ */
+  .ft-hero {
+    position: relative;
+    min-height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 5rem var(--space-6) 60px;
+    overflow: hidden;
+  }
+
+  .ft-hero-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(135deg, #1A2332 0%, #78350F 40%, #D4A574 100%);
+  }
+
+  .ft-hero-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .ft-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 720px;
+  }
+
+  .ft-hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: var(--weight-bold);
+    color: #fff;
+    line-height: 1.1;
+    margin: 0 0 var(--space-3);
+  }
+
+  .ft-hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin: 0 0 var(--space-5);
+    max-width: 580px;
+  }
+
+  .ft-hero-meta {
+    display: flex;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+  }
+
+  .ft-hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .ft-hero-meta-label {
+    font-size: 0.65rem;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .ft-hero-meta-value {
+    font-size: 1.1rem;
+    font-weight: var(--weight-bold);
+    color: #fff;
+  }
+
+  .ft-scroll-hint {
+    position: absolute;
+    bottom: 16px;
+    right: var(--space-6);
+    z-index: 3;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: center;
+    animation: ftBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes ftBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ================================================================
+     PERSONAL INTRO
+     ================================================================ */
+  .ft-personal {
+    padding-block: var(--space-8);
+  }
+
+  .ft-personal-quote {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-8);
+    border-left: 4px solid #D4A574;
+    background: var(--color-sky);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .ft-personal-quote p {
+    font-size: var(--text-body);
+    color: var(--color-heading);
+    line-height: var(--leading-body);
+    font-style: italic;
+    margin-bottom: var(--space-3);
+  }
+
+  .ft-personal-quote cite {
+    font-size: var(--text-caption);
+    color: #78350F;
+    font-weight: var(--weight-semibold);
+    font-style: normal;
+  }
+
+  /* ================================================================
+     QUICK FACTS STRIP
+     ================================================================ */
+  .ft-quickfacts {
+    padding: 0 0 var(--space-4);
+  }
+
+  .ft-quickfacts-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-5);
+    background: var(--color-sky);
+    border-radius: 16px;
+    padding: var(--space-4) var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .ft-quickfact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+  }
+
+  .ft-quickfact-label {
+    font-size: 0.65rem;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate);
+  }
+
+  .ft-quickfact-value {
+    font-size: 1.05rem;
+    font-weight: var(--weight-extrabold);
+    color: var(--color-deep-night);
+  }
+
+  .ft-quickfact-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  /* ================================================================
+     QUICK NAV — Jump-to chips
+     ================================================================ */
+  .ft-quicknav {
+    padding: 0 0 var(--space-6);
+  }
+
+  .ft-quicknav-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .ft-quicknav-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: var(--weight-medium);
+    color: #4A5568;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+
+  .ft-quicknav-chip:hover {
+    background: #FDF8F0;
+    color: #78350F;
+    transform: translateY(-2px);
+  }
+
+  .ft-quicknav-icon {
+    font-size: 1rem;
+  }
+
+  .ft-quicknav-label {
+    white-space: nowrap;
+  }
+
+  /* ================================================================
+     TOPIC SECTION
+     ================================================================ */
+  .ft-topic {
+    padding: var(--space-4) 0 var(--space-6);
+    scroll-margin-top: 80px;
+  }
+
+  .ft-topic-header {
+    position: relative;
+    border-radius: 20px;
+    padding: var(--space-5) var(--space-6);
+    margin-bottom: var(--space-5);
+    overflow: hidden;
+  }
+
+  .ft-topic-header-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .ft-topic-icon {
+    font-size: 1.6rem;
+  }
+
+  .ft-topic-title {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: var(--weight-bold);
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .ft-topic-count {
+    font-size: 0.7rem;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* ================================================================
+     TIP CARDS
+     ================================================================ */
+  .ft-tip-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 768px) {
+    .ft-tip-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .ft-tip-card {
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 14px;
+    padding: var(--space-5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ft-tip-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .ft-tip-label {
+    font-size: 0.95rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    margin: 0 0 var(--space-2);
+    line-height: 1.3;
+  }
+
+  .ft-tip-text {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .ft-tip-text :global(a) {
+    color: #78350F;
+    font-weight: var(--weight-semibold);
+    text-decoration: underline;
+    text-decoration-color: rgba(120, 53, 15, 0.3);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .ft-tip-text :global(a:hover) {
+    text-decoration-color: #78350F;
+  }
+
+  .ft-tip-link {
+    display: inline-block;
+    margin-top: var(--space-3);
+    font-size: 0.8rem;
+    font-weight: var(--weight-semibold);
+    color: #78350F;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .ft-tip-link:hover {
+    color: #D4A574;
+  }
+
+  /* ================================================================
+     SCOTT'S PRO TIPS
+     ================================================================ */
+  .ft-protips {
+    padding: var(--space-4) 0 var(--space-6);
+  }
+
+  .ft-protips-card {
+    background: linear-gradient(135deg, #1A2332 0%, #2D3748 100%);
+    border-radius: 20px;
+    padding: var(--space-6) var(--space-6);
+  }
+
+  .ft-protips-heading {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: var(--weight-bold);
+    color: #D4A574;
+    margin: 0 0 var(--space-4);
+  }
+
+  .ft-protips-card .scott-tips {
+    background: transparent;
+    border-left: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ft-protips-card .scott-tips ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .ft-protips-card .scott-tips li {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.65;
+    padding-left: var(--space-4);
+    position: relative;
+  }
+
+  .ft-protips-card .scott-tips li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #D4A574;
+  }
+
+  .ft-protips-card .scott-tips :global(strong) {
+    color: #D4A574;
+    font-weight: var(--weight-semibold);
+  }
+
+  .ft-protips-card .scott-tips :global(a) {
+    color: #FB923C;
+    font-weight: var(--weight-semibold);
+    text-decoration: underline;
+    text-decoration-color: rgba(251, 146, 60, 0.4);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .ft-protips-card .scott-tips :global(a:hover) {
+    text-decoration-color: #FB923C;
+  }
+
+  /* ================================================================
+     AFFILIATE DISCLOSURE
+     ================================================================ */
+  .ft-affiliate-disclosure {
+    font-size: 0.75rem;
+    color: #4A5568;
+    line-height: 1.5;
+    text-align: center;
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-sky);
+    border-radius: 10px;
+    margin-bottom: var(--space-4);
+  }
+
+  .ft-affiliate-disclosure a {
+    color: var(--color-ocean-teal);
+    text-decoration: underline;
+  }
+
+  /* ================================================================
+     BOTTOM CTA
+     ================================================================ */
+  .ft-cta-section {
+    padding: var(--space-6) 0 var(--space-8);
+  }
+
+  .ft-cta-card {
+    background: linear-gradient(135deg, #78350F 0%, #D4A574 100%);
+    border-radius: 20px;
+    padding: var(--space-8) var(--space-6);
+    text-align: center;
+    color: #fff;
+  }
+
+  .ft-cta-heading {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: var(--weight-bold);
+    margin: 0 0 var(--space-3);
+    color: #fff;
+  }
+
+  .ft-cta-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 520px;
+    margin: 0 auto var(--space-5);
+    line-height: 1.6;
+  }
+
+  .ft-cta-button {
+    display: inline-block;
+    background: var(--color-deep-night);
+    color: #D4A574;
+    font-size: 0.9rem;
+    font-weight: var(--weight-semibold);
+    padding: 12px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .ft-cta-button:hover {
+    background: #0D1117;
+    transform: translateY(-2px);
+  }
+
+  /* ================================================================
+     CROSS-LINKS
+     ================================================================ */
+  .ft-crosslinks {
+    padding: 0 0 var(--space-10);
+  }
+
+  .ft-crosslinks-heading {
+    font-size: 1.1rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    text-align: center;
+    margin: 0 0 var(--space-4);
+  }
+
+  .ft-crosslinks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 640px) {
+    .ft-crosslinks-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .ft-crosslink-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-5) var(--space-4);
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ft-crosslink-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .ft-crosslink-icon {
+    font-size: 1.8rem;
+  }
+
+  .ft-crosslink-label {
+    font-size: 0.95rem;
+    font-weight: var(--weight-bold);
+    color: #1A2332;
+  }
+
+  .ft-crosslink-desc {
+    font-size: 0.78rem;
+    color: #4A5568;
+    line-height: 1.4;
+  }
+
+  /* ================================================================
+     SCROLL REVEAL (page-specific, avoids Tailwind .visible conflict)
+     ================================================================ */
+  .ft-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ft-reveal.ft-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes ftRevealFallback {
+    to { opacity: 1; transform: none; }
+  }
+
+  .ft-reveal {
+    animation: ftRevealFallback 0s 3s forwards;
+  }
+
+  /* ================================================================
+     RESPONSIVE
+     ================================================================ */
+  @media (max-width: 640px) {
+    .ft-hero {
+      min-height: 50vh;
+      padding: 0 var(--space-4) 40px;
+    }
+
+    .ft-hero-meta {
+      gap: var(--space-4);
+    }
+
+    .ft-scroll-hint {
+      display: none;
+    }
+
+    .ft-topic-header {
+      padding: var(--space-4) var(--space-4);
+    }
+
+    .ft-quickfacts-bar {
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+    }
+
+    .ft-quickfact-divider {
+      display: none;
+    }
+
+    .ft-quickfact {
+      min-width: 80px;
+    }
+
+    .ft-personal-quote {
+      padding: var(--space-4) var(--space-5);
+    }
+
+    .ft-protips-card {
+      padding: var(--space-5) var(--space-4);
+    }
+  }
+</style>

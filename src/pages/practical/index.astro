@@ -1,0 +1,805 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import EmailCapture from '../../components/EmailCapture.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Travel Tips', url: '/practical/' },
+];
+
+const pageTitle = 'Midwest Travel Tips — Getting Around, Costs, Weather & Road Trip Guide 2026';
+const pageDescription = 'Everything you need before your first Midwest road trip — driving tips, costs, best times to visit, packing essentials, and city-by-city practical advice.';
+
+interface TopicSection {
+  id: string;
+  icon: string;
+  title: string;
+  gradient: string;
+  video?: string;
+  items: { label: string; text: string }[];
+}
+
+const topics: TopicSection[] = [
+  {
+    id: 'driving',
+    icon: '🚗',
+    title: 'Driving & Road Trips',
+    gradient: 'linear-gradient(135deg, #1565C0 0%, #42A5F5 100%)',
+    video: '/videos/pillar/practical-break-visa.mp4',
+    items: [
+      { label: 'The Midwest Is a Road Trip Region', text: 'The Midwest was built for driving. Major cities are connected by interstates with minimal traffic outside rush hour. Chicago to Milwaukee is 90 minutes. Kansas City to St. Louis is 4 hours. Minneapolis to Chicago is about 6. Plan your route around 3-5 hour driving days and you can hit multiple cities in a single trip.' },
+      { label: 'Rental Cars', text: 'Rent from a major airport for the best rates. Budget $40-80/day for a mid-size car. Enterprise, National, and Hertz all have strong Midwest presence. Book 2-4 weeks ahead during summer and fall — prices spike for last-minute rentals. A full-size SUV gives you more comfort on long drives.' },
+      { label: 'Toll Roads', text: 'Illinois, Indiana, and Ohio have toll roads (I-90, I-80). Most accept electronic tolling (iPass, E-ZPass) or credit cards. Some older plazas still take cash. Budget $10-30 in tolls for a cross-state drive. Your rental car may have an electronic toll transponder — check at pickup.' },
+      { label: 'Winter Driving', text: 'Midwest winters are serious. November through March, expect snow, ice, and below-zero temperatures. If driving in winter, make sure your rental has good tires, carry an ice scraper, and check weather before long drives. Black ice on highways is a real hazard. Give yourself extra time and slow down.' },
+      { label: 'Gas & Fuel', text: 'Gas is generally cheaper in the Midwest than coastal states. Fill up in smaller towns where prices can be $0.20-0.40 less per gallon than big city stations. Gas stations are everywhere on interstates — you won\'t be stranded.' },
+    ],
+  },
+  {
+    id: 'money',
+    icon: '💰',
+    title: 'Costs & Budget',
+    gradient: 'linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%)',
+    video: '/videos/pillar/practical-break-money.mp4',
+    items: [
+      { label: 'Daily Budget Ranges', text: 'Budget: $75-125/day — motels, fast food, free attractions. Mid-range: $150-250/day — 3-star hotels, sit-down restaurants, paid attractions. Upscale: $300+/day — boutique hotels, fine dining, premium experiences. The Midwest is significantly more affordable than coastal cities.' },
+      { label: 'Hotel Costs', text: 'Budget motels: $60-90/night. Mid-range hotels: $120-200/night. Boutique/upscale: $200-400/night. Prices vary by city — Chicago is the most expensive, while cities like Des Moines, Omaha, and Columbus are great value. Book on Booking.com for the best deals.' },
+      { label: 'Food Costs', text: 'Fast-casual meals: $8-14. Sit-down restaurants: $15-30 per person. Fine dining: $50-100+ per person. BBQ joints: $15-25 for a full plate. The Midwest offers incredible food value — you eat extremely well for less than you would in NYC or LA.' },
+      { label: 'Tipping Norms', text: 'Standard US tipping applies. 18-20% at sit-down restaurants. $1-2 per drink at bars. $2-5/night for hotel housekeeping. 15-20% for ride-share drivers. BBQ counter-service spots usually have a tip jar — $1-2 is appreciated.' },
+      { label: 'Credit Cards', text: 'Credit and debit cards are accepted virtually everywhere. Apple Pay and Google Pay work at most modern retailers. You rarely need cash, but it\'s good to carry $20-40 for farmers markets, food trucks, and parking meters.' },
+      { label: 'Saving Money', text: 'Many museums have free admission days. Chicago\'s free museums include the National Museum of Mexican Art and the Smart Museum. City passes (CityPASS, Go City) save 30-50% on top attractions. Eating at lunch instead of dinner at the same restaurant often saves 25%.' },
+    ],
+  },
+  {
+    id: 'transport',
+    icon: '✈️',
+    title: 'Getting There & Around',
+    gradient: 'linear-gradient(135deg, #E65100 0%, #FF9800 100%)',
+    video: '/videos/pillar/practical-break-transport.mp4',
+    items: [
+      { label: 'Airports & Flying', text: 'Chicago O\'Hare (ORD) and Midway (MDW) are the main hubs with direct flights from most US cities. Detroit (DTW), Minneapolis (MSP), Cleveland (CLE), Cincinnati (CVG), Indianapolis (IND), and St. Louis (STL) all have good domestic service. Southwest, United, American, and Delta all serve the Midwest well.' },
+      { label: 'Amtrak Trains', text: 'Amtrak connects several Midwest cities. The Hiawatha runs 7 times daily between Chicago and Milwaukee (90 min, ~$25). The Lincoln Service goes Chicago to St. Louis (5.5 hrs). The Cardinal connects Chicago to Cincinnati. Trains are comfortable but often slower than driving.' },
+      { label: 'Ride-Share & Taxis', text: 'Uber and Lyft work well in all major Midwest cities. Downtown rides typically cost $8-20. Airport rides are $25-50 depending on the city. In Chicago, the L train from O\'Hare to downtown is $5 and takes 45 minutes — much cheaper than a $40+ rideshare.' },
+      { label: 'Public Transit', text: 'Chicago has the best public transit in the Midwest — the L train, buses, and Metra commuter rail cover the metro area. Cleveland has the RTA rapid transit. Minneapolis has the light rail. Most other cities are car-dependent. If you\'re only visiting Chicago, you can skip the rental car entirely.' },
+      { label: 'Parking', text: 'Downtown parking in Chicago can be $30-50/day in garages. Other cities are more reasonable at $10-20/day. Many hotels charge $15-30/night for parking. Street parking varies — always check meters and time limits. SpotHero and ParkWhiz apps help find cheaper garage rates.' },
+    ],
+  },
+  {
+    id: 'weather',
+    icon: '🌤️',
+    title: 'Weather & Best Times to Visit',
+    gradient: 'linear-gradient(135deg, #6A1B9A 0%, #AB47BC 100%)',
+    video: '/videos/pillar/practical-break-connectivity.mp4',
+    items: [
+      { label: 'Best Months: May-October', text: 'Late spring through early fall is peak season. Temperatures range from 70-90 F with long days. Summer (June-August) brings the best weather but also the biggest crowds and highest prices. September-October offers warm weather with fewer tourists and lower rates.' },
+      { label: 'Spring (March-May)', text: 'Gradually warming with occasional rain. April and May are beautiful — flowers blooming, trees leafing out. Some attractions start their summer hours in April. Temperatures: 45-75 F. Pack layers.' },
+      { label: 'Summer (June-August)', text: 'Hot and humid, especially in July-August. Temperatures regularly hit 85-95 F in most cities. Thunderstorms are common in late afternoon. Festival season is in full swing. This is when the region is most alive.' },
+      { label: 'Fall (September-November)', text: 'Arguably the best time to visit. Warm September days give way to stunning fall color in October. Football season, harvest festivals, and apple picking. Temperatures: 40-75 F. November gets cold fast.' },
+      { label: 'Winter (December-February)', text: 'Cold. Very cold. Temperatures range from 0-35 F with wind chills well below zero. Snow is common from December through March. But winter has its charms — holiday markets, indoor food halls, cozy bars, and significantly lower hotel prices. Pack a serious coat, layers, and waterproof boots.' },
+    ],
+  },
+  {
+    id: 'safety',
+    icon: '🏥',
+    title: 'Safety & Health',
+    gradient: 'linear-gradient(135deg, #C62828 0%, #EF5350 100%)',
+    video: '/videos/pillar/practical-break-safety.mp4',
+    items: [
+      { label: 'Travel Insurance', text: 'Even for domestic US travel, travel insurance is smart. I use <a href="https://safetywing.com/?referenceID=24858745&utm_source=24858745&utm_medium=Ambassador" target="_blank" rel="noopener sponsored">SafetyWing</a> for every trip — it covers trip interruption, medical emergencies, and rental car incidents. An ER visit in an unfamiliar city can be a financial nightmare without coverage.' },
+      { label: 'City Safety', text: 'The Midwest is generally very safe for travelers. Use standard urban common sense: stay in well-lit areas at night, don\'t leave valuables visible in your car, and be aware of your surroundings. Every major city has neighborhoods to avoid — ask your hotel front desk for specific guidance.' },
+      { label: 'Severe Weather', text: 'The Midwest gets tornadoes, severe thunderstorms, and blizzards. Download a weather alert app (Weather Channel, NOAA Weather). If a tornado warning is issued, get to an interior room on the lowest floor immediately. Hotels have designated shelter areas.' },
+      { label: 'Ticks & Mosquitoes', text: 'Summer brings ticks in wooded and grassy areas, especially in rural parts of Wisconsin, Minnesota, and Indiana. Use insect repellent with DEET and check yourself after hiking. Mosquitoes are active from June through September — bring repellent for outdoor evening activities.' },
+      { label: 'Healthcare', text: 'World-class hospitals are available in every major city. The Cleveland Clinic, Mayo Clinic (Rochester, MN), and Northwestern (Chicago) are among the best in the country. Urgent care clinics are widespread for minor issues. If you\'re visiting from abroad, bring proof of travel insurance.' },
+    ],
+  },
+  {
+    id: 'packing',
+    icon: '🎒',
+    title: 'Packing Essentials',
+    gradient: 'linear-gradient(135deg, #78350F 0%, #D97706 100%)',
+    video: '/videos/pillar/practical-break-packing.mp4',
+    items: [
+      { label: 'Layer Everything', text: 'Midwest weather changes fast. Even in summer, evenings can cool down 20+ degrees. Pack layers: T-shirts, a light jacket or hoodie, and a rain shell. In spring and fall, add a mid-weight jacket. Winter requires a serious coat, hat, gloves, and scarf.' },
+      { label: 'Comfortable Walking Shoes', text: 'You\'ll walk a lot exploring downtown areas, museums, and food districts. Pack comfortable walking shoes or sneakers. Skip the flip-flops except for hotel pools. If visiting in winter, waterproof insulated boots are essential.' },
+      { label: 'Rain Gear', text: 'Summer thunderstorms pop up with little warning. A compact umbrella or packable rain jacket is essential. Keep one in your day bag at all times from June through September.' },
+      { label: 'Sunscreen & Sunglasses', text: 'The Midwest sun is strong in summer, especially near the Great Lakes where water reflects UV rays. Pack SPF 50+ sunscreen and good sunglasses. Lakefront cities like Chicago, Milwaukee, and Cleveland get intense afternoon sun.' },
+      { label: 'Day Bag', text: 'A small backpack or crossbody bag for daily exploring — phone, wallet, sunscreen, water bottle, and a jacket layer. Most Midwest cities are walkable downtown, so you want to be hands-free.' },
+      { label: 'Car Trip Essentials', text: 'Phone car mount, USB charging cables, a cooler for drinks and snacks on long drives, paper maps as backup (cell service can drop in rural areas), and a first aid kit. If driving in winter, add an ice scraper, small shovel, and emergency blanket.' },
+    ],
+  },
+  {
+    id: 'culture',
+    icon: '🌽',
+    title: 'Midwest Culture & Etiquette',
+    gradient: 'linear-gradient(135deg, #0D7377 0%, #14B8A6 100%)',
+    video: '/videos/pillar/practical-break-culture.mp4',
+    items: [
+      { label: 'Midwest Nice', text: 'Midwesterners are genuinely friendly. Strangers make eye contact, wave, and say hello. People hold doors. Conversations with bartenders and cashiers are normal and expected. This isn\'t fake — it\'s just how people are here. Lean into it.' },
+      { label: 'Food Culture', text: 'Every city has fierce pride in their local food traditions. Don\'t compare KC BBQ to St. Louis BBQ in front of locals. Don\'t put ketchup on a Chicago hot dog. Don\'t call it "pop" in St. Louis (it\'s "soda" there). These little things matter — and asking locals what\'s best is the fastest way to find great food.' },
+      { label: 'Sports Matter', text: 'Midwest cities live and breathe their sports teams. The Bears, Packers, Steelers, Reds, Cardinals, Cubs — game days transform entire cities. If you can catch a game, do it. Even if you don\'t care about sports, the atmosphere at a Big Ten football game or a Cubs game at Wrigley is a cultural experience.' },
+      { label: 'Casual Dress', text: 'The Midwest is casual. Jeans and a nice shirt will get you into 95% of restaurants. Only a handful of fine dining spots in Chicago require business casual. Pack comfortable, layered clothes and leave the formal wear at home.' },
+      { label: 'Time Zones', text: 'Most Midwest cities are in the Central Time Zone (CT). Ohio cities (Cincinnati, Cleveland, Columbus) and parts of Indiana (Indianapolis) are in Eastern Time (ET). Detroit is also Eastern. Double-check when crossing state lines — it matters for restaurant reservations and tour times.' },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageType="destination"
+  schemaData={{ title: pageTitle, description: pageDescription }}
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero -->
+  <header class="prac-hero">
+    <video class="prac-hero-video" autoplay muted loop playsinline preload="metadata">
+      <source src="/videos/pillar/practical-hero.mp4" type="video/mp4" />
+    </video>
+    <div class="prac-hero-gradient"></div>
+    <div class="prac-hero-noise"></div>
+    <div class="prac-hero-content">
+      <h1 class="prac-hero-title">Midwest Travel Essentials</h1>
+      <p class="prac-hero-subtitle">Driving tips, cost breakdowns, weather guides, packing lists, and the practical advice that turns a good road trip into a great one.</p>
+      <div class="prac-hero-meta">
+        <div class="prac-hero-meta-item">
+          <span class="prac-hero-meta-label">Topics</span>
+          <span class="prac-hero-meta-value">7</span>
+        </div>
+        <div class="prac-hero-meta-item">
+          <span class="prac-hero-meta-label">Updated</span>
+          <span class="prac-hero-meta-value">Feb 2026</span>
+        </div>
+        <div class="prac-hero-meta-item">
+          <span class="prac-hero-meta-label">Trips</span>
+          <span class="prac-hero-meta-value">25+</span>
+        </div>
+      </div>
+    </div>
+    <div class="prac-scroll-hint">Scroll<br />&#8595;</div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="container-content">
+    <Breadcrumb items={breadcrumbs} />
+  </div>
+
+  <!-- Personal intro -->
+  <section class="prac-personal reveal">
+    <div class="container-content">
+      <blockquote class="prac-personal-quote">
+        <p>I've driven thousands of miles across the Midwest -- from Chicago to Kansas City, Minneapolis to Cincinnati, and everywhere in between. I've learned the best times to visit, where to save money, how to handle winter driving, and what to pack for a region where the weather changes every few hours. This is the cheat sheet I wish someone had given me before my first road trip.</p>
+        <cite>— Scott</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Quick Nav -->
+  <section class="prac-quicknav reveal">
+    <div class="container-content">
+      <div class="prac-quicknav-grid">
+        {topics.map((t) => (
+          <a href={`#${t.id}`} class="prac-quicknav-chip">
+            <span class="prac-quicknav-icon">{t.icon}</span>
+            <span class="prac-quicknav-label">{t.title.split(' ').slice(0, 2).join(' ')}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Topic Sections -->
+  {topics.map((topic) => (
+    <section class="prac-topic reveal" id={topic.id}>
+      <div class="container-content">
+        <div class="prac-topic-header" style={`background: ${topic.gradient};`}>
+          {topic.video && (
+            <video class="prac-topic-video" autoplay muted loop playsinline preload="none">
+              <source src={topic.video} type="video/mp4" />
+            </video>
+          )}
+          <div class="prac-topic-header-inner">
+            <span class="prac-topic-icon">{topic.icon}</span>
+            <h2 class="prac-topic-title">{topic.title}</h2>
+            <span class="prac-topic-count">{topic.items.length} tips</span>
+          </div>
+        </div>
+
+        <div class="prac-tip-grid">
+          {topic.items.map((item) => (
+            <div class="prac-tip-card">
+              <h3 class="prac-tip-label">{item.label}</h3>
+              <p class="prac-tip-text" set:html={item.text} />
+            </div>
+          ))}
+        </div>
+
+        {/* Transport widget removed — Midwest travel is primarily by car */}
+      </div>
+    </section>
+  ))}
+
+  <!-- Affiliate Disclosure -->
+  <div class="container-content reveal" style="padding-bottom: 0;">
+    <p class="prac-affiliate-disclosure">Some links on this page are affiliate links — I earn a small commission if you purchase through them, at no extra cost to you. I only recommend gear I personally use on my Midwest trips. <a href="/legal/affiliate-disclosure/">Full disclosure</a>.</p>
+  </div>
+
+  <!-- Bottom CTA -->
+  <section class="prac-cta-section reveal">
+    <div class="container-content">
+      <div class="prac-cta-card">
+        <h2 class="prac-cta-heading">Plan Your Midwest Trip</h2>
+        <p class="prac-cta-text">Tell our AI planner your dates, budget, and interests — it builds a custom day-by-day itinerary with hotels, restaurants, and activities.</p>
+        <a href="/plan/" class="prac-cta-button">Start Planning &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ items={[
+    { question: "What is the best time to visit the Midwest?", answer: "Late May through October offers the best weather. Summer (June-August) is peak season with the warmest temperatures and most festivals. September-October is ideal for fall colors, lower prices, and fewer crowds. Winter (December-February) is cold but offers indoor attractions and significantly cheaper hotels." },
+    { question: "How much does a Midwest road trip cost?", answer: "Budget travelers: $75-125/day for motels, fast food, and free attractions. Mid-range: $150-250/day for 3-star hotels, restaurants, and paid attractions. Upscale: $300+/day for boutique hotels and fine dining. A 7-day road trip hitting 3-4 cities typically costs $1,000-2,000 per person at mid-range." },
+    { question: "Do I need a car in the Midwest?", answer: "For most trips, yes. The Midwest is spread out and cities beyond Chicago have limited public transit. Chicago is the exception -- you can explore the city entirely by L train and bus. For a multi-city trip, rent a car from a major airport. Driving between cities is generally easy with good interstate highways." },
+    { question: "What are the driving distances between Midwest cities?", answer: "Chicago to Milwaukee: 90 miles (1.5 hrs). Chicago to Indianapolis: 185 miles (3 hrs). Chicago to Minneapolis: 410 miles (6 hrs). Kansas City to St. Louis: 250 miles (4 hrs). Cincinnati to Columbus: 107 miles (1.75 hrs). Detroit to Cleveland: 170 miles (2.5 hrs). Most city-to-city drives are manageable in a day." },
+    { question: "Is the Midwest safe for travelers?", answer: "Yes, the Midwest is generally very safe for tourists. Use standard urban common sense: stay in well-lit areas at night and lock your car. Every major city has some neighborhoods to avoid -- ask your hotel for guidance. Severe weather (tornadoes, thunderstorms, blizzards) is the bigger concern -- download a weather alert app." },
+    { question: "What should I pack for a Midwest trip?", answer: "Layers are essential -- Midwest weather changes fast. Summer: T-shirts, a light jacket, rain shell, comfortable walking shoes, sunscreen. Spring/fall: add a mid-weight jacket and warmer layers. Winter: serious coat, insulated waterproof boots, hat, gloves, scarf. Always pack a rain jacket regardless of season." },
+  ]} />
+
+  <!-- Email Capture -->
+  <div class="container-content reveal" style="padding-bottom: var(--space-6);">
+    <EmailCapture
+      leadMagnet="Get Our Free Midwest Road Trip Planning Guide"
+      description="A printable PDF covering everything in this guide -- plus driving route maps, packing checklists, and city-by-city tips."
+      bullets={[
+        'Driving distances and route suggestions between all 13 cities',
+        'Daily budget planner by travel style',
+        'Season-by-season packing checklist',
+        'City-by-city practical tips and must-know info',
+      ]}
+      guideTag="pillar-practical"
+    />
+  </div>
+
+  <!-- Cross-links -->
+  <section class="prac-crosslinks reveal">
+    <div class="container-content">
+      <h3 class="prac-crosslinks-heading">Explore More</h3>
+      <div class="prac-crosslinks-grid">
+        <a href="/festivals/" class="prac-crosslink-card">
+          <span class="prac-crosslink-icon">&#127914;</span>
+          <span class="prac-crosslink-label">Festival Calendar</span>
+          <span class="prac-crosslink-desc">Midwest festivals, fairs, and events month by month</span>
+        </a>
+        <a href="/cuisine/" class="prac-crosslink-card">
+          <span class="prac-crosslink-icon">&#127860;</span>
+          <span class="prac-crosslink-label">Food & Cuisine</span>
+          <span class="prac-crosslink-desc">23 dishes across 3 regions with where to find the best version</span>
+        </a>
+        <a href="/finer-things/" class="prac-crosslink-card">
+          <span class="prac-crosslink-icon">&#127866;</span>
+          <span class="prac-crosslink-label">The Finer Things</span>
+          <span class="prac-crosslink-desc">Craft breweries, bourbon bars, and nightlife across the heartland</span>
+        </a>
+        <a href="/history/" class="prac-crosslink-card">
+          <span class="prac-crosslink-icon">&#127963;</span>
+          <span class="prac-crosslink-label">History & Heritage</span>
+          <span class="prac-crosslink-desc">The events, places, and stories that shaped the Midwest</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<!-- Scroll Reveal Observer -->
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+  }
+</script>
+
+<style>
+  /* ================================================================
+     HERO — Practical travel gradient (no video)
+     ================================================================ */
+  .prac-hero {
+    position: relative;
+    min-height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 5rem var(--space-6) 60px;
+    overflow: hidden;
+  }
+
+  .prac-hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .prac-hero-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%);
+  }
+
+  .prac-hero-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .prac-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 720px;
+  }
+
+  .prac-hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: var(--weight-bold);
+    color: #fff;
+    line-height: 1.1;
+    margin: 0 0 var(--space-3);
+  }
+
+  .prac-hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin: 0 0 var(--space-5);
+    max-width: 580px;
+  }
+
+  .prac-hero-meta {
+    display: flex;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+  }
+
+  .prac-hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .prac-hero-meta-label {
+    font-size: 0.65rem;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .prac-hero-meta-value {
+    font-size: 1.1rem;
+    font-weight: var(--weight-bold);
+    color: #fff;
+  }
+
+  .prac-scroll-hint {
+    position: absolute;
+    bottom: 16px;
+    right: var(--space-6);
+    z-index: 3;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: center;
+    animation: pracBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes pracBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ================================================================
+     PERSONAL INTRO
+     ================================================================ */
+  .prac-personal {
+    padding-block: var(--space-8);
+  }
+
+  .prac-personal-quote {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-8);
+    border-left: 4px solid var(--color-ocean-teal);
+    background: var(--color-sky);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .prac-personal-quote p {
+    font-size: var(--text-body);
+    color: var(--color-heading);
+    line-height: var(--leading-body);
+    font-style: italic;
+    margin-bottom: var(--space-3);
+  }
+
+  .prac-personal-quote cite {
+    font-size: var(--text-caption);
+    color: var(--color-ocean-teal);
+    font-weight: var(--weight-semibold);
+    font-style: normal;
+  }
+
+  /* ================================================================
+     QUICK NAV — Jump-to chips
+     ================================================================ */
+  .prac-quicknav {
+    padding: 0 0 var(--space-6);
+  }
+
+  .prac-quicknav-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .prac-quicknav-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: var(--weight-medium);
+    color: var(--color-slate);
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+
+  .prac-quicknav-chip:hover {
+    background: var(--color-sky);
+    color: var(--color-ocean-teal);
+    transform: translateY(-2px);
+  }
+
+  .prac-quicknav-icon {
+    font-size: 1rem;
+  }
+
+  .prac-quicknav-label {
+    white-space: nowrap;
+  }
+
+  /* ================================================================
+     TOPIC SECTION
+     ================================================================ */
+  .prac-topic {
+    padding: var(--space-4) 0 var(--space-6);
+    scroll-margin-top: 80px;
+  }
+
+  .prac-topic-header {
+    position: relative;
+    border-radius: 20px;
+    padding: var(--space-5) var(--space-6);
+    margin-bottom: var(--space-5);
+    overflow: hidden;
+  }
+
+  .prac-topic-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.35;
+  }
+
+  .prac-topic-header-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .prac-topic-icon {
+    font-size: 1.6rem;
+  }
+
+  .prac-topic-title {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: var(--weight-bold);
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .prac-topic-count {
+    font-size: 0.7rem;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* ================================================================
+     TIP CARDS
+     ================================================================ */
+  .prac-tip-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 768px) {
+    .prac-tip-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .prac-tip-card {
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 14px;
+    padding: var(--space-5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .prac-tip-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .prac-tip-label {
+    font-size: 0.95rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    margin: 0 0 var(--space-2);
+    line-height: 1.3;
+  }
+
+  .prac-tip-text {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .prac-tip-text :global(a) {
+    color: var(--color-ocean-teal);
+    font-weight: var(--weight-semibold);
+    text-decoration: underline;
+    text-decoration-color: rgba(13, 115, 119, 0.3);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .prac-tip-text :global(a:hover) {
+    text-decoration-color: var(--color-ocean-teal);
+  }
+
+  /* ================================================================
+     12GO TRANSPORT WIDGET
+     ================================================================ */
+  .prac-transport-widget {
+    text-align: center;
+    margin-top: var(--space-6);
+    padding: var(--space-6);
+    background: var(--color-sky);
+    border-radius: 16px;
+  }
+
+  .prac-transport-widget-title {
+    font-size: 1.1rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    margin: 0 0 var(--space-1);
+  }
+
+  .prac-transport-widget-desc {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    margin: 0 0 var(--space-4);
+  }
+
+  .prac-transport-widget-inner {
+    display: inline-block;
+    max-width: 282px;
+  }
+
+  .prac-transport-widget-powered {
+    font-size: 0.7rem;
+    color: var(--color-slate);
+    margin-top: var(--space-2);
+  }
+
+  .prac-transport-widget-powered a {
+    color: var(--color-ocean-teal);
+    text-decoration: underline;
+  }
+
+  /* ================================================================
+     AFFILIATE DISCLOSURE
+     ================================================================ */
+  .prac-affiliate-disclosure {
+    font-size: 0.75rem;
+    color: var(--color-slate);
+    line-height: 1.5;
+    text-align: center;
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-sky);
+    border-radius: 10px;
+    margin-bottom: var(--space-4);
+  }
+
+  .prac-affiliate-disclosure a {
+    color: var(--color-ocean-teal);
+    text-decoration: underline;
+  }
+
+  /* ================================================================
+     BOTTOM CTA
+     ================================================================ */
+  .prac-cta-section {
+    padding: var(--space-6) 0 var(--space-8);
+  }
+
+  .prac-cta-card {
+    background: linear-gradient(135deg, var(--color-deep-night) 0%, #2D3748 100%);
+    border-radius: 20px;
+    padding: var(--space-8) var(--space-6);
+    text-align: center;
+    color: #fff;
+  }
+
+  .prac-cta-heading {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: var(--weight-bold);
+    margin: 0 0 var(--space-3);
+    color: #fff;
+  }
+
+  .prac-cta-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 520px;
+    margin: 0 auto var(--space-5);
+    line-height: 1.6;
+  }
+
+  .prac-cta-button {
+    display: inline-block;
+    background: var(--color-warm-coral);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: var(--weight-semibold);
+    padding: 12px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .prac-cta-button:hover {
+    background: #d4553b;
+    transform: translateY(-2px);
+  }
+
+  /* ================================================================
+     CROSS-LINKS
+     ================================================================ */
+  .prac-crosslinks {
+    padding: 0 0 var(--space-10);
+  }
+
+  .prac-crosslinks-heading {
+    font-size: 1.1rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    text-align: center;
+    margin: 0 0 var(--space-4);
+  }
+
+  .prac-crosslinks-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .prac-crosslinks-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .prac-crosslinks-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .prac-crosslink-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-5) var(--space-4);
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .prac-crosslink-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .prac-crosslink-icon {
+    font-size: 1.8rem;
+  }
+
+  .prac-crosslink-label {
+    font-size: 0.95rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+  }
+
+  .prac-crosslink-desc {
+    font-size: 0.78rem;
+    color: var(--color-slate);
+    line-height: 1.4;
+  }
+
+  /* ================================================================
+     RESPONSIVE
+     ================================================================ */
+  @media (max-width: 640px) {
+    .prac-hero {
+      min-height: 50vh;
+      padding: 0 var(--space-4) 40px;
+    }
+
+    .prac-hero-meta {
+      gap: var(--space-4);
+    }
+
+    .prac-scroll-hint {
+      display: none;
+    }
+
+    .prac-topic-header {
+      padding: var(--space-4) var(--space-4);
+    }
+  }
+</style>

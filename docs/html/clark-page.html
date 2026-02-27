@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clark & Angeles | Discover Philippines</title>
+<meta name="description" content="Skip Manila. Clark International Airport is your stress-free gateway — and the Pampanga region around it is worth staying for. By Scott & Jenice, 50 combined years exploring the Philippines.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   DESIGN SYSTEM — matches Siquijor destination template
+   ═══════════════════════════════════════════════════════ */
+:root {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', ui-serif, serif;
+  --text-h1: 2.5rem; --text-h2: 1.75rem; --text-h3: 1.375rem;
+  --text-body: 1.0625rem; --text-caption: 0.875rem;
+  --text-button: 1rem; --text-blockquote: 1.1875rem;
+  --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600;
+  --weight-bold: 700; --weight-extrabold: 800;
+  --leading-h1: 1.2; --leading-h2: 1.3; --leading-h3: 1.4;
+  --leading-body: 1.6; --leading-caption: 1.5; --leading-blockquote: 1.7;
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+  --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+  --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+  --content-sm: 640px; --content-md: 960px;
+  --content-lg: 1120px; --content-prose: 65ch;
+  --color-ocean-teal: #0D7377;
+  --color-warm-coral: #E8654A;
+  --color-deep-night: #1A2332;
+  --color-slate: #4A5568;
+  --color-sand: #F5F0E8;
+  --color-sky: #E8F4F5;
+  --color-white: #FFFFFF;
+  --color-warm-gold: #D4A574;
+  --color-heading: var(--color-deep-night);
+  --color-body: var(--color-slate);
+  --color-bg: var(--color-sand);
+  --gradient-clark: linear-gradient(160deg, #451a03 0%, #78350F 30%, #B45309 55%, #D97706 80%, #92400E 100%);
+}
+
+/* RESET */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: var(--color-body); background: var(--color-bg); line-height: var(--leading-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--color-ocean-teal); text-decoration: none; }
+a:hover { text-decoration: underline; }
+strong { color: var(--color-heading); font-weight: var(--weight-semibold); }
+h2, h3 { color: var(--color-heading); }
+img, video { max-width: 100%; height: auto; display: block; }
+
+/* ── HERO ── */
+.dest-hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 var(--space-6) 80px; overflow: hidden; }
+.dest-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.dest-hero-gradient { position: absolute; inset: 0; z-index: 1; opacity: 0.9; }
+.dest-hero-video ~ .dest-hero-gradient { opacity: 0.55; }
+.dest-hero-overlay { position: absolute; inset: 0; z-index: 2; background: radial-gradient(ellipse 800px 600px at 20% 80%, rgba(232,101,74,0.12), transparent), radial-gradient(ellipse 600px 800px at 80% 20%, rgba(13,115,119,0.15), transparent); pointer-events: none; }
+.dest-hero-noise { position: absolute; inset: 0; z-index: 2; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; }
+.dest-hero-content { position: relative; z-index: 3; max-width: var(--content-lg); margin: 0 auto; width: 100%; }
+.dest-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); padding: 6px 14px; border-radius: 100px; font-size: 0.78rem; font-weight: var(--weight-semibold); color: var(--color-warm-gold); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.dest-hero-title { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: var(--weight-extrabold); color: white; line-height: 1.1; letter-spacing: -0.02em; text-shadow: 0 2px 12px rgba(0,0,0,0.3); margin-bottom: var(--space-4); max-width: 700px; }
+.dest-hero-meta { display: flex; flex-wrap: wrap; gap: var(--space-6); padding-top: var(--space-6); border-top: 1px solid rgba(255,255,255,0.1); }
+.dest-hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+.dest-hero-meta-label { font-size: 0.72rem; font-weight: var(--weight-semibold); color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+.dest-hero-meta-value { font-size: 0.95rem; font-weight: var(--weight-medium); color: rgba(255,255,255,0.85); }
+.dest-scroll-hint { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 3; color: rgba(255,255,255,0.3); font-size: 0.7rem; font-weight: var(--weight-medium); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; line-height: 1.4; animation: scrollPulse 2s infinite; }
+@keyframes scrollPulse { 0%,100% { opacity: 0.3; transform: translateX(-50%) translateY(0); } 50% { opacity: 0.6; transform: translateX(-50%) translateY(4px); } }
+
+/* ── QUICK FACTS ── */
+.quick-facts { background: var(--color-white); border-bottom: 1px solid #EBE4D8; padding: 20px var(--space-6); }
+.quick-facts-inner { max-width: var(--content-lg); margin: 0 auto; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.quick-facts-item { display: flex; align-items: center; gap: 10px; }
+.quick-facts-icon { font-size: 1.2rem; }
+.quick-facts-label { font-size: 0.72rem; font-weight: var(--weight-semibold); color: var(--color-slate); text-transform: uppercase; letter-spacing: 0.06em; }
+.quick-facts-value { font-size: 0.88rem; font-weight: var(--weight-medium); color: var(--color-heading); }
+.quick-facts-value--wide { max-width: 300px; }
+
+/* ── BREADCRUMB ── */
+.breadcrumb { padding: var(--space-4) 0; }
+.breadcrumb-list { display: flex; align-items: center; gap: 8px; list-style: none; font-size: var(--text-caption); color: var(--color-slate); }
+.breadcrumb-link { color: var(--color-ocean-teal); }
+.breadcrumb-sep { opacity: 0.4; }
+.breadcrumb-current { color: var(--color-heading); font-weight: var(--weight-medium); }
+
+/* ── CONTAINERS ── */
+.container-content { width: 100%; max-width: var(--content-lg); margin-inline: auto; padding-inline: var(--space-6); }
+.container-prose { max-width: var(--content-prose); margin-inline: auto; overflow: visible; }
+.container-prose a { text-decoration-color: rgba(13, 115, 119, 0.3); text-underline-offset: 3px; transition: color 0.2s ease, text-decoration-color 0.3s ease; }
+.container-prose a:hover { text-decoration-color: var(--color-ocean-teal); }
+.container-prose p { font-size: var(--text-body); line-height: var(--leading-body); color: var(--color-body); margin-bottom: var(--space-6); }
+.container-prose h2 { font-size: var(--text-h2); font-weight: var(--weight-bold); line-height: var(--leading-h2); margin-top: var(--space-12); margin-bottom: var(--space-4); }
+.container-prose h3 { font-size: var(--text-h3); font-weight: var(--weight-semibold); line-height: var(--leading-h3); margin-top: var(--space-10); margin-bottom: var(--space-3); }
+.container-prose ul { list-style: disc; padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-6); }
+.container-prose li { font-size: var(--text-body); line-height: var(--leading-body); color: var(--color-body); }
+.container-prose blockquote { border-left: 3px solid var(--color-warm-coral); padding-left: var(--space-6); margin: var(--space-8) 0; font-family: var(--font-serif); font-style: italic; font-size: var(--text-blockquote); line-height: var(--leading-blockquote); color: var(--color-heading); }
+
+/* ── BYLINE ── */
+.dest-byline { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4); padding-bottom: var(--space-8); border-bottom: 1px solid var(--color-sand); }
+.dest-byline-avatars { display: flex; }
+.dest-byline-avatar { width: 48px; height: 48px; border-radius: 50%; border: 3px solid var(--color-sand); display: flex; align-items: center; justify-content: center; font-weight: var(--weight-bold); font-size: 0.85rem; color: white; }
+.dest-byline-avatar--scott { background: var(--color-ocean-teal); z-index: 2; }
+.dest-byline-avatar--jenice { background: var(--color-warm-coral); margin-left: -12px; z-index: 1; }
+.dest-byline-names { font-weight: var(--weight-semibold); font-size: 0.95rem; color: var(--color-heading); }
+.dest-byline-names a { color: var(--color-ocean-teal); }
+.dest-byline-date { font-size: 0.82rem; color: var(--color-slate); }
+
+/* ── ARTICLE ── */
+.dest-content { padding-block: var(--space-10); overflow: visible; }
+
+/* ── IMMERSIVE BREAKS ── */
+.immersive-break-inline { position: relative; min-height: 55vh; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; color: white; margin: var(--space-16) calc(-50vw + 50%); width: 100vw; }
+.immersive-break-inline video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.immersive-break-inline .ib-gradient { position: absolute; inset: 0; z-index: 1; opacity: 0.85; }
+.immersive-break-inline video + .ib-gradient { opacity: 0.55; }
+.immersive-break-inline .ib-content { position: relative; z-index: 2; max-width: 640px; padding: var(--space-8) var(--space-6); }
+.immersive-break-inline .ib-title { font-size: var(--text-h2); font-weight: var(--weight-bold); color: white; margin-bottom: var(--space-3); text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.immersive-break-inline .ib-text { font-size: var(--text-body); line-height: var(--leading-body); opacity: 0.9; max-width: 50ch; margin-inline: auto; color: white; }
+
+/* ── CALLOUTS ── */
+.jenice-callout { background: var(--color-sky); border-left: 4px solid var(--color-warm-coral); border-radius: 0 16px 16px 0; padding: 28px 28px 28px 24px; margin: var(--space-8) 0; }
+.jenice-callout-header { font-weight: var(--weight-semibold); font-size: 0.85rem; color: var(--color-warm-coral); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: var(--space-3); }
+.jenice-callout p { font-family: var(--font-serif); font-style: italic; font-size: var(--text-body); line-height: var(--leading-body); color: var(--color-heading); margin: 0; max-width: 100%; }
+.scott-tips { background: var(--color-sky); border-left: 4px solid var(--color-ocean-teal); border-radius: 0 16px 16px 0; padding: 28px 28px 28px 24px; margin: var(--space-8) 0; }
+.scott-tips-header { font-weight: var(--weight-semibold); font-size: 0.85rem; color: var(--color-ocean-teal); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: var(--space-3); }
+.scott-tips ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); padding: 0; margin: 0; }
+.scott-tips li { font-size: var(--text-body); line-height: var(--leading-body); color: var(--color-body); }
+.scott-tips a { color: var(--color-ocean-teal); font-weight: var(--weight-medium); }
+
+/* ── ESSENTIALS ── */
+.dest-essentials { background: var(--color-deep-night); border-radius: 24px; padding: var(--space-10) var(--space-8); margin: var(--space-12) 0 0; color: white; }
+.dest-essentials h2 { color: white; margin: 0 0 var(--space-6); font-size: var(--text-h2); font-weight: var(--weight-bold); }
+.dest-essentials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-5); }
+.dest-essentials-item { display: flex; gap: var(--space-3); }
+.dest-essentials-icon { flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.dest-essentials-label { font-size: 0.72rem; font-weight: var(--weight-semibold); color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+.dest-essentials-value { font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.5; margin-top: 2px; }
+
+/* ── RELATED DESTINATIONS ── */
+.dest-related { padding: var(--space-20) var(--space-6); }
+.dest-related-inner { max-width: var(--content-lg); margin: 0 auto; }
+.dest-related h2 { font-size: var(--text-h2); font-weight: var(--weight-bold); text-align: center; margin-bottom: var(--space-2); }
+.dest-related-subtitle { text-align: center; color: var(--color-slate); font-size: var(--text-body); margin-bottom: var(--space-10); }
+.dest-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+.dest-related-card { display: block; border-radius: 16px; overflow: hidden; text-decoration: none; transition: transform 0.3s ease; background: var(--color-white); box-shadow: 0 4px 24px rgba(26,35,50,0.08); }
+.dest-related-card:hover { transform: translateY(-4px); text-decoration: none; }
+.dest-related-card-img { position: relative; height: 180px; }
+.dest-related-card-region { position: absolute; top: 12px; left: 12px; font-size: 0.7rem; font-weight: var(--weight-semibold); color: white; background: rgba(0,0,0,0.3); padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em; backdrop-filter: blur(6px); }
+.dest-related-card-body { padding: 20px; }
+.dest-related-card-body h4 { font-size: 1.1rem; font-weight: var(--weight-bold); color: var(--color-heading); margin-bottom: 4px; }
+.dest-related-card-body p { font-size: 0.85rem; color: var(--color-slate); line-height: 1.5; margin: 0; }
+
+/* ── PILLAR LINKS ── */
+.dest-pillars { padding: 0 var(--space-6) var(--space-16); }
+.dest-pillars h2 { font-size: var(--text-h2); font-weight: var(--weight-bold); text-align: center; margin-bottom: var(--space-8); }
+.dest-pillars-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-4); }
+.dest-pillar-card { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 20px 28px; background: var(--color-white); border-radius: 16px; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 2px 12px rgba(26,35,50,0.06); }
+.dest-pillar-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,35,50,0.1); text-decoration: none; }
+.dest-pillar-icon { font-size: 1.5rem; }
+.dest-pillar-label { font-weight: var(--weight-semibold); font-size: 0.9rem; color: var(--color-heading); }
+.dest-pillar-desc { font-size: 0.78rem; color: var(--color-slate); }
+
+/* ── EMAIL CAPTURE ── */
+.dest-email-section { margin: var(--space-12) auto; }
+.email-capture { background: var(--color-deep-night); border-radius: 20px; padding: var(--space-10) var(--space-8); text-align: center; }
+.email-capture-heading { font-size: var(--text-h3); font-weight: var(--weight-bold); color: white; margin-bottom: var(--space-2); }
+.email-capture-subtext { font-size: var(--text-caption); color: rgba(255,255,255,0.6); margin-bottom: var(--space-6); }
+.email-capture-fields { display: flex; gap: var(--space-3); max-width: 440px; margin: 0 auto var(--space-4); }
+.email-capture-input { flex: 1; padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.06); color: white; font-size: 0.9rem; }
+.email-capture-input::placeholder { color: rgba(255,255,255,0.35); }
+.email-capture-button { padding: 12px 24px; background: var(--color-warm-coral); color: white; border: none; border-radius: 10px; font-weight: var(--weight-semibold); font-size: 0.9rem; cursor: pointer; white-space: nowrap; }
+.email-capture-consent { display: flex; align-items: flex-start; gap: 8px; max-width: 440px; margin: 0 auto; font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+.email-capture-consent input { margin-top: 2px; }
+
+/* ── FTC DISCLOSURE ── */
+.ftc-disclosure { margin: var(--space-8) 0 var(--space-16); padding: var(--space-4) var(--space-6); border-top: 1px solid #EBE4D8; }
+.ftc-disclosure p { font-size: 0.78rem; color: var(--color-slate); line-height: 1.6; margin: 0; }
+
+/* ── REVEAL ANIMATION ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .dest-hero { padding-bottom: 60px; }
+  .dest-hero-meta { gap: var(--space-4); }
+  .quick-facts-inner { gap: 20px; }
+  .dest-essentials-grid { grid-template-columns: 1fr; }
+  .dest-related-grid { grid-template-columns: 1fr; }
+  .email-capture-fields { flex-direction: column; }
+  .immersive-break-inline { min-height: 45vh; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ HERO ════════════════ -->
+<header class="dest-hero">
+  <video class="dest-hero-video" autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/clark-hero.mp4" type="video/mp4">
+  </video>
+  <div class="dest-hero-gradient" style="background: var(--gradient-clark);"></div>
+  <div class="dest-hero-overlay"></div>
+  <div class="dest-hero-noise"></div>
+  <div class="dest-hero-content">
+    <div class="dest-hero-badge">✦ Former US Air Force Base — Central Luzon Hub</div>
+    <h1 class="dest-hero-title">Clark &amp; Angeles</h1>
+    <div class="dest-hero-meta">
+      <div class="dest-hero-meta-item">
+        <span class="dest-hero-meta-label">Region</span>
+        <span class="dest-hero-meta-value">Luzon</span>
+      </div>
+      <div class="dest-hero-meta-item">
+        <span class="dest-hero-meta-label">Best Time</span>
+        <span class="dest-hero-meta-value">November – May</span>
+      </div>
+      <div class="dest-hero-meta-item">
+        <span class="dest-hero-meta-label">Budget / Day</span>
+        <span class="dest-hero-meta-value">$35–$106/day</span>
+      </div>
+      <div class="dest-hero-meta-item">
+        <span class="dest-hero-meta-label">Getting There</span>
+        <span class="dest-hero-meta-value">Fly direct to Clark International (CRK) — international &amp; domestic</span>
+      </div>
+    </div>
+  </div>
+  <div class="dest-scroll-hint">Scroll<br>↓</div>
+</header>
+
+<!-- ════════════════ QUICK FACTS ════════════════ -->
+<section id="quick-facts" class="quick-facts">
+  <div class="quick-facts-inner">
+    <div class="quick-facts-item">
+      <div class="quick-facts-icon">🌏</div>
+      <div>
+        <div class="quick-facts-label">Region</div>
+        <div class="quick-facts-value">Luzon · Pampanga</div>
+      </div>
+    </div>
+    <div class="quick-facts-item">
+      <div class="quick-facts-icon">📅</div>
+      <div>
+        <div class="quick-facts-label">Best Time</div>
+        <div class="quick-facts-value">Nov–May (dry season)</div>
+      </div>
+    </div>
+    <div class="quick-facts-item">
+      <div class="quick-facts-icon">💰</div>
+      <div>
+        <div class="quick-facts-label">Daily Budget</div>
+        <div class="quick-facts-value">$35–$106 USD</div>
+      </div>
+    </div>
+    <div class="quick-facts-item">
+      <div class="quick-facts-icon">✈️</div>
+      <div>
+        <div class="quick-facts-label">Getting There</div>
+        <div class="quick-facts-value quick-facts-value--wide">Direct international flights to Clark (CRK). Domestic: ~$30 to Cebu (1hr), ~$30–50 to Manila.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ BREADCRUMB ════════════════ -->
+<div class="container-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Home</a> <span class="breadcrumb-sep">›</span></li>
+      <li class="breadcrumb-item"><a href="/destinations/" class="breadcrumb-link">Destinations</a> <span class="breadcrumb-sep">›</span></li>
+      <li class="breadcrumb-item"><span class="breadcrumb-current" aria-current="page">Clark &amp; Angeles</span></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- ════════════════ BYLINE ════════════════ -->
+<div class="container-content">
+  <div class="dest-byline reveal visible">
+    <div class="dest-byline-avatars">
+      <div class="dest-byline-avatar dest-byline-avatar--scott">S</div>
+      <div class="dest-byline-avatar dest-byline-avatar--jenice">J</div>
+    </div>
+    <div>
+      <div class="dest-byline-names"><a href="/about/scott/">Scott</a> &amp; <a href="/about/jenice/">Jenice Murray</a></div>
+      <div class="dest-byline-date">20+ years traveling the Philippines</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ MAIN ARTICLE ════════════════ -->
+<article class="container-content container-prose dest-content">
+
+<p>Every time someone tells us they're flying into Manila, we ask the same question: "Have you looked at Clark?" Ninoy Aquino International Airport is a gauntlet — aging terminals, legendary traffic, and an arrival experience that can break a first-timer's spirit before they even reach their hotel. Clark International Airport is the opposite. Modern terminal. Air-conditioned. Easy in, easy out. A fraction of the stress.</p>
+
+<p>Scott's connection to this area goes back to the very beginning. The friend who introduced him to the Philippines had a business partner based out of Angeles — that's why they flew LAX to Clark in the first place. When Scott first landed in 2003, Clark was a non-air-conditioned airport with puddle jumpers where they literally weighed you before boarding to make sure you'd be in the right spot on the plane. Today it handles international 767 service and has a modern terminal that makes Manila's NAIA feel like a relic.</p>
+
+<p>Jenice grew up 15 minutes away in Mabalacat. Between us, we've watched this former U.S. air base undergo incredible transformations over 20+ years. The Pampanga region surrounding it — Angeles City, Mabalacat, Clark Freeport Zone — has its own personality that most travelers never discover because they're too busy rushing to the beaches. That's their loss.</p>
+
+<!-- ──────── IMMERSIVE: THE GATEWAY ──────── -->
+<div class="immersive-break-inline" id="gateway">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/clark-hero.mp4" type="video/mp4">
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(180deg, rgba(69,26,3,0.65) 0%, rgba(69,26,3,0.3) 40%, rgba(69,26,3,0.7) 100%);"></div>
+  <div class="ib-content">
+    <h2 class="ib-title">The Gateway</h2>
+    <p class="ib-text">Skip Manila. Fly into Clark. Modern terminal, ten-minute ride to your hotel, and a region worth exploring before you ever board a domestic flight.</p>
+  </div>
+</div>
+
+<p>One of the things that makes Clark special is how well-connected it is — both domestically and internationally. It's not just a gateway you pass through; it's a legitimate hub for exploring the rest of the country. Last year we flew Clark to Cebu for about $30 each — a one-hour flight. Manila is another $30–50. You can island-hop from Clark without ever dealing with Manila's chaos.</p>
+
+<h3>The Manila Skyway Changed the Math</h3>
+
+<p>If you do need to get to or from Manila — and sometimes you will, given flight options — the Skyway has made it significantly easier. It used to be a brutal 3–4 hour drive through the city because NAIA is on the south side of Manila and you had to fight through every block of traffic to reach the NLEX heading north. Now the Skyway — literally a highway built over the city — cuts that to 2–3 hours. It costs about $10 in tolls but is well worth it. The Skyway dumps you onto the NLEX, which is the gateway into Central Pampanga and straight to Clark and Angeles. There's even speculation about a bullet train connecting Clark to Manila, which would be a game-changer if it ever materializes.</p>
+
+<div class="scott-tips">
+  <div class="scott-tips-header">🎒 Scott's Hub Tips</div>
+  <ul>
+    <li><strong>Clark to Cebu:</strong> ~$30 each, one-hour flight. The domestic terminal at Clark is small and easy.</li>
+    <li><strong>Clark to Manila:</strong> ~$30–50 or drive via Skyway (2–3 hours, ~$10 tolls). The Skyway goes over the city and dumps you on the NLEX — way faster than going through Manila traffic.</li>
+    <li><strong>Subic Bay:</strong> 45 minutes via the SCTEX expressway. A nice overnight or couple-day trip — covered on <a href="/destinations/subic/">its own destination page</a>.</li>
+  </ul>
+</div>
+
+<!-- ──────── IMMERSIVE: CULINARY CAPITAL ──────── -->
+<div class="immersive-break-inline" id="food">
+  <div class="ib-gradient" style="background: linear-gradient(160deg, #78350F 0%, #B45309 35%, #D97706 65%, #F59E0B 100%);"></div>
+  <div class="ib-content">
+    <h2 class="ib-title">Culinary Capital</h2>
+    <p class="ib-text">Pampangueños will tell you — with complete confidence — that the best food in the Philippines comes from their province. After 50 combined years, we're inclined to agree.</p>
+  </div>
+</div>
+
+<p>This is the birthplace of sisig, the sizzling pork masterpiece that has become a national obsession. Aling Lucing's original sisig stand in Angeles City still operates, and it's a ₱150 (~$2.65 USD) pilgrimage every Filipino foodie should make.</p>
+
+<p>The food here is richer, more complex, and more labor-intensive than what you'll find in most other provinces. Pampanga's cooking tradition is built on slow braising, generous use of garlic and vinegar, and dishes that have been perfected over generations. For deeper coverage, see our <a href="/food/luzon/">Luzon food guide</a>.</p>
+
+<ul>
+<li><strong>Aling Lucing's Sisig</strong> — The original. Sizzling pork face and ears on a hot plate. ₱150 (~$2.65 USD). Pilgrimage-level.</li>
+<li><strong>Lola Nor's Meryendahan</strong> — Jenice's family's pick. Order the bringhe (Pampanga's answer to paella) and the morcon. Mains ₱180–350.</li>
+<li><strong>Margarita Station</strong> — Local institution. Filipino-fusion, cold beer, live music weekends. ₱300–600 per person.</li>
+<li><strong>Korean BBQ row</strong> — Unlimited samgyeopsal ₱399–599 per person. Better value than Manila.</li>
+<li><strong>Parking Circle</strong> — On the base itself. Great evening spot with a surprising range of options.</li>
+</ul>
+
+<div class="jenice-callout">
+  <div class="jenice-callout-header">🌺 Jenice's Local Knowledge</div>
+  <p>If you're here during the holidays, order lechon from a Pampanga supplier — the quality is noticeably better than Manila lechon. A whole pig runs ₱8,000–12,000 (~$142–$212 USD) depending on size, and it's worth every peso for the family gathering. Also, don't sleep on the Filipino-Korean scene here — Angeles has one of the biggest Korean communities outside Korea and Manila, and the food reflects it.</p>
+</div>
+
+<!-- ──────── IMMERSIVE: GRAB REVOLUTION ──────── -->
+<div class="immersive-break-inline" id="transport">
+  <div class="ib-gradient" style="background: linear-gradient(160deg, #1A2332 0%, #2D3748 40%, #4A5568 100%);"></div>
+  <div class="ib-content">
+    <h2 class="ib-title">The Grab Revolution</h2>
+    <p class="ib-text">From tricycle territory to the age of ride-hailing — 20+ years of navigating this area taught us one thing: Grab changed everything.</p>
+  </div>
+</div>
+
+<p>When Scott first arrived in the Philippines in 2003, tricycles were the only game in town outside Manila. Taxis existed, technically — but here's the thing: <strong>in 20+ years of traveling the Philippines as a foreigner, Scott has never once had a taxi meter actually work.</strong> Not once. The meter is either "broken," conveniently covered, or the driver simply quotes a flat rate that's two to five times what it should be. Jenice has experienced the same thing her entire life. Between us, that's 50 combined years of Philippine travel, and a working taxi meter for a foreigner remains something of a unicorn.</p>
+
+<p>That's why the rise of Grab in the Philippines has been revolutionary. You see the price before you get in. The route is tracked. You pay what was quoted. No negotiation, no meter games, no stress. Grab single-handedly solved the most frustrating part of Philippine transportation.</p>
+
+<div class="scott-tips">
+  <div class="scott-tips-header">🎒 Scott's Transport Guide</div>
+  <ul>
+    <li><strong>Grab Car (Best Option):</strong> Air-conditioned, fixed price, tracked route. ₱150–400 (~$2.65–$7.10 USD) for most in-area trips. Our default for everything.</li>
+    <li><strong>Car Rental — Local Agency:</strong> What we actually do for extended stays. One of Jenice's brothers drives. ~₱1,700/day (~$30 USD), insurance included. We usually rent a large SUV or van because we bring things.</li>
+    <li><strong>Tricycle (Short Trips):</strong> The original Filipino ride. ₱30–100. Great for short hops. Fair warning: main roads become a traffic jam of motorized tricycles during peak hours.</li>
+    <li><strong>Taxi (Use Grab Instead):</strong> 50 combined years, zero functional meters. Use Grab.</li>
+  </ul>
+</div>
+
+<div class="jenice-callout">
+  <div class="jenice-callout-header">🌺 Local Shortcut: The Base</div>
+  <p>When tricycle traffic is gridlocked on the main Angeles roads, jump onto the Clark Freeport Zone base — they don't allow trikes on the base, so it's just cars. You can zip right through and avoid the congestion. This is how locals who know the area get around during peak hours.</p>
+</div>
+
+<!-- ──────── IMMERSIVE: THINGS TO DO ──────── -->
+<div class="immersive-break-inline" id="activities">
+  <div class="ib-gradient" style="background: linear-gradient(160deg, #451a03 0%, #92400E 30%, #D97706 60%, #FBBF24 100%);"></div>
+  <div class="ib-content">
+    <h2 class="ib-title">Things to Do on Clark</h2>
+    <p class="ib-text">Dinosaur parks, water parks, a zoo, great restaurants — Clark Freeport Zone isn't just an airport. Our son Tommy refuses to leave the water park.</p>
+  </div>
+</div>
+
+<p>Clark Freeport Zone isn't just an airport — there's a surprising amount to do on the base itself. <strong>Dinosaurs Island</strong> and the <strong>water park</strong> are perfect for families — our son Tommy is obsessed with both. The <strong>Clark Zoo</strong> has expanded significantly in recent years. <strong>Parking Circle</strong> has great restaurants and is a solid spot for an evening out. And the base itself — with its wide, tree-lined roads and no tricycle traffic — has a completely different feel from the bustle of Angeles outside the gates.</p>
+
+<!-- ──────── IMMERSIVE: HOW WE SPEND OUR TIME ──────── -->
+<div class="immersive-break-inline" id="family">
+  <div class="ib-gradient" style="background: linear-gradient(160deg, #78350F 0%, #B45309 35%, #E8654A 65%, #D97706 100%);"></div>
+  <div class="ib-content">
+    <h2 class="ib-title">How We Actually Spend Our Time</h2>
+    <p class="ib-text">Three weeks. Family bookends. Island hopping in the middle. Pool villa rentals on Christmas. This is our rhythm after 20+ years.</p>
+  </div>
+</div>
+
+<p>Our trips are usually about three weeks now — we've learned the hard way that anything less than two weeks from the US West Coast isn't worth the 20–24 hour flight. By the time you land, get acclimated to the tropical weather (Scott tends to sweat through his first few days and sometimes gets a little dehydrated), and shake off the jet lag, a week is already gone. Eight days? We tried it once. Never again.</p>
+
+<p>The sweet spot: <strong>spend the first week in Clark and Angeles with Jenice's family.</strong> Her family is only about 15 minutes from Clark. We usually time it around Christmas, which is also her mother's birthday. One of our traditions is renting a pool villa for the day — we have the whole family come in, cater food, and the kids take over the pool. Jenice has several brothers and sisters who all have several kids each, so it's really a good time.</p>
+
+<p>After the family time, we island-hop. Last year it was Clark to Cebu, then Cebu to Bohol and Alona Beach — about eight days in the middle of the trip. Then we fly back and spend the last few days back in Angeles with the family, getting ready to depart. That structure — <strong>family bookends with island hopping in the middle</strong> — works perfectly for us.</p>
+
+<div class="scott-tips">
+  <div class="scott-tips-header">🎒 Trip Length Advice for US Travelers</div>
+  <ul>
+    <li><strong>Minimum:</strong> 2 weeks. The ~20–24 hour flight (depending on your stops) is a serious investment.</li>
+    <li><strong>Sweet spot:</strong> 3 weeks. Gives you time to acclimate, spend time with family or explore the area, island-hop for a week, and come back without feeling rushed.</li>
+    <li><strong>Too short:</strong> 8 days. By the time you land (which takes about 2 days), acclimate to the weather, do some things in the area, take a flight somewhere — you're already thinking about coming back. Won't do that again.</li>
+    <li><strong>Acclimation tip:</strong> It's very tropical. Your body reacts and adapts very quickly, but give it a few days. Stay hydrated.</li>
+  </ul>
+</div>
+
+<!-- ──────── IMMERSIVE: WHERE TO STAY ──────── -->
+<div class="immersive-break-inline" id="stay">
+  <div class="ib-gradient" style="background: linear-gradient(160deg, #1A2332 0%, #78350F 30%, #B45309 70%, #1A2332 100%);"></div>
+  <div class="ib-content">
+    <h2 class="ib-title">Where to Stay</h2>
+    <p class="ib-text">Pool villas, Airbnbs, business hotels inside the Freeport Zone — Clark has great options for every budget.</p>
+  </div>
+</div>
+
+<p>The Clark/Angeles area has accommodation for every budget, from backpacker joints on Fields Avenue to legitimate business hotels inside Clark Freeport Zone. Here are the places we've personally stayed at or would recommend to family.</p>
+
+<p><strong>Upscale: The Mansion Hotel</strong> — ₱3,500–5,500/night (~$62–$97 USD). Inside the Freeport Zone, good pool, solid restaurant, and that "international standard" feel. Our top pick for travelers who want a proper hotel experience.</p>
+
+<p><strong>Mid-Range: La Grande Residence</strong> — ₱2,000–3,500/night (~$35–$62 USD). Newer hotel near Jenice's family area in Mabalacat. Clean, modern rooms, gym, and a restaurant that's better than it needs to be. Our home base when visiting family.</p>
+
+<p><strong>Business: Clarkton Hotel</strong> — ₱2,200–3,800/night (~$39–$67 USD). Solid business hotel inside the Freeport Zone. Nothing fancy, but reliable, clean, and well-located.</p>
+
+<!-- ──────── IMMERSIVE: MORE THAN A VACATION ──────── -->
+<div class="immersive-break-inline" id="more-than-vacation">
+  <div class="ib-gradient" style="background: linear-gradient(160deg, #451a03 0%, #78350F 40%, #D97706 100%);"></div>
+  <div class="ib-content">
+    <h2 class="ib-title">More Than a Vacation</h2>
+    <p class="ib-text">Good schools, solid healthcare, Jenice's entire family 15 minutes away — Clark isn't just a place we visit. It's a place we may retire to.</p>
+  </div>
+</div>
+
+<p>Clark and Angeles offer good options from both a living perspective and a vacation perspective. There are very good schools for our child, solid healthcare both on and outside the base in Angeles, and Jenice's family is right there. As our son grows and we think about what comes next, Clark is kind of a keystone of that future. The more time we spend here, the more likely it is we'll eventually retire in the area.</p>
+
+<!-- ──────── IMMERSIVE: BEFORE YOU GO ──────── -->
+<div class="immersive-break-inline" id="essentials">
+  <div class="ib-gradient" style="background: linear-gradient(160deg, #0E4D5C 0%, #0D7377 35%, #095456 65%, #1A2332 100%);"></div>
+  <div class="ib-content">
+    <h2 class="ib-title">Before You Go</h2>
+    <p class="ib-text">Airport tips, Grab setup, car rental logistics, and everything we wish someone had told us before our first trip to Pampanga.</p>
+  </div>
+</div>
+
+<div class="scott-tips">
+  <div class="scott-tips-header">🎒 Scott's Pro Tips</div>
+  <ul>
+    <li><strong>Airport arrival:</strong> Do NOT take the taxis outside arrivals. Open the Grab app immediately — airport WiFi works. Grab to Angeles: ₱200–350. The taxi will quote you ₱500–800 for the same trip.</li>
+    <li><strong>Car rental:</strong> Local agencies rent SUVs/vans for ~₱1,700/day (~$30 USD) with insurance included. Have a family member or trusted contact handle the rental. We usually keep it for the full 3-week trip.</li>
+    <li><strong>SIM card:</strong> Get Globe or Smart at the airport. ₱300 (~$5.30 USD). Essential for Grab and navigation. See our <a href="/practical/sim-cards/">SIM card guide</a>.</li>
+    <li><strong>Money:</strong> ATMs are widely available in Angeles and Clark. Much better situation than remote islands. See our <a href="/practical/money/">money &amp; costs guide</a>.</li>
+    <li><strong>Safety:</strong> Clark and Angeles are generally very safe for travelers. Standard urban awareness applies. More in our <a href="/practical/safety/">Philippines safety guide</a>.</li>
+  </ul>
+</div>
+
+<p>We fly into Clark, Jenice's family picks us up (usually in a large rented car or van because we bring things), and we get loaded up on the way in. On the way out, we're trying to be better about that. But Clark — this former US Air Force base that's undergone incredible transformations — is the place where every Philippines trip starts and ends for us. It's the gateway most travelers rush through. We think that's a mistake.</p>
+
+</article>
+
+<!-- ════════════════ ESSENTIALS ════════════════ -->
+<div class="container-content container-prose">
+  <div class="dest-essentials reveal visible">
+    <h2>Quick-Reference Essentials</h2>
+    <div class="dest-essentials-grid">
+      <div class="dest-essentials-item">
+        <div class="dest-essentials-icon">✈️</div>
+        <div>
+          <div class="dest-essentials-label">Getting There</div>
+          <div class="dest-essentials-value">Direct international flights to Clark (CRK). Domestic: ~$30 to Cebu (1hr), ~$30–50 to Manila.</div>
+        </div>
+      </div>
+      <div class="dest-essentials-item">
+        <div class="dest-essentials-icon">🚗</div>
+        <div>
+          <div class="dest-essentials-label">Getting Around</div>
+          <div class="dest-essentials-value">Grab (best option). Car rental ~$30/day. Tricycles for short hops.</div>
+        </div>
+      </div>
+      <div class="dest-essentials-item">
+        <div class="dest-essentials-icon">💰</div>
+        <div>
+          <div class="dest-essentials-label">Daily Budget</div>
+          <div class="dest-essentials-value">₱2,000–6,000 ($35–$106 USD) per day. Budget to comfortable mid-range.</div>
+        </div>
+      </div>
+      <div class="dest-essentials-item">
+        <div class="dest-essentials-icon">⏱️</div>
+        <div>
+          <div class="dest-essentials-label">Ideal Trip Length</div>
+          <div class="dest-essentials-value">2–3 weeks from the US. 3 weeks is the sweet spot.</div>
+        </div>
+      </div>
+      <div class="dest-essentials-item">
+        <div class="dest-essentials-icon">🍴</div>
+        <div>
+          <div class="dest-essentials-label">Meals</div>
+          <div class="dest-essentials-value">₱150–800 ($2.65–$14 USD). Street food to Korean BBQ all-you-can-eat.</div>
+        </div>
+      </div>
+      <div class="dest-essentials-item">
+        <div class="dest-essentials-icon">🗣️</div>
+        <div>
+          <div class="dest-essentials-label">Language</div>
+          <div class="dest-essentials-value">Kapampangan &amp; Tagalog. English widely spoken on the base and in tourism areas.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ RELATED DESTINATIONS ════════════════ -->
+<section class="dest-related">
+  <div class="dest-related-inner">
+    <h2>Continue the Journey</h2>
+    <p class="dest-related-subtitle">Day trips and connections from Clark</p>
+    <div class="dest-related-grid">
+      <a class="dest-related-card reveal" href="/destinations/subic/">
+        <div class="dest-related-card-img" style="background: linear-gradient(135deg, #0E4D5C, #0D7377, #14B8A6);">
+          <span class="dest-related-card-region">Luzon</span>
+        </div>
+        <div class="dest-related-card-body">
+          <h4>Subic Bay</h4>
+          <p>45 min via SCTEX — former naval base turned eco-zone with beaches, duty-free, and ocean parks.</p>
+        </div>
+      </a>
+      <a class="dest-related-card reveal" href="/destinations/cebu/">
+        <div class="dest-related-card-img" style="background: linear-gradient(135deg, #0E4D5C, #0D7377, #14B8A6);">
+          <span class="dest-related-card-region">Visayas</span>
+        </div>
+        <div class="dest-related-card-body">
+          <h4>Cebu</h4>
+          <p>~$30 flight, 1 hour — lechon, waterfalls, whale sharks. Where our island-hopping adventures start.</p>
+        </div>
+      </a>
+      <a class="dest-related-card reveal" href="/destinations/bohol/">
+        <div class="dest-related-card-img" style="background: linear-gradient(135deg, #065F46, #059669, #34D399);">
+          <span class="dest-related-card-region">Visayas</span>
+        </div>
+        <div class="dest-related-card-body">
+          <h4>Bohol</h4>
+          <p>Chocolate Hills, Alona Beach, and tarsiers — ferry from Cebu after your Clark-to-Cebu puddle jump.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ PILLAR LINKS ════════════════ -->
+<section class="dest-pillars reveal">
+  <div class="container-content">
+    <h2>Explore More Philippines Guides</h2>
+    <div class="dest-pillars-grid">
+      <a class="dest-pillar-card" href="/snorkeling-philippines/">
+        <span class="dest-pillar-icon">🤿</span>
+        <span class="dest-pillar-label">Snorkeling</span>
+        <span class="dest-pillar-desc">Best snorkeling spots</span>
+      </a>
+      <a class="dest-pillar-card" href="/festivals/">
+        <span class="dest-pillar-icon">🎉</span>
+        <span class="dest-pillar-label">Festivals</span>
+        <span class="dest-pillar-desc">Celebrations &amp; events</span>
+      </a>
+      <a class="dest-pillar-card" href="/food/luzon/">
+        <span class="dest-pillar-icon">🍴</span>
+        <span class="dest-pillar-label">Food &amp; Cuisine</span>
+        <span class="dest-pillar-desc">Luzon food guide</span>
+      </a>
+      <a class="dest-pillar-card" href="/history/">
+        <span class="dest-pillar-icon">🏛️</span>
+        <span class="dest-pillar-label">WWII Heritage</span>
+        <span class="dest-pillar-desc">Historical sites</span>
+      </a>
+      <a class="dest-pillar-card" href="/practical/">
+        <span class="dest-pillar-icon">📋</span>
+        <span class="dest-pillar-label">Practical Guides</span>
+        <span class="dest-pillar-desc">Visa, money, transport</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ EMAIL CAPTURE ════════════════ -->
+<div class="container-content dest-email-section">
+  <aside class="email-capture email-capture--inline" aria-label="Newsletter signup">
+    <div class="email-capture-inner">
+      <div class="email-capture-header">
+        <h3 class="email-capture-heading">Get Your Free Pampanga Itinerary</h3>
+        <p class="email-capture-subtext">Real itineraries from our trips — with prices, transport details, and local tips. No spam, unsubscribe anytime.</p>
+      </div>
+      <form class="email-capture-form" action="#" method="POST">
+        <div class="email-capture-fields">
+          <label for="email-inline" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);">Email address</label>
+          <input id="email-inline" type="email" name="email_address" placeholder="you@example.com" required autocomplete="email" class="email-capture-input">
+          <button type="submit" class="email-capture-button">Send Me the Guide</button>
+        </div>
+        <label class="email-capture-consent">
+          <input type="checkbox" name="gdpr_consent" required>
+          <span>I agree to receive emails and accept the <a href="/legal/privacy/" style="color: rgba(255,255,255,0.6);">privacy policy</a>.</span>
+        </label>
+      </form>
+    </div>
+  </aside>
+</div>
+
+<!-- ════════════════ FTC DISCLOSURE ════════════════ -->
+<div class="container-content">
+  <aside class="ftc-disclosure ftc-disclosure--inline" aria-label="Affiliate disclosure">
+    <p><strong>Disclosure:</strong> Some links on this page are affiliate links. If you book through them, we earn a small commission at no extra cost to you. We only recommend places and services we've personally used. See our <a href="/legal/affiliate-disclosure/">full affiliate disclosure</a>.</p>
+  </aside>
+</div>
+
+<!-- ════════════════ SCROLL REVEAL ════════════════ -->
+<script>
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+
+</body>
+</html>

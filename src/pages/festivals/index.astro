@@ -1,0 +1,1346 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import EmailCapture from '../../components/EmailCapture.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Festival Calendar', url: '/festivals/' },
+];
+
+const pageTitle = 'Midwest Festival Calendar 2026';
+const pageDescription = 'From the Chicago Air & Water Show to the Iowa State Fair to Lollapalooza — time your road trip to the festivals, fairs, and events that define each Midwest destination.';
+
+const festivals = [
+  {
+    month: 'Jan',
+    monthIndex: 0,
+    name: 'Milwaukee Winter Beer Fest',
+    destination: 'Milwaukee',
+    slug: 'milwaukee',
+    description: 'Hundreds of craft beers from Wisconsin and beyond, sampled inside the warm confines of the Wisconsin State Fair Park. A perfect excuse to brave the cold and discover new brews.',
+  },
+  {
+    month: 'Jan',
+    monthIndex: 0,
+    name: 'Cleveland Auto Show',
+    destination: 'Cleveland',
+    slug: 'cleveland',
+    description: 'One of the largest auto shows in the Midwest, showcasing the latest models, concept cars, and automotive innovations at the I-X Center — a must for motor enthusiasts.',
+  },
+  {
+    month: 'Feb',
+    monthIndex: 1,
+    name: 'Chicago Auto Show',
+    destination: 'Chicago',
+    slug: 'chicago',
+    description: 'The largest auto show in North America takes over McCormick Place with hundreds of vehicles, test tracks, and concept car reveals. A century-old Chicago tradition that draws over half a million visitors.',
+  },
+  {
+    month: 'Feb',
+    monthIndex: 1,
+    name: 'Cincinnati Bockfest',
+    destination: 'Cincinnati',
+    slug: 'cincinnati',
+    description: 'Cincinnati kicks off spring with its beloved Bockfest — a weekend celebration of bock beer, live music, and a ceremonial parade led by a goat through Over-the-Rhine\'s historic brewery district.',
+  },
+  {
+    month: 'Mar',
+    monthIndex: 2,
+    name: 'St. Patrick\'s Day (Chicago)',
+    destination: 'Chicago',
+    slug: 'chicago',
+    description: 'Chicago dyes the river green for one of the largest St. Patrick\'s Day celebrations in the country. The downtown parade, dyed river, and pub crawls through the city make this an iconic Midwest event.',
+  },
+  {
+    month: 'Mar',
+    monthIndex: 2,
+    name: 'NCAA March Madness (Indianapolis)',
+    destination: 'Indianapolis',
+    slug: 'indianapolis',
+    description: 'Indianapolis regularly hosts NCAA Tournament games and Final Four events. The entire city rallies around basketball with fan fests, watch parties, and an electric downtown atmosphere.',
+  },
+  {
+    month: 'Apr',
+    monthIndex: 3,
+    name: 'Tulip Time Festival',
+    destination: 'Des Moines',
+    slug: 'des-moines',
+    description: 'Pella, just outside Des Moines, celebrates its Dutch heritage with millions of blooming tulips, traditional Dutch dancing, parades, and authentic street food in one of the most charming spring festivals in the Midwest.',
+  },
+  {
+    month: 'Apr',
+    monthIndex: 3,
+    name: 'Detroit Jazz Festival Warm-Up',
+    destination: 'Detroit',
+    slug: 'detroit',
+    description: 'Spring jazz events across Detroit\'s clubs and venues set the stage for the Labor Day main festival. Live performances in intimate settings from Corktown to Midtown warm up the city\'s legendary jazz scene.',
+  },
+  {
+    month: 'May',
+    monthIndex: 4,
+    name: 'Indianapolis 500',
+    destination: 'Indianapolis',
+    slug: 'indianapolis',
+    description: 'The Greatest Spectacle in Racing draws 300,000+ fans to the Indianapolis Motor Speedway. A month of events leads up to race day — parades, concerts, and the legendary pre-race traditions make this a bucket-list Midwest experience.',
+  },
+  {
+    month: 'May',
+    monthIndex: 4,
+    name: 'Maifest',
+    destination: 'Chicago',
+    slug: 'chicago',
+    description: 'Lincoln Square celebrates its German heritage with a lively street festival featuring live polka and rock bands, authentic German food, beer gardens, and a maypole dance — a beloved Chicago neighborhood tradition.',
+  },
+  {
+    month: 'Jun',
+    monthIndex: 5,
+    name: 'Summerfest',
+    destination: 'Milwaukee',
+    slug: 'milwaukee',
+    description: 'Billed as "The World\'s Largest Music Festival," Summerfest stretches across 11 days on Milwaukee\'s lakefront. Over 800 acts on 12 stages, plus incredible food vendors, make this the crown jewel of Midwest festivals.',
+  },
+  {
+    month: 'Jun',
+    monthIndex: 5,
+    name: 'CMA Fest Midwest Kickoff (Columbus)',
+    destination: 'Columbus',
+    slug: 'columbus',
+    description: 'Columbus hosts a vibrant lineup of live country, rock, and indie music events throughout June, with food trucks, craft beer, and outdoor stages across the Short North and downtown districts.',
+  },
+  {
+    month: 'Jun',
+    monthIndex: 5,
+    name: 'Twin Cities Pride',
+    destination: 'Minneapolis',
+    slug: 'minneapolis',
+    description: 'One of the largest Pride festivals in the Upper Midwest fills Loring Park with live music, art, food vendors, and a massive parade through downtown Minneapolis celebrating LGBTQ+ community and culture.',
+  },
+  {
+    month: 'Jul',
+    monthIndex: 6,
+    name: 'Taste of Chicago',
+    destination: 'Chicago',
+    slug: 'chicago',
+    description: 'The world\'s largest food festival takes over Grant Park with dozens of Chicago\'s best restaurants serving signature dishes. Live music stages, cooking demos, and lakefront views make this a quintessential summer experience.',
+  },
+  {
+    month: 'Jul',
+    monthIndex: 6,
+    name: 'Kansas City BBQ Festival',
+    destination: 'Kansas City',
+    slug: 'kansas-city',
+    description: 'The BBQ Capital of the World hosts its annual celebration of smoked meats, with pit masters competing for top honors, live blues and country music, and all-you-can-sample BBQ from KC\'s legendary joints.',
+  },
+  {
+    month: 'Jul',
+    monthIndex: 6,
+    name: 'Red, White & Boom!',
+    destination: 'Columbus',
+    slug: 'columbus',
+    description: 'Ohio\'s largest fireworks display lights up the Scioto River on July 3rd, drawing half a million spectators to downtown Columbus for live entertainment, food, and the Midwest\'s most spectacular Independence Day celebration.',
+  },
+  {
+    month: 'Aug',
+    monthIndex: 7,
+    name: 'Lollapalooza',
+    destination: 'Chicago',
+    slug: 'chicago',
+    description: 'Grant Park transforms into one of the world\'s premier music festivals with 170+ acts across 8 stages over 4 days. From headliners to emerging artists, Lolla is Chicago\'s biggest summer draw for music fans worldwide.',
+  },
+  {
+    month: 'Aug',
+    monthIndex: 7,
+    name: 'Iowa State Fair',
+    destination: 'Des Moines',
+    slug: 'des-moines',
+    description: 'America\'s most iconic state fair features butter sculptures, blue ribbon livestock, midway rides, grandstand concerts, and endless fried foods on a stick. Eleven days of pure Midwest summer tradition.',
+  },
+  {
+    month: 'Aug',
+    monthIndex: 7,
+    name: 'Wisconsin State Fair',
+    destination: 'Milwaukee',
+    slug: 'milwaukee',
+    description: 'Cream puffs, cheese curds, and cream-filled everything — Wisconsin\'s beloved state fair combines agricultural heritage with carnival rides, live entertainment, and more dairy-based food than you can imagine.',
+  },
+  {
+    month: 'Aug',
+    monthIndex: 7,
+    name: 'Minnesota State Fair',
+    destination: 'Minneapolis',
+    slug: 'minneapolis',
+    description: 'The "Great Minnesota Get-Together" is one of the largest state fairs in the US, with over 2 million visitors enjoying food-on-a-stick, butter busts, agricultural exhibits, and grandstand concerts.',
+  },
+  {
+    month: 'Sep',
+    monthIndex: 8,
+    name: 'Detroit Jazz Festival',
+    destination: 'Detroit',
+    slug: 'detroit',
+    description: 'The world\'s largest free jazz festival takes over Hart Plaza and Campus Martius with four days of world-class performances. A Labor Day weekend tradition that showcases Detroit\'s deep musical roots.',
+  },
+  {
+    month: 'Sep',
+    monthIndex: 8,
+    name: 'Oktoberfest Zinzinnati',
+    destination: 'Cincinnati',
+    slug: 'cincinnati',
+    description: 'The largest Oktoberfest in America outside of Munich fills six blocks of downtown Cincinnati with German beer, food, music, and dancing. Half a million visitors celebrate Cincinnati\'s proud German heritage each September.',
+  },
+  {
+    month: 'Oct',
+    monthIndex: 9,
+    name: 'Covered Bridge Festival',
+    destination: 'Indianapolis',
+    slug: 'indianapolis',
+    description: 'Parke County near Indianapolis hosts the largest covered bridge festival in the world — 10 days of fall foliage tours across 31 historic covered bridges, with craft booths, apple cider, and small-town charm.',
+  },
+  {
+    month: 'Oct',
+    monthIndex: 9,
+    name: 'Omaha Oktoberfest',
+    destination: 'Omaha',
+    slug: 'omaha',
+    description: 'Omaha celebrates fall with its own Oktoberfest in the Aksarben Village district — German beer, brats, live music, and stein-holding competitions bring Old World charm to the Great Plains.',
+  },
+  {
+    month: 'Nov',
+    monthIndex: 10,
+    name: 'Magnificent Mile Lights Festival',
+    destination: 'Chicago',
+    slug: 'chicago',
+    description: 'Chicago\'s holiday season kicks off with a mile-long procession of lights along Michigan Avenue. Live performances, fireworks, and the lighting of over a million lights make this the Midwest\'s grandest holiday kickoff.',
+  },
+  {
+    month: 'Nov',
+    monthIndex: 10,
+    name: 'Madison Museum Night',
+    destination: 'Madison',
+    slug: 'madison',
+    description: 'Madison\'s cultural institutions open their doors for a free evening of art, science, and history. Shuttles connect museums, galleries, and performance spaces across the isthmus for one memorable night.',
+  },
+  {
+    month: 'Dec',
+    monthIndex: 11,
+    name: 'Christkindlmarket Chicago',
+    destination: 'Chicago',
+    slug: 'chicago',
+    description: 'Inspired by the famous Nuremberg market, this open-air holiday market in Daley Plaza features handcrafted gifts, German food, glühwein, and festive atmosphere — a beloved Chicago holiday tradition since 1996.',
+  },
+  {
+    month: 'Dec',
+    monthIndex: 11,
+    name: 'Country Club Plaza Lights',
+    destination: 'Kansas City',
+    slug: 'kansas-city',
+    description: 'Kansas City\'s Country Club Plaza illuminates with 80 miles of holiday lights draped across its Spanish-inspired architecture. The Thanksgiving night lighting ceremony draws over 200,000 spectators to kick off the season.',
+  },
+];
+
+const months = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+const monthGradients = [
+  'linear-gradient(135deg, #E8654A 0%, #D4A853 100%)',
+  'linear-gradient(135deg, #C05299 0%, #E8654A 100%)',
+  'linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%)',
+  'linear-gradient(135deg, #FF9800 0%, #FFC107 100%)',
+  'linear-gradient(135deg, #9E9E9E 0%, #BDBDBD 100%)',
+  'linear-gradient(135deg, #0D7377 0%, #4DB6AC 100%)',
+  'linear-gradient(135deg, #1565C0 0%, #42A5F5 100%)',
+  'linear-gradient(135deg, #6A1B9A 0%, #AB47BC 100%)',
+  'linear-gradient(135deg, #9E9E9E 0%, #BDBDBD 100%)',
+  'linear-gradient(135deg, #E65100 0%, #FF9800 100%)',
+  'linear-gradient(135deg, #BF360C 0%, #E8654A 100%)',
+  'linear-gradient(135deg, #1A2332 0%, #C62828 0%, #FFD54F 100%)',
+];
+
+// Extract first color from each month gradient for map markers
+const monthColors = [
+  '#E8654A', '#C05299', '#4CAF50', '#FF9800', '#9E9E9E', '#0D7377',
+  '#1565C0', '#6A1B9A', '#9E9E9E', '#E65100', '#BF360C', '#C62828',
+];
+
+// Geo coordinates for festival map markers
+const geoLookup: Record<string, { lat: number; lng: number; label: string }> = {
+  chicago: { lat: 41.8781, lng: -87.6298, label: 'Chicago' },
+  'st-louis': { lat: 38.627, lng: -90.1994, label: 'St. Louis' },
+  'kansas-city': { lat: 39.0997, lng: -94.5786, label: 'Kansas City' },
+  minneapolis: { lat: 44.9778, lng: -93.265, label: 'Minneapolis' },
+  milwaukee: { lat: 43.0389, lng: -87.9065, label: 'Milwaukee' },
+  indianapolis: { lat: 39.7684, lng: -86.1581, label: 'Indianapolis' },
+  cincinnati: { lat: 39.1031, lng: -84.512, label: 'Cincinnati' },
+  detroit: { lat: 42.3314, lng: -83.0458, label: 'Detroit' },
+  cleveland: { lat: 41.4993, lng: -81.6944, label: 'Cleveland' },
+  columbus: { lat: 39.9612, lng: -82.9988, label: 'Columbus' },
+  omaha: { lat: 41.2565, lng: -95.9345, label: 'Omaha' },
+  'des-moines': { lat: 41.5868, lng: -93.625, label: 'Des Moines' },
+  madison: { lat: 43.0731, lng: -89.4012, label: 'Madison' },
+};
+
+// Build map markers — group festivals by slug (one marker per location)
+const festBySlug = new Map<string, typeof festivals>();
+festivals.forEach(f => {
+  const arr = festBySlug.get(f.slug) || [];
+  arr.push(f);
+  festBySlug.set(f.slug, arr);
+});
+
+const festMapMarkers = Array.from(festBySlug.entries())
+  .map(([slug, fests]) => {
+    const geo = geoLookup[slug];
+    if (!geo) return null;
+    return {
+      lat: geo.lat,
+      lng: geo.lng,
+      label: geo.label,
+      slug,
+      color: monthColors[fests[0].monthIndex],
+      url: `/destinations/${slug}/`,
+      festivals: fests.map(f => ({
+        name: f.name,
+        month: f.month,
+        destination: f.destination,
+      })),
+    };
+  })
+  .filter(Boolean);
+
+// Video lookup for festival cards — prefer preview (smallest), then break-1, then hero
+const festCardVideos: Record<string, string> = {};
+// Destinations with preview videos
+['chicago','st-louis','kansas-city','minneapolis','milwaukee','indianapolis','cincinnati','detroit','cleveland','columbus','omaha','des-moines','madison']
+  .forEach(s => festCardVideos[s] = `/videos/destinations/${s}-preview.mp4`);
+
+// Fallback cycle for any slug not in lookup
+const fallbackVideos = Object.values(festCardVideos);
+
+// 10 generic festival clips — cycle 3x across 32 events
+const festGenericClips = Array.from({ length: 10 }, (_, i) => `/videos/pillar/festival-card-${i + 1}.mp4`);
+
+---
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageType="destination"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero -->
+  <header class="fest-hero">
+    <video class="fest-hero-video" autoplay muted loop playsinline preload="metadata">
+      <source src="/videos/pillar/festivals-hero.mp4" type="video/mp4" />
+    </video>
+    <div class="fest-hero-gradient"></div>
+    <div class="fest-hero-noise"></div>
+
+    <div class="fest-hero-content">
+      <h1 class="fest-hero-title">Midwest Festival Calendar 2026</h1>
+      <p class="fest-hero-subtitle">From Lollapalooza in Grant Park to the Iowa State Fair to Oktoberfest Zinzinnati — time your road trip to the festivals, fairs, and events that define each Midwest destination.</p>
+      <div class="fest-hero-meta">
+        <div class="fest-hero-meta-item">
+          <span class="fest-hero-meta-label">Festivals</span>
+          <span class="fest-hero-meta-value">28</span>
+        </div>
+        <div class="fest-hero-meta-item">
+          <span class="fest-hero-meta-label">Destinations</span>
+          <span class="fest-hero-meta-value">13</span>
+        </div>
+        <div class="fest-hero-meta-item">
+          <span class="fest-hero-meta-label">Season</span>
+          <span class="fest-hero-meta-value">Year-Round</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="fest-scroll-hint">Scroll<br />&#8595;</div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="container-content">
+    <Breadcrumb items={breadcrumbs} />
+  </div>
+
+  <!-- Personal intro -->
+  <section class="fest-personal reveal">
+    <div class="container-content">
+      <blockquote class="fest-personal-quote">
+        <p>The Midwest knows how to throw a party. State fairs with butter sculptures and fried everything on a stick, music festivals on lakefronts, Oktoberfests that rival Munich, and BBQ competitions where the smoke alone is worth the trip. I always try to time my road trips around at least one festival — it's the fastest way to feel the pulse of a city and meet the people who make it great.</p>
+        <cite>— Scott</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- View Toggle -->
+  <div class="container-content" style="padding-top: var(--space-2); padding-bottom: var(--space-4);">
+    <div class="fest-view-toggle">
+      <button class="fest-toggle-btn active" id="festBtnCalendar">Calendar</button>
+      <button class="fest-toggle-btn" id="festBtnMap">Map</button>
+    </div>
+  </div>
+
+  <!-- Calendar Grid -->
+  <div id="festCalendarView">
+  <section class="fest-calendar reveal">
+    <div class="container-content">
+      <h2 class="fest-section-heading">Festivals by Month</h2>
+      <p class="fest-section-sub">Click any festival to explore its destination. Hover for a preview.</p>
+
+      <div class="fest-month-grid">
+        {months.map((monthName, i) => {
+          const monthFestivals = festivals.filter(f => f.monthIndex === i);
+          return (
+            <div class="fest-month-card reveal">
+              <div class="fest-month-header">
+                <span class="fest-month-name">{monthName}</span>
+                {monthFestivals.length > 0 && (
+                  <span class="fest-month-count">{monthFestivals.length}</span>
+                )}
+              </div>
+              <div class="fest-month-body">
+                {monthFestivals.length > 0 ? (
+                  monthFestivals.map((fest) => {
+                    const idx = festivals.indexOf(fest);
+                    const destVideo = festCardVideos[fest.slug] || fallbackVideos[idx % fallbackVideos.length];
+                    const festVideo = festGenericClips[idx % festGenericClips.length];
+                    return (
+                    <a href={`/destinations/${fest.slug}/`} class="fest-entry">
+                      <div class="fest-entry-media" style={`background: ${monthGradients[i]};`}>
+                        <video class="fest-card-video fest-vid-dest" muted loop playsinline preload="none" data-src={destVideo}></video>
+                        <video class="fest-card-video fest-vid-fest" muted loop playsinline preload="none" data-src={festVideo} style="opacity:0;"></video>
+                        <div class="fest-card-scrim"></div>
+                        <div class="fest-entry-media-label">{fest.month}</div>
+                      </div>
+                      <div class="fest-entry-info">
+                        <div class="fest-entry-name">{fest.name}</div>
+                        <div class="fest-entry-destination">{fest.destination}</div>
+                      </div>
+                      <div class="fest-entry-overlay">
+                        <p class="fest-entry-desc">{fest.description}</p>
+                        <span class="fest-entry-cta">Explore {fest.destination} &rarr;</span>
+                      </div>
+                    </a>
+                  );})
+                ) : (
+                  <div class="fest-month-empty">No major festivals</div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  </div><!-- /festCalendarView -->
+
+  <!-- Map View (hidden by default) -->
+  <div id="festMapView" style="display:none;">
+    <section style="padding: var(--space-4) 0 var(--space-8);">
+      <div class="container-content">
+        <div class="fest-map-container" id="festMapContainer">
+          <div class="fest-map-tooltip" id="festMapTooltip">
+            <div class="fest-map-tooltip-name" id="festTooltipName"></div>
+            <div class="fest-map-tooltip-fests" id="festTooltipFests"></div>
+          </div>
+          <div id="festLeafletMap"></div>
+          <div class="fest-map-legend">
+            <div class="fest-map-legend-item"><div class="fest-map-legend-dot" style="background:var(--color-warm-coral);"></div>Festival location</div>
+            <div class="fest-map-legend-note">Colored by month &middot; Click to explore destination</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Bottom CTA -->
+  <section class="fest-cta-section reveal">
+    <div class="container-content">
+      <div class="fest-cta-card">
+        <h2 class="fest-cta-heading">Plan Your Festival Trip</h2>
+        <p class="fest-cta-text">Let our AI travel planner build a custom road trip itinerary around the festivals you want to see — with hotels, driving routes, and day-by-day schedules.</p>
+        <a href="/plan/" class="fest-cta-button">Start Planning &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ items={[
+    { question: "What are the biggest festivals in the Midwest?", answer: "Summerfest (Milwaukee, June-July) is billed as the world's largest music festival. Lollapalooza (Chicago, August) draws 400,000+ music fans. The Iowa State Fair (Des Moines, August) is America's most iconic state fair. Oktoberfest Zinzinnati (Cincinnati, September) is the largest Oktoberfest outside Munich. The Indy 500 (May) is the biggest single-day sporting event in the world." },
+    { question: "When is the best time for Midwest festivals?", answer: "Summer (June through September) is peak festival season. Nearly every city hosts major events during these months — from Summerfest and state fairs to jazz festivals and food events. Spring (April-May) brings the Indy 500 and Tulip Time, while fall (October) features Oktoberfests and covered bridge tours. Winter festivals are fewer but include auto shows and winter beer fests." },
+    { question: "How do I plan a road trip around Midwest festivals?", answer: "Pick your must-see festival, then check nearby cities for overlapping events — you can often hit two or three in one trip. Book hotels 1-2 months early for major events like Lollapalooza or Summerfest when prices spike. Use our AI Trip Planner at /plan/ to build a festival-centered road trip itinerary with hotels and driving routes." },
+    { question: "What should I bring to a Midwest festival?", answer: "Comfortable walking shoes are essential — you'll cover miles. Layers for unpredictable weather (Midwest summers can swing 20 degrees in a day). Sunscreen and a hat for outdoor events. A reusable water bottle (most festivals have refill stations). A small bag or fanny pack for your essentials. Cash for food vendors who don't take cards." },
+    { question: "Are Midwest state fairs worth visiting?", answer: "Absolutely — state fairs are quintessential Midwest experiences. The Iowa State Fair, Minnesota State Fair, and Wisconsin State Fair each draw over a million visitors with agricultural exhibits, carnival rides, grandstand concerts, and creative food-on-a-stick competitions. They're family-friendly, affordable, and a genuine window into Heartland culture." },
+    { question: "Which Midwest city has the best food festivals?", answer: "Chicago leads with Taste of Chicago (July), the world's largest food festival. Kansas City's BBQ festivals are legendary for smoked meat lovers. Cincinnati's Oktoberfest Zinzinnati combines German food with craft beer. Milwaukee's Summerfest and Wisconsin State Fair are food destinations in their own right. Des Moines' Iowa State Fair is famous for creative fried foods on a stick." },
+  ]} />
+
+  <!-- Email Capture -->
+  <div class="container-content reveal" style="padding-bottom: var(--space-6);">
+    <EmailCapture
+      leadMagnet="Get Our Free Midwest Festival Road Trip Guide"
+      description="A month-by-month PDF guide to Midwest festivals — with driving routes, accommodation tips, and what to expect at each celebration."
+      bullets={[
+        'All 28 festivals with dates, locations, and insider tips',
+        'Suggested multi-festival road trip itineraries',
+        'Where to stay and eat near each event',
+        'What to pack and how to save on tickets',
+      ]}
+      guideTag="pillar-festivals"
+    />
+  </div>
+
+  <!-- Cross-links -->
+  <section class="fest-crosslinks reveal">
+    <div class="container-content">
+      <h3 class="fest-crosslinks-heading">Explore More</h3>
+      <div class="fest-crosslinks-grid">
+        <a href="/cuisine/" class="fest-crosslink-card">
+          <span class="fest-crosslink-icon">&#127828;</span>
+          <span class="fest-crosslink-label">Midwest Cuisine</span>
+          <span class="fest-crosslink-desc">Deep-dish pizza, BBQ, cheese curds, and the dishes that define the region</span>
+        </a>
+        <a href="/destinations/" class="fest-crosslink-card">
+          <span class="fest-crosslink-icon">&#127965;</span>
+          <span class="fest-crosslink-label">All Destinations</span>
+          <span class="fest-crosslink-desc">Every Midwest city explored with honest reviews</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<!-- Scroll Reveal Observer -->
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+  }
+</script>
+
+<!-- Festival card video lazy-load + dual-video cycling -->
+<script>
+  const festMediaEls = document.querySelectorAll('.fest-entry-media');
+  const festSwapTimers = new Map<Element, number>();
+
+  function festLoadAndPlay(video: HTMLVideoElement) {
+    if (!video.src && video.dataset.src) {
+      video.src = video.dataset.src;
+    }
+    video.play().catch(() => {});
+  }
+
+  function festStartCycle(media: Element) {
+    const dest = media.querySelector<HTMLVideoElement>('.fest-vid-dest');
+    const fest = media.querySelector<HTMLVideoElement>('.fest-vid-fest');
+    if (!dest || !fest) return;
+
+    festLoadAndPlay(dest);
+    festLoadAndPlay(fest);
+
+    // Start with dest visible, swap every 6 seconds
+    let showingDest = true;
+    const timer = window.setInterval(() => {
+      showingDest = !showingDest;
+      dest.style.opacity = showingDest ? '1' : '0';
+      fest.style.opacity = showingDest ? '0' : '1';
+    }, 6000);
+    festSwapTimers.set(media, timer);
+  }
+
+  function festStopCycle(media: Element) {
+    const timer = festSwapTimers.get(media);
+    if (timer) {
+      clearInterval(timer);
+      festSwapTimers.delete(media);
+    }
+    media.querySelectorAll<HTMLVideoElement>('.fest-card-video').forEach(v => v.pause());
+  }
+
+  const festObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          festStartCycle(entry.target);
+        } else {
+          festStopCycle(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2, rootMargin: '100px' }
+  );
+  festMediaEls.forEach((el) => festObserver.observe(el));
+</script>
+
+<!-- View Toggle Logic -->
+<script>
+  const festBtnCalendar = document.getElementById('festBtnCalendar');
+  const festBtnMap = document.getElementById('festBtnMap');
+  const festCalendarView = document.getElementById('festCalendarView');
+  const festMapView = document.getElementById('festMapView');
+
+  function festShowCalendar() {
+    festCalendarView!.style.display = '';
+    festMapView!.style.display = 'none';
+    festBtnCalendar!.classList.add('active');
+    festBtnMap!.classList.remove('active');
+  }
+
+  function festShowMap() {
+    festCalendarView!.style.display = 'none';
+    festMapView!.style.display = '';
+    festBtnCalendar!.classList.remove('active');
+    festBtnMap!.classList.add('active');
+    if (window.festMap) {
+      window.festMap.invalidateSize();
+    }
+  }
+
+  festBtnCalendar?.addEventListener('click', festShowCalendar);
+  festBtnMap?.addEventListener('click', festShowMap);
+</script>
+
+<!-- Leaflet Map for Festivals -->
+<script is:inline define:vars={{ markers: festMapMarkers }}>
+  // Load Leaflet CSS
+  if (!document.getElementById('leaflet-css')) {
+    var lnk = document.createElement('link');
+    lnk.id = 'leaflet-css';
+    lnk.rel = 'stylesheet';
+    lnk.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';
+    document.head.appendChild(lnk);
+  }
+
+  function initFestMap() {
+    var mapEl = document.getElementById('festLeafletMap');
+    if (!mapEl || typeof L === 'undefined') return;
+
+    var map = L.map(mapEl, {
+      center: [41.0, -89.0],
+      zoom: 5,
+      scrollWheelZoom: false,
+      minZoom: 4,
+      maxZoom: 12,
+      maxBounds: [[35, -105], [50, -80]],
+      zoomControl: false,
+      attributionControl: false,
+    });
+
+    window.festMap = map;
+
+    L.control.attribution({ prefix: false }).addTo(map);
+    L.control.zoom({ position: 'topright' }).addTo(map);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '\u00a9 <a href="https://www.openstreetmap.org/copyright">OSM</a> \u00a9 <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 19,
+    }).addTo(map);
+
+    function makeCircle(color, size, stroke) {
+      return L.divIcon({
+        className: '',
+        html: '<div style="width:' + size + 'px;height:' + size + 'px;border-radius:50%;background:' + color + ';border:2px solid ' + stroke + ';box-shadow:0 0 6px rgba(0,0,0,0.3);cursor:pointer;"></div>',
+        iconSize: [size, size],
+        iconAnchor: [size / 2, size / 2],
+      });
+    }
+
+    var tooltip = document.getElementById('festMapTooltip');
+    var tooltipName = document.getElementById('festTooltipName');
+    var tooltipFests = document.getElementById('festTooltipFests');
+    var container = document.getElementById('festMapContainer');
+
+    markers.forEach(function(m) {
+      var size = m.festivals.length > 1 ? 18 : 14;
+      var icon = makeCircle(m.color, size, '#ffffff');
+      var marker = L.marker([m.lat, m.lng], { icon: icon, title: m.label }).addTo(map);
+
+      marker.on('mouseover', function(e) {
+        if (tooltipName) tooltipName.textContent = m.label;
+        if (tooltipFests) {
+          tooltipFests.innerHTML = m.festivals.map(function(f) {
+            return '<div class="fest-map-tooltip-fest"><span class="fest-map-tooltip-month">' + f.month + '</span> ' + f.name + '</div>';
+          }).join('');
+        }
+        if (tooltip) tooltip.classList.add('fest-tooltip-visible');
+        if (container && tooltip) {
+          var pt = e.containerPoint;
+          tooltip.style.left = (pt.x + 12) + 'px';
+          tooltip.style.top = (pt.y - 10) + 'px';
+        }
+      });
+
+      marker.on('mouseout', function() {
+        if (tooltip) tooltip.classList.remove('fest-tooltip-visible');
+      });
+
+      marker.on('click', function() {
+        window.location.href = m.url;
+      });
+    });
+  }
+
+  // Load Leaflet JS
+  if (typeof L !== 'undefined') {
+    initFestMap();
+  } else {
+    var lscript = document.createElement('script');
+    lscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+    lscript.onload = initFestMap;
+    document.head.appendChild(lscript);
+  }
+</script>
+
+<style>
+  /* ================================================================
+     HERO — Festival gradient (warm coral → gold → deep night)
+     ================================================================ */
+  .fest-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 5rem var(--space-6) 60px;
+    overflow: hidden;
+  }
+
+  .fest-hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .fest-hero-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%);
+  }
+
+  .fest-hero-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .fest-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 720px;
+  }
+
+  .fest-hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: var(--weight-bold);
+    color: #fff;
+    line-height: 1.1;
+    margin: 0 0 var(--space-3);
+  }
+
+  .fest-hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin: 0 0 var(--space-5);
+    max-width: 580px;
+  }
+
+  .fest-hero-meta {
+    display: flex;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+  }
+
+  .fest-hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .fest-hero-meta-label {
+    font-size: 0.65rem;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .fest-hero-meta-value {
+    font-size: 1.1rem;
+    font-weight: var(--weight-bold);
+    color: #fff;
+  }
+
+  .fest-scroll-hint {
+    position: absolute;
+    bottom: 16px;
+    right: var(--space-6);
+    z-index: 3;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: center;
+    animation: festBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes festBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ================================================================
+     CALENDAR GRID
+     ================================================================ */
+  .fest-calendar {
+    padding: var(--space-10) 0 var(--space-8);
+  }
+
+  .fest-section-heading {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    margin: 0 0 var(--space-2);
+    text-align: center;
+  }
+
+  .fest-section-sub {
+    font-size: 1rem;
+    color: var(--color-slate);
+    text-align: center;
+    margin: 0 0 var(--space-8);
+  }
+
+  .fest-month-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+
+  @media (max-width: 1024px) {
+    .fest-month-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .fest-month-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ================================================================
+     MONTH CARD
+     ================================================================ */
+  .fest-month-card {
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .fest-month-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .fest-month-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-sky);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .fest-month-name {
+    font-size: 0.9rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .fest-month-count {
+    font-size: 0.7rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-warm-coral);
+    background: rgba(232, 101, 74, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+
+  .fest-month-body {
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-height: 80px;
+  }
+
+  .fest-month-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    opacity: 0.5;
+    font-style: italic;
+  }
+
+  /* ================================================================
+     FESTIVAL ENTRY (within month card)
+     ================================================================ */
+  .fest-entry {
+    position: relative;
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .fest-entry:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  .fest-entry-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: var(--space-2);
+    overflow: hidden;
+  }
+
+  .fest-card-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: opacity 0.8s ease;
+  }
+
+  .fest-card-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.45) 100%);
+  }
+
+  .fest-entry-media-label {
+    position: relative;
+    z-index: 2;
+    font-size: 0.6rem;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .fest-entry-info {
+    padding: var(--space-2) var(--space-3) var(--space-3);
+    background: var(--color-white);
+  }
+
+  .fest-entry-name {
+    font-size: 0.85rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+
+  .fest-entry-destination {
+    font-size: 0.72rem;
+    color: var(--color-ocean-teal);
+    font-weight: var(--weight-medium);
+  }
+
+  /* Hover overlay */
+  .fest-entry-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 35, 50, 0.93);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .fest-entry:hover .fest-entry-overlay {
+    opacity: 1;
+  }
+
+  .fest-entry-desc {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.55;
+    margin: 0 0 var(--space-3);
+  }
+
+  .fest-entry-cta {
+    font-size: 0.72rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-warm-coral);
+    letter-spacing: 0.02em;
+  }
+
+  /* ================================================================
+     BOTTOM CTA
+     ================================================================ */
+  .fest-cta-section {
+    padding: var(--space-6) 0 var(--space-8);
+  }
+
+  .fest-cta-card {
+    background: linear-gradient(135deg, var(--color-deep-night) 0%, #2D3748 100%);
+    border-radius: 20px;
+    padding: var(--space-8) var(--space-6);
+    text-align: center;
+    color: #fff;
+  }
+
+  .fest-cta-heading {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: var(--weight-bold);
+    margin: 0 0 var(--space-3);
+    color: #fff;
+  }
+
+  .fest-cta-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 520px;
+    margin: 0 auto var(--space-5);
+    line-height: 1.6;
+  }
+
+  .fest-cta-button {
+    display: inline-block;
+    background: var(--color-warm-coral);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: var(--weight-semibold);
+    padding: 12px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .fest-cta-button:hover {
+    background: #d4553b;
+    transform: translateY(-2px);
+  }
+
+  /* ================================================================
+     CROSS-LINKS
+     ================================================================ */
+  .fest-crosslinks {
+    padding: 0 0 var(--space-10);
+  }
+
+  .fest-crosslinks-heading {
+    font-size: 1.1rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    text-align: center;
+    margin: 0 0 var(--space-4);
+  }
+
+  .fest-crosslinks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 640px) {
+    .fest-crosslinks-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .fest-crosslink-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-5) var(--space-4);
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .fest-crosslink-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .fest-crosslink-icon {
+    font-size: 1.8rem;
+  }
+
+  .fest-crosslink-label {
+    font-size: 0.95rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+  }
+
+  .fest-crosslink-desc {
+    font-size: 0.78rem;
+    color: var(--color-slate);
+    line-height: 1.4;
+  }
+
+  /* ================================================================
+     RESPONSIVE — Hero adjustments
+     ================================================================ */
+  @media (max-width: 640px) {
+    .fest-hero {
+      min-height: 55vh;
+      padding: 0 var(--space-4) 40px;
+    }
+
+    .fest-hero-meta {
+      gap: var(--space-4);
+    }
+
+    .fest-scroll-hint {
+      display: none;
+    }
+  }
+
+  /* ================================================================
+     VIEW TOGGLE
+     ================================================================ */
+  .fest-view-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    background: var(--color-sand-dark);
+    border-radius: 40px;
+    padding: 4px;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .fest-toggle-btn {
+    flex: 1;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 36px;
+    font-size: 0.82rem;
+    font-weight: var(--weight-semibold);
+    cursor: pointer;
+    background: transparent;
+    color: var(--color-slate);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .fest-toggle-btn.active {
+    background: var(--color-ocean-teal);
+    color: #fff;
+  }
+
+  .fest-toggle-btn:hover:not(.active) {
+    color: var(--color-deep-night);
+  }
+
+  /* ================================================================
+     MAP VIEW
+     ================================================================ */
+  .fest-map-container {
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 40% 30%, #0c3547 0%, #091e2f 40%, #060f1a 100%);
+    padding: 28px 20px 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .fest-map-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 600px 300px at 30% 70%, rgba(13, 115, 119, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 200px at 70% 20%, rgba(13, 115, 119, 0.06) 0%, transparent 70%);
+    animation: festOceanShimmer 8s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  .fest-map-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle 1px at 20% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 100%),
+      radial-gradient(circle 1px at 60% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 100%),
+      radial-gradient(circle 1px at 40% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  @keyframes festOceanShimmer {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
+  #festLeafletMap {
+    width: 100%;
+    height: 600px;
+    border-radius: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fest-map-tooltip {
+    position: absolute;
+    background: rgba(26, 35, 50, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 14px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 50;
+    min-width: 180px;
+    max-width: 300px;
+  }
+
+  .fest-map-tooltip.fest-tooltip-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fest-map-tooltip-name {
+    font-size: 0.85rem;
+    font-weight: var(--weight-bold);
+    color: white;
+    margin-bottom: 4px;
+  }
+
+  :global(.fest-map-tooltip-fest) {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+  }
+
+  :global(.fest-map-tooltip-month) {
+    font-size: 0.6rem;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-warm-coral);
+    margin-right: 4px;
+  }
+
+  .fest-map-legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fest-map-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .fest-map-legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(13, 115, 119, 0.5);
+  }
+
+  .fest-map-legend-note {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  @media (max-width: 640px) {
+    #festLeafletMap { height: 450px; }
+  }
+
+  /* Personal intro */
+  .fest-personal {
+    padding-block: var(--space-8);
+  }
+
+  .fest-personal-quote {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-8);
+    border-left: 4px solid #D97706;
+    background: var(--color-sky);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .fest-personal-quote p {
+    font-size: var(--text-body);
+    color: var(--color-heading);
+    line-height: var(--leading-body);
+    font-style: italic;
+    margin-bottom: var(--space-3);
+  }
+
+  .fest-personal-quote cite {
+    font-size: var(--text-caption);
+    color: #D97706;
+    font-weight: var(--weight-semibold);
+    font-style: normal;
+  }
+</style>

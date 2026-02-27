@@ -1,0 +1,72 @@
+[
+  {
+    "id": "great-lakes-7",
+    "title": "Great Lakes Road Trip",
+    "duration": "7 days",
+    "route": "Chicago \u2192 Milwaukee \u2192 Detroit \u2192 Cleveland",
+    "highlights": ["Deep-dish pizza", "Lakefront Trail", "Motown Museum", "Rock & Roll Hall of Fame"],
+    "difficulty": "Easy",
+    "bestFor": "First-timers & culture lovers",
+    "emoji": "\ud83c\udf0a",
+    "popular": true,
+    "destinations": 4,
+    "activities": 16,
+    "destinationSlugs": ["chicago", "milwaukee", "detroit", "cleveland"]
+  },
+  {
+    "id": "bbq-trail-5",
+    "title": "Midwest BBQ & Food Trail",
+    "duration": "5 days",
+    "route": "Kansas City \u2192 St. Louis \u2192 Chicago",
+    "highlights": ["KC BBQ circuit", "Gateway Arch", "St. Louis ribs", "Chicago deep-dish & hot dogs"],
+    "difficulty": "Easy",
+    "bestFor": "Food lovers",
+    "emoji": "\ud83c\udf56",
+    "popular": true,
+    "destinations": 3,
+    "activities": 12,
+    "destinationSlugs": ["kansas-city", "st-louis", "chicago"]
+  },
+  {
+    "id": "ohio-valley-5",
+    "title": "Ohio Valley Circuit",
+    "duration": "5 days",
+    "route": "Columbus \u2192 Cincinnati \u2192 Indianapolis",
+    "highlights": ["German Village", "Findlay Market", "Indianapolis Motor Speedway", "Cincinnati chili"],
+    "difficulty": "Easy",
+    "bestFor": "History & food seekers",
+    "emoji": "\ud83c\udfd9\ufe0f",
+    "popular": false,
+    "destinations": 3,
+    "activities": 10,
+    "destinationSlugs": ["columbus", "cincinnati", "indianapolis"]
+  },
+  {
+    "id": "twin-cities-madison-4",
+    "title": "Minneapolis & Madison Getaway",
+    "duration": "4 days",
+    "route": "Minneapolis \u2192 Madison",
+    "highlights": ["Minnehaha Falls", "Mall of America", "State Street", "Wisconsin cheese curds"],
+    "difficulty": "Easy",
+    "bestFor": "Weekend warriors",
+    "emoji": "\ud83c\udf33",
+    "popular": false,
+    "destinations": 2,
+    "activities": 8,
+    "destinationSlugs": ["minneapolis", "madison"]
+  },
+  {
+    "id": "plains-explorer-5",
+    "title": "Plains Explorer",
+    "duration": "5 days",
+    "route": "Omaha \u2192 Des Moines \u2192 Kansas City",
+    "highlights": ["Henry Doorly Zoo", "Pappajohn Sculpture Park", "KC jazz clubs", "Prairie landscapes"],
+    "difficulty": "Easy",
+    "bestFor": "Off-the-beaten-path seekers",
+    "emoji": "\ud83c\udf3e",
+    "popular": false,
+    "destinations": 3,
+    "activities": 10,
+    "destinationSlugs": ["omaha", "des-moines", "kansas-city"]
+  }
+]

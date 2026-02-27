@@ -1,0 +1,998 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import EmailCapture from '../../components/EmailCapture.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Midwest Cuisine Guide', url: '/cuisine/' },
+];
+
+const pageTitle = 'Midwest Cuisine Guide — Eat Your Way Across the Heartland';
+const pageDescription = 'A region-by-region guide to the dishes that define Midwest food culture — from Chicago deep-dish to Kansas City burnt ends. Find where to eat the real thing.';
+
+interface Dish {
+  name: string;
+  image?: string;
+  destination: string;
+  slug: string;
+  price: string;
+  description: string;
+  tag?: string;
+}
+
+interface MenuSection {
+  region: string;
+  tagline: string;
+  gradient: string;
+  dishes: Dish[];
+}
+
+const menu: MenuSection[] = [
+  {
+    region: 'Great Lakes',
+    tagline: 'Deep-dish pizza, lake perch, and the food cities that punch above their weight',
+    gradient: 'linear-gradient(135deg, #BF360C 0%, #E8654A 100%)',
+    dishes: [
+      {
+        name: 'Deep-Dish Pizza',
+        destination: 'Chicago',
+        slug: 'chicago',
+        price: '$14–22',
+        description: 'Thick buttery crust, chunky tomato sauce on top, layers of mozzarella underneath. Lou Malnati\'s, Giordano\'s, and Pequod\'s each have their loyalists. Plan for a 45-minute wait — it\'s baked to order.',
+        tag: 'Iconic',
+      },
+      {
+        name: 'Chicago-Style Hot Dog',
+        destination: 'Chicago',
+        slug: 'chicago',
+        price: '$4–7',
+        description: 'All-beef frank on a poppy seed bun with yellow mustard, neon relish, onion, tomato, pickle spear, sport peppers, and celery salt. Never ketchup. Portillo\'s and Gene & Jude\'s are the go-to spots.',
+        tag: 'Must-Try',
+      },
+      {
+        name: 'Italian Beef Sandwich',
+        destination: 'Chicago',
+        slug: 'chicago',
+        price: '$10–14',
+        description: 'Thinly sliced roast beef piled on Italian bread, dipped in jus, topped with giardiniera or sweet peppers. Order it "dipped" and eat it over the wrapper. Al\'s #1 Italian Beef since 1938.',
+        tag: 'Iconic',
+      },
+      {
+        name: 'Butter Burger',
+        destination: 'Milwaukee',
+        slug: 'milwaukee',
+        price: '$8–14',
+        description: 'Wisconsin\'s contribution to the burger world — a thick patty with a generous pat of butter melting on top, served on a toasted bun. Solly\'s Grille has been serving them since 1936.',
+        tag: 'Heritage',
+      },
+      {
+        name: 'Friday Fish Fry',
+        destination: 'Milwaukee',
+        slug: 'milwaukee',
+        price: '$12–18',
+        description: 'A Wisconsin tradition every Friday — beer-battered cod or perch with coleslaw, rye bread, and tartar sauce. Every supper club and corner tavern has their own version.',
+        tag: 'Heritage',
+      },
+      {
+        name: 'Detroit-Style Pizza',
+        destination: 'Detroit',
+        slug: 'detroit',
+        price: '$12–20',
+        description: 'Rectangular, thick, crispy-edged pizza baked in blue steel automotive pans. Wisconsin brick cheese caramelizes along the edges. Buddy\'s Pizza invented it in 1946.',
+        tag: 'Iconic',
+      },
+      {
+        name: 'Coney Dog',
+        destination: 'Detroit',
+        slug: 'detroit',
+        price: '$3–6',
+        description: 'Natural-casing hot dog topped with beanless chili, diced white onion, and yellow mustard. American Coney Island and Lafayette Coney Island have been rivals since 1917 — try both.',
+        tag: 'Must-Try',
+      },
+      {
+        name: 'Cheese Curds',
+        destination: 'Madison',
+        slug: 'madison',
+        price: '$8–12',
+        description: 'Fresh, squeaky curds beer-battered and deep-fried until golden. Wisconsin takes its cheese curds seriously — the best ones squeak when you bite them. Found at every bar and fair.',
+        tag: 'Must-Try',
+      },
+      {
+        name: 'Lake Perch',
+        destination: 'Cleveland',
+        slug: 'cleveland',
+        price: '$14–22',
+        description: 'Lake Erie yellow perch, lightly breaded and pan-fried. A Great Lakes staple especially popular in Cleveland during Lent. Best at old-school spots along the lakefront.',
+      },
+    ],
+  },
+  {
+    region: 'Plains',
+    tagline: 'BBQ royalty, toasted ravioli, and the heartland\'s comfort food traditions',
+    gradient: 'linear-gradient(135deg, #0D7377 0%, #4DB6AC 100%)',
+    dishes: [
+      {
+        name: 'Kansas City Burnt Ends',
+        destination: 'Kansas City',
+        slug: 'kansas-city',
+        price: '$16–24',
+        description: 'The crispy, caramelized point of a smoked beef brisket, cubed and sauced. KC invented them and nobody does them better. Joe\'s KC, Q39, and Slap\'s BBQ are the top picks.',
+        tag: 'Iconic',
+      },
+      {
+        name: 'KC-Style Ribs',
+        destination: 'Kansas City',
+        slug: 'kansas-city',
+        price: '$18–28',
+        description: 'Slow-smoked pork ribs with a thick, sweet, tomato-based sauce. Kansas City has over 100 BBQ joints — the ribs are fall-off-the-bone tender and the sauce game is fierce.',
+        tag: 'Must-Try',
+      },
+      {
+        name: 'Toasted Ravioli',
+        destination: 'St. Louis',
+        slug: 'st-louis',
+        price: '$8–12',
+        description: 'Breaded, deep-fried ravioli dusted with Parmesan and served with marinara for dipping. Born on The Hill, St. Louis\'s Italian neighborhood. Charlie Gitto\'s claims the original recipe.',
+        tag: 'Iconic',
+      },
+      {
+        name: 'St. Louis-Style BBQ Ribs',
+        destination: 'St. Louis',
+        slug: 'st-louis',
+        price: '$16–26',
+        description: 'Spare ribs trimmed St. Louis-style (squared off), dry-rubbed and grilled with a thin, tangy, vinegar-based sauce. Pappy\'s Smokehouse draws lines around the block.',
+        tag: 'Must-Try',
+      },
+      {
+        name: 'Juicy Lucy',
+        destination: 'Minneapolis',
+        slug: 'minneapolis',
+        price: '$10–16',
+        description: 'A burger with the cheese stuffed inside the patty — bite in and molten American cheese explodes. Matt\'s Bar and the 5-8 Club both claim they invented it. I say try both.',
+        tag: 'Iconic',
+      },
+      {
+        name: 'Tater Tot Hotdish',
+        destination: 'Minneapolis',
+        slug: 'minneapolis',
+        price: '$10–14',
+        description: 'The quintessential Minnesota comfort food — ground beef, cream of mushroom soup, green beans, and corn topped with a layer of crispy tater tots. Every family has their own recipe.',
+        tag: 'Heritage',
+      },
+      {
+        name: 'Reuben Sandwich',
+        destination: 'Omaha',
+        slug: 'omaha',
+        price: '$12–16',
+        description: 'Corned beef, Swiss cheese, sauerkraut, and Russian dressing on grilled rye bread. Omaha claims it was invented at the Blackstone Hotel. The Crescent Moon serves a definitive version.',
+        tag: 'Heritage',
+      },
+      {
+        name: 'Loose Meat Sandwich',
+        destination: 'Des Moines',
+        slug: 'des-moines',
+        price: '$5–8',
+        description: 'Seasoned ground beef served loose on a bun — no patty, just crumbly, savory meat with pickles, onions, and mustard. Maid-Rite has been making them in Iowa since 1926.',
+        tag: 'Heritage',
+      },
+    ],
+  },
+  {
+    region: 'Ohio Valley',
+    tagline: 'Cincinnati chili, tenderloin sandwiches, and the crossroads of Southern and Midwestern cooking',
+    gradient: 'linear-gradient(135deg, #1A2332 0%, #6A1B9A 50%, #D4A853 100%)',
+    dishes: [
+      {
+        name: 'Cincinnati Chili',
+        destination: 'Cincinnati',
+        slug: 'cincinnati',
+        price: '$8–12',
+        description: 'A unique chili with Mediterranean spices — cinnamon, chocolate, allspice — served over spaghetti. Order a "3-way" (spaghetti, chili, cheese), "4-way" (add onions or beans), or "5-way" (both). Skyline and Gold Star are the rival chains.',
+        tag: 'Iconic',
+      },
+      {
+        name: 'Goetta',
+        destination: 'Cincinnati',
+        slug: 'cincinnati',
+        price: '$6–10',
+        description: 'A German-inspired breakfast sausage made with ground meat and steel-cut oats, sliced and pan-fried until crispy. Found almost exclusively in Greater Cincinnati — a true regional original.',
+        tag: 'Heritage',
+      },
+      {
+        name: 'Breaded Pork Tenderloin',
+        destination: 'Indianapolis',
+        slug: 'indianapolis',
+        price: '$10–15',
+        description: 'A pounded-thin pork cutlet breaded and fried until it dwarfs the bun — the edges hang over by inches. The quintessential Indiana sandwich. Shapiro\'s Delicatessen is a classic spot.',
+        tag: 'Iconic',
+      },
+      {
+        name: 'Sugar Cream Pie',
+        destination: 'Indianapolis',
+        slug: 'indianapolis',
+        price: '$4–6 per slice',
+        description: 'Indiana\'s official state pie — a custardy filling of cream, sugar, and vanilla with a sprinkle of nutmeg, no fruit needed. Simple, sweet, and distinctly Hoosier.',
+        tag: 'Heritage',
+      },
+      {
+        name: 'Buckeyes',
+        destination: 'Columbus',
+        slug: 'columbus',
+        price: '$8–14 per box',
+        description: 'Peanut butter balls dipped in chocolate, leaving a circle of peanut butter visible on top to resemble the Ohio Buckeye nut. Found at bakeries, candy shops, and tailgates across Ohio.',
+        tag: 'Must-Try',
+      },
+      {
+        name: 'Columbus-Style Pizza',
+        destination: 'Columbus',
+        slug: 'columbus',
+        price: '$10–18',
+        description: 'Thin, crispy crust cut into squares (not slices) with edge-to-edge toppings and a slightly sweet sauce. Donatos and Tommy\'s Pizza are the local favorites — served at nearly every Columbus party.',
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageType="destination"
+  schemaData={{ title: pageTitle, description: pageDescription }}
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero -->
+  <header class="menu-hero">
+    <video class="menu-hero-video" autoplay muted loop playsinline preload="metadata">
+      <source src="/videos/pillar/cuisine-hero.mp4" type="video/mp4" />
+    </video>
+    <div class="menu-hero-gradient"></div>
+    <div class="menu-hero-noise"></div>
+    <div class="menu-hero-content">
+      <h1 class="menu-hero-title">The Midwest Menu</h1>
+      <p class="menu-hero-subtitle">Deep-dish pizza, KC burnt ends, Cincinnati chili you argue about with strangers — eat your way across three regions and discover the dishes that define each destination.</p>
+      <div class="menu-hero-meta">
+        <div class="menu-hero-meta-item">
+          <span class="menu-hero-meta-label">Dishes</span>
+          <span class="menu-hero-meta-value">23</span>
+        </div>
+        <div class="menu-hero-meta-item">
+          <span class="menu-hero-meta-label">Regions</span>
+          <span class="menu-hero-meta-value">3</span>
+        </div>
+        <div class="menu-hero-meta-item">
+          <span class="menu-hero-meta-label">Destinations</span>
+          <span class="menu-hero-meta-value">13</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-scroll-hint">Scroll<br />&#8595;</div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="container-content">
+    <Breadcrumb items={breadcrumbs} />
+  </div>
+
+  <!-- Personal intro -->
+  <section class="menu-personal reveal">
+    <div class="container-content">
+      <blockquote class="menu-personal-quote">
+        <p>I used to think Midwest food was just casseroles and chain restaurants. Then I had my first proper Kansas City burnt end, a Juicy Lucy in Minneapolis, and a 3-way at Skyline in Cincinnati. The Midwest has one of the most underrated food scenes in America -- every city has its own signature dishes, fierce local rivalries, and traditions that go back generations. Now the food is half the reason I keep coming back.</p>
+        <cite>— Scott</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Menu Intro -->
+  <section class="menu-intro reveal">
+    <div class="container-content">
+      <div class="menu-intro-card">
+        <p class="menu-intro-text">Think of this as your tasting menu for the Midwest. I've organized the region's essential dishes by area -- <strong>Great Lakes</strong> in the north, the <strong>Plains</strong> in the center, and the <strong>Ohio Valley</strong> in the south. Click any dish to explore the destination where it's famous.</p>
+        <div class="menu-intro-legend">
+          <span class="menu-tag menu-tag--heritage">Heritage</span>
+          <span class="menu-tag menu-tag--musttry">Must-Try</span>
+          <span class="menu-tag menu-tag--iconic">Iconic</span>
+          <span class="menu-tag menu-tag--fresh">Fresh Catch</span>
+          <span class="menu-tag menu-tag--rare">Rare</span>
+          <span class="menu-tag menu-tag--takeaway">Take Home</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Sections by Region -->
+  {menu.map((section) => (
+    <section class="menu-region reveal">
+      <div class="container-content">
+        <div class="menu-region-header" style={`background: ${section.gradient};`}>
+          <div class="menu-region-header-inner">
+            <h2 class="menu-region-name">{section.region}</h2>
+            <p class="menu-region-tagline">{section.tagline}</p>
+            <span class="menu-region-count">{section.dishes.length} dishes</span>
+          </div>
+          <div class="menu-region-ornament">&#9733;</div>
+        </div>
+
+        <div class="menu-dish-grid">
+          {section.dishes.map((dish) => (
+            <a href={`/destinations/${dish.slug}/`} class="menu-dish-card">
+              <div class="menu-dish-media" style={`background: ${section.gradient};`}>
+                {dish.image && (
+                  <img src={dish.image} alt={`${dish.name} — ${dish.destination}`} class="menu-dish-img" loading="lazy" />
+                )}
+                {dish.tag && (
+                  <span class={`menu-tag menu-tag--${dish.tag.toLowerCase().replace(/[^a-z]/g, '')}`}>{dish.tag}</span>
+                )}
+              </div>
+              <div class="menu-dish-body">
+                <div class="menu-dish-top">
+                  <h3 class="menu-dish-name">{dish.name}</h3>
+                  <span class="menu-dish-price">{dish.price}</span>
+                </div>
+                <p class="menu-dish-destination">{dish.destination}</p>
+                <p class="menu-dish-desc">{dish.description}</p>
+                <span class="menu-dish-cta">Explore {dish.destination} &rarr;</span>
+              </div>
+              <div class="menu-dish-overlay">
+                <p class="menu-dish-overlay-desc">{dish.description}</p>
+                <span class="menu-dish-overlay-cta">Explore {dish.destination} &rarr;</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Bottom CTA -->
+  <section class="menu-cta-section reveal">
+    <div class="container-content">
+      <div class="menu-cta-card">
+        <h2 class="menu-cta-heading">Plan Your Food Trip</h2>
+        <p class="menu-cta-text">Tell our AI planner which dishes you want to try and it will build a region-by-region itinerary -- with the best restaurants, BBQ joints, and local favorites.</p>
+        <a href="/plan/" class="menu-cta-button">Start Planning &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ items={[
+    { question: "What is the most iconic Midwest food?", answer: "It depends on where you are. Chicago claims deep-dish pizza and Italian beef. Kansas City is the BBQ capital with legendary burnt ends and ribs. Cincinnati has its unique chili served over spaghetti. Every city has fierce local pride about their signature dish -- and they'll all tell you theirs is the best." },
+    { question: "Is Midwest food just comfort food?", answer: "Midwest food has deep comfort food roots -- casseroles, hotdishes, and meat-and-potatoes traditions are real. But the food scene has evolved dramatically. Chicago is a world-class dining city. Minneapolis has an incredible craft food scene. Columbus is one of the fastest-growing food cities in America. You can eat at James Beard Award-winning restaurants and a legendary BBQ joint on the same trip." },
+    { question: "What are the must-try foods in each Midwest city?", answer: "Chicago: deep-dish pizza, Italian beef, Chicago-style hot dog. Kansas City: burnt ends, ribs. St. Louis: toasted ravioli, BBQ ribs. Minneapolis: Juicy Lucy, tater tot hotdish. Milwaukee: butter burger, Friday fish fry. Cincinnati: 3-way chili, goetta. Indianapolis: breaded pork tenderloin. Detroit: Detroit-style pizza, Coney dogs." },
+    { question: "How much does food cost in the Midwest?", answer: "The Midwest is one of the more affordable food regions in America. Fast-casual meals: $8-14. Sit-down restaurants: $15-30 per person. Fine dining: $40-80+. BBQ joints: $15-25 for a full plate. A daily food budget of $30-50 covers three solid meals in most cities outside Chicago." },
+    { question: "What's the BBQ style in the Midwest?", answer: "Kansas City and St. Louis are the two BBQ powerhouses, each with a distinct style. KC BBQ uses a thick, sweet, tomato-based sauce with slow-smoked meats -- burnt ends are the signature. St. Louis goes with a thinner, tangier vinegar-based sauce on trimmed spare ribs. Both cities have dozens of legendary BBQ joints worth visiting." },
+    { question: "What Midwest desserts should I try?", answer: "Indiana's sugar cream pie (the official state pie), Ohio's buckeyes (peanut butter balls dipped in chocolate), Wisconsin cheese curds (technically a snack but practically a dessert), and frozen custard in Milwaukee. Every state fair also brings unique desserts -- deep-fried everything on a stick." },
+  ]} />
+
+  <!-- Email Capture -->
+  <div class="container-content reveal" style="padding-bottom: var(--space-6);">
+    <EmailCapture
+      leadMagnet="Get Our Free Midwest Food Guide"
+      description="A region-by-region PDF guide to Midwest cuisine -- with the best restaurants, BBQ joints, and dishes you can't miss."
+      bullets={[
+        'All 23 dishes with where to find the best version',
+        'Price guide -- from $4 hot dogs to $24 BBQ platters',
+        'City-by-city restaurant recommendations',
+        'Regional food rivalry guide (KC vs STL BBQ, Chicago vs Detroit pizza)',
+      ]}
+      guideTag="pillar-cuisine"
+    />
+  </div>
+
+  <!-- Cross-links -->
+  <section class="menu-crosslinks reveal">
+    <div class="container-content">
+      <h3 class="menu-crosslinks-heading">Explore More</h3>
+      <div class="menu-crosslinks-grid">
+        <a href="/festivals/" class="menu-crosslink-card">
+          <span class="menu-crosslink-icon">&#127914;</span>
+          <span class="menu-crosslink-label">Festival Calendar</span>
+          <span class="menu-crosslink-desc">Midwest festivals, fairs, and events month by month</span>
+        </a>
+        <a href="/finer-things/" class="menu-crosslink-card">
+          <span class="menu-crosslink-icon">&#127866;</span>
+          <span class="menu-crosslink-label">The Finer Things</span>
+          <span class="menu-crosslink-desc">Craft breweries, bourbon bars, and nightlife across the heartland</span>
+        </a>
+        <a href="/destinations/" class="menu-crosslink-card">
+          <span class="menu-crosslink-icon">&#127961;</span>
+          <span class="menu-crosslink-label">All Destinations</span>
+          <span class="menu-crosslink-desc">Every city I've explored with honest reviews</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<!-- Scroll Reveal Observer -->
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+  }
+</script>
+
+<style>
+  /* ================================================================
+     HERO — Warm, food-inspired gradient
+     ================================================================ */
+  .menu-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 5rem var(--space-6) 60px;
+    overflow: hidden;
+  }
+
+  .menu-hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .menu-hero-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%);
+  }
+
+  .menu-hero-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .menu-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 720px;
+  }
+
+  .menu-hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: var(--weight-bold);
+    color: #fff;
+    line-height: 1.1;
+    margin: 0 0 var(--space-3);
+  }
+
+  .menu-hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin: 0 0 var(--space-5);
+    max-width: 580px;
+  }
+
+  .menu-hero-meta {
+    display: flex;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+  }
+
+  .menu-hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .menu-hero-meta-label {
+    font-size: 0.65rem;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .menu-hero-meta-value {
+    font-size: 1.1rem;
+    font-weight: var(--weight-bold);
+    color: #fff;
+  }
+
+  .menu-scroll-hint {
+    position: absolute;
+    bottom: 16px;
+    right: var(--space-6);
+    z-index: 3;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: center;
+    animation: menuBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes menuBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ================================================================
+     MENU INTRO
+     ================================================================ */
+  .menu-intro {
+    padding: var(--space-8) 0 var(--space-4);
+  }
+
+  .menu-intro-card {
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    padding: var(--space-5) var(--space-6);
+    text-align: center;
+  }
+
+  .menu-intro-text {
+    font-size: 1rem;
+    color: var(--color-slate);
+    line-height: 1.7;
+    max-width: 640px;
+    margin: 0 auto var(--space-4);
+  }
+
+  .menu-intro-legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  /* ================================================================
+     TAGS
+     ================================================================ */
+  .menu-tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 6px;
+    line-height: 1.4;
+  }
+
+  .menu-tag--heritage {
+    background: rgba(191, 54, 12, 0.1);
+    color: #BF360C;
+  }
+
+  .menu-tag--musttry, .menu-tag--mustry {
+    background: rgba(13, 115, 119, 0.1);
+    color: var(--color-ocean-teal);
+  }
+
+  .menu-tag--iconic {
+    background: rgba(212, 168, 83, 0.15);
+    color: #9A7B2E;
+  }
+
+  .menu-tag--freshcatch {
+    background: rgba(33, 150, 243, 0.1);
+    color: #1565C0;
+  }
+
+  .menu-tag--rare {
+    background: rgba(106, 27, 154, 0.1);
+    color: #6A1B9A;
+  }
+
+  .menu-tag--takeaway, .menu-tag--takehome {
+    background: rgba(232, 101, 74, 0.1);
+    color: var(--color-warm-coral);
+  }
+
+  .menu-tag--legendary {
+    background: rgba(212, 168, 83, 0.15);
+    color: #9A7B2E;
+  }
+
+  .menu-tag--nationaldish {
+    background: rgba(191, 54, 12, 0.1);
+    color: #BF360C;
+  }
+
+  /* ================================================================
+     REGION SECTION
+     ================================================================ */
+  .menu-region {
+    padding: var(--space-6) 0;
+  }
+
+  .menu-region-header {
+    position: relative;
+    border-radius: 20px;
+    padding: var(--space-6) var(--space-6);
+    margin-bottom: var(--space-6);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-region-header-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .menu-region-name {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: var(--weight-bold);
+    color: #fff;
+    margin: 0 0 var(--space-1);
+    line-height: 1.1;
+  }
+
+  .menu-region-tagline {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 var(--space-3);
+    max-width: 480px;
+    line-height: 1.5;
+  }
+
+  .menu-region-count {
+    font-size: 0.7rem;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .menu-region-ornament {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ================================================================
+     DISH GRID — Menu-style cards
+     ================================================================ */
+  .menu-dish-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 1024px) {
+    .menu-dish-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .menu-dish-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .menu-dish-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .menu-dish-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Media placeholder */
+  .menu-dish-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: var(--space-2);
+    overflow: hidden;
+  }
+
+  .menu-dish-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: transform 0.4s ease;
+  }
+
+  .menu-dish-card:hover .menu-dish-img {
+    transform: scale(1.06);
+  }
+
+  .menu-dish-media .menu-tag {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Card body */
+  .menu-dish-body {
+    padding: var(--space-3) var(--space-4) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .menu-dish-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-bottom: 4px;
+  }
+
+  .menu-dish-name {
+    font-size: 0.95rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .menu-dish-price {
+    font-size: 0.65rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-warm-coral);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .menu-dish-destination {
+    font-size: 0.72rem;
+    color: var(--color-ocean-teal);
+    font-weight: var(--weight-medium);
+    margin: 0 0 var(--space-2);
+  }
+
+  .menu-dish-desc {
+    font-size: 0.78rem;
+    color: var(--color-slate);
+    line-height: 1.55;
+    margin: 0 0 var(--space-3);
+    flex: 1;
+  }
+
+  .menu-dish-cta {
+    font-size: 0.72rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-ocean-teal);
+    letter-spacing: 0.02em;
+  }
+
+  /* Hover overlay — visible on non-touch hover */
+  .menu-dish-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 35, 50, 0.93);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .menu-dish-card:hover .menu-dish-overlay {
+    opacity: 1;
+  }
+
+  .menu-dish-overlay-desc {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.6;
+    margin: 0 0 var(--space-3);
+  }
+
+  .menu-dish-overlay-cta {
+    font-size: 0.75rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-warm-coral);
+  }
+
+  /* ================================================================
+     BOTTOM CTA
+     ================================================================ */
+  .menu-cta-section {
+    padding: var(--space-6) 0 var(--space-8);
+  }
+
+  .menu-cta-card {
+    background: linear-gradient(135deg, var(--color-deep-night) 0%, #2D3748 100%);
+    border-radius: 20px;
+    padding: var(--space-8) var(--space-6);
+    text-align: center;
+    color: #fff;
+  }
+
+  .menu-cta-heading {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: var(--weight-bold);
+    margin: 0 0 var(--space-3);
+    color: #fff;
+  }
+
+  .menu-cta-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 520px;
+    margin: 0 auto var(--space-5);
+    line-height: 1.6;
+  }
+
+  .menu-cta-button {
+    display: inline-block;
+    background: var(--color-warm-coral);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: var(--weight-semibold);
+    padding: 12px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .menu-cta-button:hover {
+    background: #d4553b;
+    transform: translateY(-2px);
+  }
+
+  /* ================================================================
+     CROSS-LINKS
+     ================================================================ */
+  .menu-crosslinks {
+    padding: 0 0 var(--space-10);
+  }
+
+  .menu-crosslinks-heading {
+    font-size: 1.1rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    text-align: center;
+    margin: 0 0 var(--space-4);
+  }
+
+  .menu-crosslinks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 640px) {
+    .menu-crosslinks-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .menu-crosslink-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-5) var(--space-4);
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .menu-crosslink-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .menu-crosslink-icon {
+    font-size: 1.8rem;
+  }
+
+  .menu-crosslink-label {
+    font-size: 0.95rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+  }
+
+  .menu-crosslink-desc {
+    font-size: 0.78rem;
+    color: var(--color-slate);
+    line-height: 1.4;
+  }
+
+  /* ================================================================
+     RESPONSIVE — Hero & misc
+     ================================================================ */
+  @media (max-width: 640px) {
+    .menu-hero {
+      min-height: 55vh;
+      padding: 0 var(--space-4) 40px;
+    }
+
+    .menu-hero-meta {
+      gap: var(--space-4);
+    }
+
+    .menu-scroll-hint {
+      display: none;
+    }
+
+    .menu-region-header {
+      padding: var(--space-5) var(--space-4);
+    }
+
+    .menu-region-ornament {
+      display: none;
+    }
+  }
+
+  /* Personal intro */
+  .menu-personal {
+    padding-block: var(--space-8);
+  }
+
+  .menu-personal-quote {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-8);
+    border-left: 4px solid var(--color-warm-coral);
+    background: var(--color-sky);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .menu-personal-quote p {
+    font-size: var(--text-body);
+    color: var(--color-heading);
+    line-height: var(--leading-body);
+    font-style: italic;
+    margin-bottom: var(--space-3);
+  }
+
+  .menu-personal-quote cite {
+    font-size: var(--text-caption);
+    color: var(--color-warm-coral);
+    font-weight: var(--weight-semibold);
+    font-style: normal;
+  }
+</style>

@@ -1,0 +1,117 @@
+{
+  "name": "Great Lakes Road Trip",
+  "subtitle": "Mid-Range · Summer 2026",
+  "dates": "Jul 10–16",
+  "days": [
+    {
+      "day": 1,
+      "date": "Jul 10",
+      "title": "Arrive in Chicago",
+      "location": "Chicago",
+      "items": [
+        { "id": "d1-1", "time": "2:00 PM", "icon": "🚗", "type": "transport", "title": "Drive to Chicago", "detail": "Arrive at hotel in the Loop, check in and drop bags", "status": "confirmed", "lat": 41.8781, "lng": -87.6298 },
+        { "id": "d1-2", "time": "4:00 PM", "icon": "🎯", "type": "activity", "title": "Millennium Park & Cloud Gate", "detail": "Walk the lakefront, snap photos at The Bean, explore the park", "status": "confirmed", "lat": 41.8827, "lng": -87.6233 },
+        { "id": "d1-3", "time": "7:00 PM", "icon": "🍽️", "type": "food", "title": "Deep Dish at Lou Malnati's", "detail": "The Buttercrust deep dish — order ahead, it takes 45 min", "status": "confirmed", "lat": 41.8903, "lng": -87.6339 }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "Jul 11",
+      "title": "Chicago Exploration",
+      "location": "Chicago",
+      "items": [
+        { "id": "d2-1", "time": "9:00 AM", "icon": "🎯", "type": "activity", "title": "Art Institute of Chicago", "detail": "World-class collection — don't miss the Impressionist gallery", "status": "confirmed", "lat": 41.8796, "lng": -87.6237 },
+        { "id": "d2-2", "time": "12:30 PM", "icon": "🍽️", "type": "food", "title": "Italian Beef at Portillo's", "detail": "Get it dipped with hot giardiniera — classic Chicago lunch", "status": "confirmed", "lat": 41.8853, "lng": -87.6285 },
+        { "id": "d2-3", "time": "3:00 PM", "icon": "🎯", "type": "activity", "title": "Architecture River Cruise", "detail": "90-minute boat tour with Chicago Architecture Center — best way to see the skyline", "status": "confirmed", "lat": 41.8887, "lng": -87.6248 },
+        { "id": "d2-4", "time": "8:00 PM", "icon": "🎯", "type": "activity", "title": "Blues at Kingston Mines", "detail": "Live blues on two stages — no cover before 8 PM on weekdays", "status": "confirmed", "lat": 41.9263, "lng": -87.6501 }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "Jul 12",
+      "title": "Drive to Milwaukee",
+      "location": "Milwaukee",
+      "items": [
+        { "id": "d3-1", "time": "9:30 AM", "icon": "🚗", "type": "transport", "title": "Chicago to Milwaukee", "detail": "90-minute drive north on I-94", "status": "confirmed", "lat": 43.0389, "lng": -87.9065 },
+        { "id": "d3-2", "time": "12:00 PM", "icon": "🍽️", "type": "food", "title": "Cheese Curds at Lakefront Brewery", "detail": "Friday fish fry and brewery tour — freshest cheese curds in the city", "status": "confirmed", "lat": 43.0548, "lng": -87.9053 },
+        { "id": "d3-3", "time": "2:30 PM", "icon": "🎯", "type": "activity", "title": "Milwaukee Art Museum", "detail": "The Calatrava-designed Quadracci Pavilion opens its wings at scheduled times", "status": "confirmed", "lat": 43.0400, "lng": -87.8971 },
+        { "id": "d3-4", "time": "6:00 PM", "icon": "🍽️", "type": "food", "title": "Third Ward Dinner", "detail": "Explore the Historic Third Ward — great restaurants and shops along the riverwalk", "status": "confirmed", "lat": 43.0339, "lng": -87.9064 }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "Jul 13",
+      "title": "Drive to Minneapolis",
+      "location": "Minneapolis",
+      "items": [
+        { "id": "d4-1", "time": "8:00 AM", "icon": "🚗", "type": "transport", "title": "Milwaukee to Minneapolis", "detail": "5-hour drive on I-94 West — stop in Madison for coffee if you want", "status": "confirmed", "lat": 44.9778, "lng": -93.2650 },
+        { "id": "d4-2", "time": "2:00 PM", "icon": "🏨", "type": "accommodation", "title": "Check in — North Loop Hotel", "detail": "Trendy neighborhood with walkable restaurants and breweries", "status": "confirmed", "lat": 44.9852, "lng": -93.2714 },
+        { "id": "d4-3", "time": "4:00 PM", "icon": "🎯", "type": "activity", "title": "Chain of Lakes by Bike", "detail": "Rent bikes at Nice Ride and ride the Grand Rounds trail around Lake Calhoun and Lake Harriet", "status": "confirmed", "lat": 44.9484, "lng": -93.3101 },
+        { "id": "d4-4", "time": "7:30 PM", "icon": "🍽️", "type": "food", "title": "Juicy Lucy at Matt's Bar", "detail": "The original Juicy Lucy — cheese-stuffed burger, cash only, expect a wait", "status": "confirmed", "lat": 44.9351, "lng": -93.2587 }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "Jul 14",
+      "title": "Minneapolis Culture Day",
+      "location": "Minneapolis",
+      "items": [
+        { "id": "d5-1", "time": "10:00 AM", "icon": "🎯", "type": "activity", "title": "Minneapolis Sculpture Garden", "detail": "Free outdoor sculpture park with the iconic Spoonbridge and Cherry", "status": "confirmed", "lat": 44.9693, "lng": -93.2891 },
+        { "id": "d5-2", "time": "12:00 PM", "icon": "🍽️", "type": "food", "title": "Midtown Global Market", "detail": "International food hall — try the Somali food stalls on Lake Street", "status": "confirmed", "lat": 44.9483, "lng": -93.2606 },
+        { "id": "d5-3", "time": "3:00 PM", "icon": "🎯", "type": "activity", "title": "Surly Brewing Beer Hall", "detail": "Massive beer hall, great food menu, grab a flight of their IPAs", "status": "confirmed", "lat": 44.9731, "lng": -93.2112 },
+        { "id": "d5-4", "time": "8:00 PM", "icon": "🎯", "type": "activity", "title": "First Avenue Live Music", "detail": "Prince's legendary venue — check the calendar for shows", "status": "weather_watch", "weatherNote": "Check forecast — outdoor stage possible", "lat": 44.9799, "lng": -93.2762 }
+      ]
+    },
+    {
+      "day": 6,
+      "date": "Jul 15",
+      "title": "Drive to Madison",
+      "location": "Madison",
+      "items": [
+        { "id": "d6-1", "time": "9:00 AM", "icon": "🚗", "type": "transport", "title": "Minneapolis to Madison", "detail": "4-hour drive southeast on I-94 and I-90", "status": "confirmed", "lat": 43.0731, "lng": -89.4012 },
+        { "id": "d6-2", "time": "1:30 PM", "icon": "🍽️", "type": "food", "title": "Dane County Farmers' Market", "detail": "Saturday market on Capitol Square — if timing works, it's the best farmers' market in the Midwest", "status": "tentative", "changeNote": "Only on Saturdays", "lat": 43.0747, "lng": -89.3844 },
+        { "id": "d6-3", "time": "3:00 PM", "icon": "🎯", "type": "activity", "title": "Walk State Street", "detail": "Capitol to campus — coffee shops, bookstores, and local boutiques", "status": "confirmed", "lat": 43.0739, "lng": -89.3938 },
+        { "id": "d6-4", "time": "6:00 PM", "icon": "🍽️", "type": "food", "title": "Dinner at The Old Fashioned", "detail": "Wisconsin comfort food — cheese curds, brandy old fashioned, and Friday fish fry", "status": "confirmed", "lat": 43.0745, "lng": -89.3836 }
+      ]
+    },
+    {
+      "day": 7,
+      "date": "Jul 16",
+      "title": "Madison & Depart",
+      "location": "Madison",
+      "items": [
+        { "id": "d7-1", "time": "8:30 AM", "icon": "🍽️", "type": "food", "title": "Breakfast at Mickies Dairy Bar", "detail": "Classic diner near Camp Randall — get the scrambler", "status": "confirmed", "lat": 43.0646, "lng": -89.4135 },
+        { "id": "d7-2", "time": "10:00 AM", "icon": "🎯", "type": "activity", "title": "Fromagination Cheese Shop", "detail": "Pick up Wisconsin artisan cheeses to bring home — they'll vacuum seal for travel", "status": "confirmed", "lat": 43.0744, "lng": -89.3843 },
+        { "id": "d7-3", "time": "12:00 PM", "icon": "🚗", "type": "transport", "title": "Depart Madison", "detail": "Head home or continue the adventure south to Chicago for a flight", "status": "confirmed", "lat": 43.0731, "lng": -89.4012 }
+      ]
+    }
+  ],
+  "weather": [
+    { "day": "Jul 10", "icon": "☀️", "high": 85, "low": 68, "rain": 10 },
+    { "day": "Jul 11", "icon": "⛅", "high": 82, "low": 66, "rain": 20 },
+    { "day": "Jul 12", "icon": "☀️", "high": 80, "low": 62, "rain": 5 },
+    { "day": "Jul 13", "icon": "⛅", "high": 83, "low": 65, "rain": 15 },
+    { "day": "Jul 14", "icon": "🌤️", "high": 81, "low": 64, "rain": 25 },
+    { "day": "Jul 15", "icon": "☀️", "high": 79, "low": 60, "rain": 10 },
+    { "day": "Jul 16", "icon": "☀️", "high": 82, "low": 63, "rain": 5 }
+  ],
+  "contacts": [
+    { "icon": "🏨", "name": "The Loop Hotel Chicago", "role": "Night 1-2", "phone": "+1 312-555-0100" },
+    { "icon": "🏨", "name": "The Pfister Milwaukee", "role": "Night 3", "phone": "+1 414-555-0200" },
+    { "icon": "🏨", "name": "North Loop Hotel Minneapolis", "role": "Night 4-5", "phone": "+1 612-555-0300" },
+    { "icon": "🏨", "name": "Graduate Madison", "role": "Night 6", "phone": "+1 608-555-0400" },
+    { "icon": "🚗", "name": "Enterprise Car Rental", "role": "Rental Car", "phone": "+1 800-736-8222" },
+    { "icon": "🚨", "name": "Emergency", "role": "Police/Fire/EMS", "phone": "911" }
+  ],
+  "group": [
+    { "id": "scott", "name": "Scott", "avatar": "🧔", "role": "host", "color": "#0D7377" }
+  ],
+  "notifications": [
+    { "id": 1, "type": "weather", "text": "Mild chance of rain on Day 5 in Minneapolis — check the First Avenue show schedule for indoor options", "time": "2h ago", "read": false },
+    { "id": 2, "type": "enriched", "text": "Added GPS coordinates for all stops — map view is now available", "time": "1d ago", "read": true }
+  ],
+  "changeLog": [
+    { "id": 1, "type": "added", "by": "scott", "time": "2d ago", "title": "Surly Brewing Beer Hall", "detail": "Added to Minneapolis Day 5", "day": 5, "synced": true },
+    { "id": 2, "type": "note", "by": "scott", "time": "3d ago", "title": "Dane County Farmers' Market", "detail": "Only runs on Saturday — may need to adjust", "day": 6, "synced": true }
+  ]
+}

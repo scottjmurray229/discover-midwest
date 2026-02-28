@@ -30,7 +30,7 @@ const steps = [
     name: 'Sweep Downloads',
     script: '1-sweep-downloads.cjs',
     interactive: true,
-    desc: 'Move clips from ~/Downloads/, rename & organize into raw-downloads/',
+    desc: 'Sweep ~/Downloads/ for new clips, rename & organize',
   },
   {
     num: 2,
@@ -64,7 +64,7 @@ const steps = [
 ];
 
 console.log('╔══════════════════════════════════════════════════════════╗');
-console.log('║   VIDEO PIPELINE — DISCOVER PHILIPPINES                  ║');
+console.log('║   VIDEO PIPELINE                                         ║');
 console.log('╚══════════════════════════════════════════════════════════╝\n');
 
 const maxStep = includeYT ? 4 : 3;

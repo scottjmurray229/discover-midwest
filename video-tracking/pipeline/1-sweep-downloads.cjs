@@ -1,18 +1,16 @@
 #!/usr/bin/env node
 /**
- * STEP 1: Sweep Downloads Folder — Move & Organize Video Clips
+ * STEP 1: Sweep ~/Downloads/ for new video clips, rename & organize
  *
- * Scans ~/Downloads/ for recently downloaded .mp4/.mov files,
- * identifies them, MOVES (not copies!) to raw-downloads/, and updates inventory.
- *
- * Scott downloads clips manually from Storyblocks (descriptive names) and
- * Shutterstock (numeric IDs only). This script handles both.
+ * No API calls. User manually downloads clips from Shutterstock/Storyblocks,
+ * then runs this script to sweep, rename, and organize into the pipeline.
  *
  * Usage:
- *   node video-tracking/pipeline/1-sweep-downloads.cjs                  # Sweep all new clips
- *   node video-tracking/pipeline/1-sweep-downloads.cjs --dest boston     # Only process clips for boston
- *   node video-tracking/pipeline/1-sweep-downloads.cjs --dry-run        # Preview what would happen
- *   node video-tracking/pipeline/1-sweep-downloads.cjs --since 24       # Only files from last 24 hours
+ *   node video-tracking/pipeline/1-sweep-downloads.cjs                    # Interactive — scan & assign
+ *   node video-tracking/pipeline/1-sweep-downloads.cjs --dest miami       # Assign all clips to one destination
+ *   node video-tracking/pipeline/1-sweep-downloads.cjs --hours 2          # Only files from last 2 hours
+ *   node video-tracking/pipeline/1-sweep-downloads.cjs --dry-run          # Preview without moving
+ *   node video-tracking/pipeline/1-sweep-downloads.cjs --keep-originals   # Don't delete from Downloads
  */
 
 const fs = require('fs');
@@ -26,283 +24,320 @@ const config = loadConfig();
 // Parse CLI args
 const args = process.argv.slice(2);
 const destFilter = args.includes('--dest') ? args[args.indexOf('--dest') + 1] : null;
+const hoursBack = args.includes('--hours') ? parseFloat(args[args.indexOf('--hours') + 1]) : 24;
 const dryRun = args.includes('--dry-run');
-const sinceHours = args.includes('--since') ? parseInt(args[args.indexOf('--since') + 1]) : 72;
+const keepOriginals = args.includes('--keep-originals');
 
 const DOWNLOADS_DIR = path.join(require('os').homedir(), 'Downloads');
-const VIDEO_EXTENSIONS = ['.mp4', '.mov', '.avi', '.mkv', '.webm'];
 
-// Interactive readline
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 const ask = (q) => new Promise(resolve => rl.question(q, resolve));
 
-// Load inventory if it exists
-let inventory = { entries: [] };
-if (fs.existsSync(config.INVENTORY_PATH)) {
-  inventory = yaml.load(fs.readFileSync(config.INVENTORY_PATH, 'utf8'));
+// Load known destinations from content directory
+function loadDestinations() {
+  const contentDir = path.join(config.PROJECT_ROOT, 'src', 'content', 'destinations');
+  if (!fs.existsSync(contentDir)) return [];
+  return fs.readdirSync(contentDir)
+    .filter(f => f.endsWith('.md'))
+    .map(f => f.replace('.md', ''))
+    .sort();
 }
 
-// Get destination slugs that need downloads
-function getNeededDestinations() {
-  return inventory.entries
-    .filter(e => e.stock_status === 'needs_download')
-    .map(e => e.page)
-    .filter((v, i, a) => a.indexOf(v) === i); // unique
-}
-
-// Scan Downloads for recent video files
-function findDownloadedVideos() {
+// Find video files in ~/Downloads/
+function findNewClips() {
   if (!fs.existsSync(DOWNLOADS_DIR)) {
-    console.error(`  Downloads folder not found: ${DOWNLOADS_DIR}`);
-    return [];
+    console.error(`Downloads folder not found: ${DOWNLOADS_DIR}`);
+    process.exit(1);
   }
 
-  const cutoff = Date.now() - (sinceHours * 60 * 60 * 1000);
-  const files = [];
+  const cutoff = Date.now() - (hoursBack * 60 * 60 * 1000);
+  const extensions = ['.mp4', '.mov', '.webm', '.avi', '.mkv'];
 
-  for (const file of fs.readdirSync(DOWNLOADS_DIR)) {
-    const ext = path.extname(file).toLowerCase();
-    if (!VIDEO_EXTENSIONS.includes(ext)) continue;
-
-    const filePath = path.join(DOWNLOADS_DIR, file);
-    const stat = fs.statSync(filePath);
-    if (!stat.isFile()) continue;
-    if (stat.mtimeMs < cutoff) continue;
-
-    files.push({
-      name: file,
-      path: filePath,
-      size: stat.size,
-      modified: stat.mtime,
-      isShutterstock: /^shutterstock_\d+/i.test(file) || /^\d{8,}/.test(file),
-      isStoryblocks: !(/^shutterstock_\d+/i.test(file) || /^\d{8,}/.test(file)),
-    });
-  }
-
-  // Sort by modified time, newest first
-  files.sort((a, b) => b.modified - a.modified);
-  return files;
+  return fs.readdirSync(DOWNLOADS_DIR)
+    .filter(f => {
+      const ext = path.extname(f).toLowerCase();
+      if (!extensions.includes(ext)) return false;
+      const stat = fs.statSync(path.join(DOWNLOADS_DIR, f));
+      return stat.mtimeMs >= cutoff;
+    })
+    .map(f => {
+      const stat = fs.statSync(path.join(DOWNLOADS_DIR, f));
+      return {
+        filename: f,
+        fullPath: path.join(DOWNLOADS_DIR, f),
+        sizeMB: (stat.size / 1024 / 1024).toFixed(1),
+        modified: stat.mtime,
+      };
+    })
+    .sort((a, b) => b.modified - a.modified);
 }
 
-// Guess destination from descriptive filename (Storyblocks)
-function guessDestination(filename, destinations) {
-  const lower = filename.toLowerCase();
-  for (const dest of destinations) {
-    // Check if destination slug appears in filename
-    if (lower.includes(dest.replace(/-/g, ''))) return dest;
-    if (lower.includes(dest.replace(/-/g, ' '))) return dest;
-    if (lower.includes(dest.replace(/-/g, '_'))) return dest;
-    if (lower.includes(dest)) return dest;
+// Try to auto-detect destination from filename
+function guessDestination(filename, knownDests) {
+  const lower = filename.toLowerCase().replace(/[-_\.]/g, ' ');
+  for (const dest of knownDests) {
+    const destWords = dest.replace(/-/g, ' ');
+    if (lower.includes(destWords) || lower.includes(dest)) {
+      return dest;
+    }
   }
   return null;
 }
 
 // Guess clip type from filename
-function guessSlot(filename) {
+function guessType(filename) {
   const lower = filename.toLowerCase();
-  if (lower.includes('aerial') || lower.includes('drone') || lower.includes('skyline') || lower.includes('panoram')) return 'hero';
-  if (lower.includes('preview') || lower.includes('thumb')) return 'thumbnail';
+  if (lower.includes('hero') || lower.includes('aerial') || lower.includes('drone')) return 'hero';
+  if (lower.includes('preview') || lower.includes('thumb') || lower.includes('card')) return 'preview';
   return 'break';
 }
 
-// Get target directory based on slot
-function getTargetDir(slot) {
-  if (slot === 'hero') return path.join(config.RAW_DOWNLOADS, 'heroes');
-  if (slot === 'thumbnail') return path.join(config.RAW_DOWNLOADS, 'thumbnails');
+function getOutputDir(clipType) {
+  if (clipType === 'hero') return path.join(config.RAW_DOWNLOADS, 'heroes');
+  if (clipType === 'preview') return path.join(config.RAW_DOWNLOADS, 'thumbnails');
   return path.join(config.RAW_DOWNLOADS, 'breaks');
 }
 
-// Generate filename
-function getTargetFilename(destination, slot, section) {
-  if (slot === 'hero') return `${destination}-hero.mp4`;
-  if (slot === 'thumbnail') return `${destination}-preview.mp4`;
-  return `${destination}-break-${section || 'general'}.mp4`;
+function getOutputFilename(dest, clipType, descriptor) {
+  if (clipType === 'hero') return `${dest}-hero.mp4`;
+  if (clipType === 'preview') return `${dest}-preview.mp4`;
+  return descriptor ? `${dest}-break-${descriptor}.mp4` : `${dest}-break-1.mp4`;
 }
 
-// Move file (not copy!)
-function moveFile(src, dest) {
-  try {
-    // Try rename first (same drive = instant)
-    fs.renameSync(src, dest);
-  } catch (err) {
-    // Cross-drive: copy then delete
-    fs.copyFileSync(src, dest);
-    fs.unlinkSync(src);
-  }
+// Count existing breaks for a destination to auto-number
+function countExistingBreaks(dest) {
+  const breaksDir = path.join(config.RAW_DOWNLOADS, 'breaks');
+  if (!fs.existsSync(breaksDir)) return 0;
+  return fs.readdirSync(breaksDir)
+    .filter(f => f.startsWith(`${dest}-break-`)).length;
 }
 
-// Main process
+// Main
 async function main() {
+  const siteName = config.WATERMARK_TEXT || path.basename(config.PROJECT_ROOT);
+
   console.log('╔══════════════════════════════════════════════════════════╗');
-  console.log('║   SWEEP DOWNLOADS — MOVE & ORGANIZE VIDEO CLIPS         ║');
-  console.log('╚══════════════════════════════════════════════════════════╝');
+  console.log(`║   SWEEP DOWNLOADS — ${siteName.toUpperCase().padEnd(35)}║`);
+  console.log('╚══════════════════════════════════════════════════════════╝\n');
+
+  const knownDests = loadDestinations();
+  console.log(`  Site destinations: ${knownDests.length}`);
+  console.log(`  Scanning: ${DOWNLOADS_DIR}`);
+  console.log(`  Looking back: ${hoursBack} hours`);
+  if (destFilter) console.log(`  Auto-assign to: ${destFilter}`);
+  if (dryRun) console.log('  Mode: DRY RUN');
+  if (keepOriginals) console.log('  Keeping originals in Downloads');
   console.log();
 
-  // Find videos in Downloads
-  const videos = findDownloadedVideos();
-  console.log(`  Found ${videos.length} video files in Downloads (last ${sinceHours}h)`);
-  if (destFilter) console.log(`  Filtering: destination = ${destFilter}`);
-  if (dryRun) console.log('  DRY RUN — no files will be moved');
-  console.log();
+  const clips = findNewClips();
 
-  if (videos.length === 0) {
+  if (clips.length === 0) {
     console.log('  No new video files found in Downloads.');
-    console.log(`  (Looking in: ${DOWNLOADS_DIR})`);
-    console.log(`  (Extensions: ${VIDEO_EXTENSIONS.join(', ')})`);
-    console.log(`  (Since: ${sinceHours} hours ago)`);
+    console.log(`  (Checked for files modified in the last ${hoursBack} hours)`);
+    console.log('  Tip: Use --hours 48 to look further back.');
     rl.close();
     return;
   }
 
-  // Show what we found
-  const storyblocks = videos.filter(v => v.isStoryblocks);
-  const shutterstock = videos.filter(v => v.isShutterstock);
+  console.log(`  Found ${clips.length} video file(s):\n`);
+  clips.forEach((c, i) => {
+    const age = ((Date.now() - c.modified.getTime()) / 3600000).toFixed(1);
+    console.log(`    [${i + 1}] ${c.filename}  (${c.sizeMB} MB, ${age}h ago)`);
+  });
+  console.log();
 
-  if (storyblocks.length > 0) {
-    console.log(`  Storyblocks clips (descriptive names): ${storyblocks.length}`);
+  // Show known destinations for reference
+  if (!destFilter && knownDests.length > 0) {
+    console.log('  Known destinations:');
+    const cols = 4;
+    for (let i = 0; i < knownDests.length; i += cols) {
+      const row = knownDests.slice(i, i + cols).map(d => d.padEnd(25)).join('');
+      console.log(`    ${row}`);
+    }
+    console.log();
   }
-  if (shutterstock.length > 0) {
-    console.log(`  Shutterstock clips (ID-only names): ${shutterstock.length}`);
-    console.log('  ⚠️  Shutterstock files need manual destination assignment!\n');
-  }
 
-  // Get all destination slugs from inventory
-  const allDestinations = inventory.entries
-    .map(e => e.page)
-    .filter((v, i, a) => a.indexOf(v) === i);
+  // Process each clip
+  const results = { moved: 0, skipped: 0 };
+  const inventory = loadInventory();
 
-  const stats = { moved: 0, skipped: 0, errors: 0 };
-
-  for (let i = 0; i < videos.length; i++) {
-    const video = videos[i];
-    const sizeMB = (video.size / 1024 / 1024).toFixed(1);
-
+  for (let i = 0; i < clips.length; i++) {
+    const clip = clips[i];
     console.log(`\n${'─'.repeat(60)}`);
-    console.log(`  [${i + 1}/${videos.length}] ${video.name}`);
-    console.log(`  Size: ${sizeMB} MB | Modified: ${video.modified.toLocaleString()}`);
-    console.log(`  Source: ${video.isShutterstock ? 'Shutterstock (ID only)' : 'Storyblocks (descriptive)'}`);
+    console.log(`  [${i + 1}/${clips.length}] ${clip.filename}  (${clip.sizeMB} MB)`);
+    console.log(`${'─'.repeat(60)}`);
 
-    // Try to auto-detect destination
-    let destination = guessDestination(video.name, allDestinations);
-    let slot = guessSlot(video.name);
-
-    if (destination) {
-      console.log(`  Auto-detected destination: ${destination}`);
-    }
-
-    // For Shutterstock or unmatched files, ask user
-    if (!destination) {
-      console.log(`\n  Available destinations: ${allDestinations.join(', ')}`);
-      const input = await ask(`  Enter destination slug (or "skip"): `);
-      if (input === 'skip' || input === 's') {
-        console.log('  Skipped.');
-        stats.skipped++;
-        continue;
-      }
-      destination = input.trim();
-    } else {
-      const confirm = await ask(`  Use ${destination}? (y/n/skip/[other destination]): `);
-      if (confirm === 'skip' || confirm === 's') {
-        console.log('  Skipped.');
-        stats.skipped++;
-        continue;
-      }
-      if (confirm !== 'y' && confirm !== '') {
-        destination = confirm.trim();
+    // Determine destination
+    let dest = destFilter;
+    if (!dest) {
+      const guess = guessDestination(clip.filename, knownDests);
+      if (guess) {
+        const confirm = await ask(`  Auto-detected destination: ${guess}. Correct? (y/n/other slug): `);
+        if (confirm === 'y' || confirm === 'Y' || confirm === '') {
+          dest = guess;
+        } else if (confirm === 'n' || confirm === 'N') {
+          dest = await ask('  Enter destination slug: ');
+        } else if (confirm === 'skip' || confirm === 's') {
+          console.log('  Skipped.');
+          results.skipped++;
+          continue;
+        } else {
+          dest = confirm.trim();
+        }
+      } else {
+        dest = await ask('  Destination slug (or "skip"): ');
       }
     }
 
-    // Apply destination filter
-    if (destFilter && destination !== destFilter) {
-      console.log(`  Skipped (doesn't match --dest ${destFilter})`);
-      stats.skipped++;
+    dest = dest.trim().toLowerCase();
+    if (dest === 'skip' || dest === 's' || !dest) {
+      console.log('  Skipped.');
+      results.skipped++;
       continue;
     }
 
-    // Ask for slot type
-    console.log(`  Detected type: ${slot}`);
-    const slotInput = await ask(`  Type? (h=hero, b=break, t=thumbnail, or enter to accept "${slot}"): `);
-    if (slotInput === 'h') slot = 'hero';
-    else if (slotInput === 'b') slot = 'break';
-    else if (slotInput === 't') slot = 'thumbnail';
-
-    // For breaks, ask for section name
-    let section = null;
-    if (slot === 'break') {
-      section = await ask('  Section name (e.g., "temples", "food", "nightlife"): ');
-      if (!section) section = 'general';
+    // Determine clip type
+    const guessedType = guessType(clip.filename);
+    const typeInput = await ask(`  Type? [h]ero / [b]reak / [p]review (default: ${guessedType[0]}): `);
+    let clipType;
+    if (!typeInput || typeInput === guessedType[0]) {
+      clipType = guessedType;
+    } else if (typeInput === 'h' || typeInput === 'hero') {
+      clipType = 'hero';
+    } else if (typeInput === 'p' || typeInput === 'preview') {
+      clipType = 'preview';
+    } else {
+      clipType = 'break';
     }
 
-    // Build target path
-    const targetDir = getTargetDir(slot);
-    const targetFilename = getTargetFilename(destination, slot, section);
-    const targetPath = path.join(targetDir, targetFilename);
+    // For breaks, get descriptor
+    let descriptor = '';
+    if (clipType === 'break') {
+      const existingCount = countExistingBreaks(dest);
+      const defaultNum = existingCount + 1;
+      descriptor = await ask(`  Break descriptor (e.g., "sunset", "beach") or enter for auto-number [${defaultNum}]: `);
+      if (!descriptor.trim()) {
+        descriptor = String(defaultNum);
+      }
+      descriptor = descriptor.trim().toLowerCase().replace(/\s+/g, '-');
+    }
 
-    console.log(`\n  → ${targetFilename}`);
-    console.log(`    ${targetDir}`);
+    // Build paths
+    const outputDir = getOutputDir(clipType);
+    const outputFilename = getOutputFilename(dest, clipType, descriptor);
+    const outputPath = path.join(outputDir, outputFilename);
+    const ytDir = config.YOUTUBE_RAW;
+    const ytFilename = outputFilename.replace('.mp4', '-full.mp4');
+    const ytPath = path.join(ytDir, ytFilename);
+
+    console.log(`\n  → ${path.relative(config.PROJECT_ROOT, outputPath)}`);
+    console.log(`  → youtube/raw/${ytFilename}`);
 
     if (dryRun) {
-      console.log('  [DRY RUN] Would move file');
-      stats.moved++;
+      console.log('  [DRY RUN] Would move file.');
+      results.moved++;
       continue;
     }
 
-    // Create directory and move
-    try {
-      fs.mkdirSync(targetDir, { recursive: true });
+    // Create directories
+    fs.mkdirSync(outputDir, { recursive: true });
+    fs.mkdirSync(ytDir, { recursive: true });
 
-      // Check for existing file
-      if (fs.existsSync(targetPath)) {
-        const overwrite = await ask('  File exists! Overwrite? (y/n): ');
-        if (overwrite !== 'y') {
-          console.log('  Skipped (file exists).');
-          stats.skipped++;
-          continue;
-        }
-      }
+    // Copy to youtube/raw (full quality backup)
+    fs.copyFileSync(clip.fullPath, ytPath);
+    console.log(`  Copied to youtube/raw/`);
 
-      moveFile(video.path, targetPath);
-      console.log(`  ✅ Moved: ${video.name} → ${targetFilename}`);
-      stats.moved++;
+    // Move to raw-downloads (for pipeline processing)
+    fs.copyFileSync(clip.fullPath, outputPath);
+    console.log(`  Copied to raw-downloads/`);
 
-      // Update inventory
-      const invEntry = inventory.entries.find(e =>
-        e.page === destination && e.slot === slot && e.stock_status === 'needs_download'
-      );
-      if (invEntry) {
-        invEntry.stock_status = 'downloaded';
-        invEntry.file_path = targetPath;
-        invEntry.notes = `Downloaded ${new Date().toISOString().split('T')[0]}. ${invEntry.notes || ''}`.trim();
-      }
-    } catch (err) {
-      console.error(`  ❌ Error: ${err.message}`);
-      stats.errors++;
+    // Remove original from Downloads (avoid duplicate large files)
+    if (!keepOriginals) {
+      fs.unlinkSync(clip.fullPath);
+      console.log(`  Removed from Downloads`);
     }
+
+    // Update inventory if it exists
+    if (inventory) {
+      const entryId = `${dest}-${clipType === 'break' ? `break-${descriptor}` : clipType}`;
+      const existing = inventory.entries.find(e => e.id === entryId || (e.page === dest && e.slot === clipType));
+      if (existing) {
+        existing.stock_status = 'downloaded';
+        existing.file_path = path.relative(config.PROJECT_ROOT, outputPath);
+        existing.notes = `Swept from Downloads ${new Date().toISOString().split('T')[0]}. ${existing.notes || ''}`.trim();
+        console.log(`  Updated inventory: ${existing.id}`);
+      } else {
+        // Add new entry
+        inventory.entries.push({
+          id: entryId,
+          page: dest,
+          page_type: 'destination',
+          section: clipType === 'hero' ? 'hero' : (clipType === 'preview' ? 'preview' : descriptor),
+          slot: clipType === 'break' ? 'immersive_break' : clipType,
+          description: `${dest} ${clipType}${descriptor ? ' - ' + descriptor : ''}`,
+          search_terms: '',
+          alt_search: '',
+          duration_sec: '15-20',
+          resolution: clipType === 'preview' ? '1080p' : '4K',
+          looping: true,
+          audio: false,
+          source: 'stock',
+          own_footage_status: 'n/a',
+          stock_status: 'downloaded',
+          priority: clipType === 'hero' ? 'p0' : (clipType === 'break' ? 'p1' : 'p2'),
+          shutterstock_url: '',
+          file_path: path.relative(config.PROJECT_ROOT, outputPath),
+          notes: `Swept from Downloads ${new Date().toISOString().split('T')[0]}`,
+        });
+        console.log(`  Added to inventory: ${entryId}`);
+      }
+    }
+
+    console.log(`  ✅ Done`);
+    results.moved++;
   }
 
-  // Save updated inventory
-  if (stats.moved > 0 && !dryRun) {
+  // Save inventory
+  if (inventory && results.moved > 0 && !dryRun) {
     fs.writeFileSync(config.INVENTORY_PATH, yaml.dump(inventory, {
       lineWidth: -1,
       quotingType: '"',
       forceQuotes: false,
     }));
-    console.log(`\n  Inventory updated: ${config.INVENTORY_PATH}`);
+    console.log(`\n  Inventory saved.`);
   }
 
   console.log(`\n${'═'.repeat(60)}`);
   console.log('  SWEEP COMPLETE');
-  console.log(`  Moved: ${stats.moved}`);
-  console.log(`  Skipped: ${stats.skipped}`);
-  console.log(`  Errors: ${stats.errors}`);
-  console.log(`${'═'.repeat(60)}\n`);
-
-  if (stats.moved > 0) {
-    console.log('  Next step: Run Step 2 to compress & watermark');
-    console.log('  node video-tracking/pipeline/2-batch-process.cjs');
+  console.log(`  Moved: ${results.moved}`);
+  console.log(`  Skipped: ${results.skipped}`);
+  if (!keepOriginals && results.moved > 0) {
+    console.log(`  Originals removed from Downloads ✓`);
   }
+  console.log(`${'═'.repeat(60)}`);
+  console.log();
+  if (results.moved > 0) {
+    console.log('  Next: Run step 2 to compress for web:');
+    console.log('    node video-tracking/pipeline/2-batch-process.cjs');
+    console.log();
+    console.log('  Or run the full pipeline from step 2:');
+    console.log('    node video-tracking/pipeline/run-pipeline.cjs --from 2');
+  }
+  console.log();
 
   rl.close();
+}
+
+function loadInventory() {
+  if (!fs.existsSync(config.INVENTORY_PATH)) return null;
+  try {
+    const inv = yaml.load(fs.readFileSync(config.INVENTORY_PATH, 'utf8'));
+    if (!inv.entries) inv.entries = [];
+    return inv;
+  } catch (e) {
+    console.warn('  Warning: Could not parse inventory YAML. Skipping inventory updates.');
+    return null;
+  }
 }
 
 main().catch(err => {

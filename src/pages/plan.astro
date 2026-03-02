@@ -209,6 +209,17 @@ const MAPS_KEY = 'AIzaSyDH8mQKwqzyfCrgGZVDdP1-E-346QUiods';
     </div>
   </section>
 
+  <section class="plan-packing-cta">
+    <div class="container-content plan-packing-inner">
+      <span class="plan-packing-icon">🎒</span>
+      <div class="plan-packing-text">
+        <strong>Pack Smart for the Midwest</strong>
+        <span>The Midwest's brutal winters and extreme wind chill mean what you pack determines how much you enjoy it</span>
+      </div>
+      <a href="/packing-list/" class="plan-packing-btn">See Packing List →</a>
+    </div>
+  </section>
+
   <!-- FTC Disclosure -->
   <div class="container-content">
     <FTCDisclosure placement="inline" />
@@ -1904,4 +1915,14 @@ const MAPS_KEY = 'AIzaSyDH8mQKwqzyfCrgGZVDdP1-E-346QUiods';
     .form-grid { grid-template-columns: 1fr; }
     .trust-inner { gap: var(--space-8); }
   }
+
+  .plan-packing-cta { background: var(--color-sky, #E8F4F5); padding: var(--space-4) 0; }
+  .plan-packing-inner { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; padding: var(--space-4) var(--space-5); background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .plan-packing-icon { font-size: 2rem; flex-shrink: 0; }
+  .plan-packing-text { flex: 1; min-width: 200px; }
+  .plan-packing-text strong { display: block; font-size: 1rem; font-weight: var(--weight-bold); color: var(--color-deep-night, #1A2332); margin-bottom: 4px; }
+  .plan-packing-text span { font-size: 0.875rem; color: var(--color-slate, #4A5568); line-height: 1.5; }
+  .plan-packing-btn { display: inline-flex; align-items: center; padding: 10px 20px; background: var(--color-ocean-teal, #0D7377); color: white; border-radius: 8px; font-size: 0.875rem; font-weight: var(--weight-semibold); text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background 0.2s ease; }
+  .plan-packing-btn:hover { background: var(--color-ocean-teal-dark, #095456); }
+  @media (max-width: 640px) { .plan-packing-inner { flex-direction: column; text-align: center; } }
 </style>

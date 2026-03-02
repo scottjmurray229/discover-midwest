@@ -1,0 +1,565 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PackingList from '../components/PackingList.astro';
+import FAQ from '../components/FAQ.astro';
+import EmailCapture from '../components/EmailCapture.astro';
+import FTCDisclosure from '../components/FTCDisclosure.astro';
+import { MIDWEST_PACKING_FAQS, MIDWEST_CONFIG } from '../data/packing-list';
+import { PACKING_BASE } from '../data/packing-base';
+
+const config = MIDWEST_CONFIG;
+const allItems = [...PACKING_BASE, ...config.destinationEssentials];
+
+// Build HowTo schema sections by category
+const categoryLabels: Record<string, string> = {
+  documents: 'Documents & Money',
+  clothing: 'Clothing',
+  toiletries: 'Toiletries & Health',
+  electronics: 'Electronics',
+  gear: 'Gear & Accessories',
+  destination: 'Midwest Essentials',
+  activity: 'Activity Gear',
+};
+
+// Group items for schema
+const byCategory: Record<string, typeof allItems> = {};
+allItems.forEach(item => {
+  if (!byCategory[item.category]) byCategory[item.category] = [];
+  byCategory[item.category].push(item);
+});
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Pack for the Midwest',
+  description: 'Complete interactive packing checklist for Midwest travelers — customized by season, duration, and activities.',
+  totalTime: 'PT15M',
+  step: Object.entries(byCategory).map(([catId, items]) => ({
+    '@type': 'HowToSection',
+    name: categoryLabels[catId] || catId,
+    itemListElement: items.slice(0, 8).map((item, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      text: item.name + (item.description ? ` — ${item.description}` : ''),
+    })),
+  })),
+};
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Midwest Packing List — Essential Gear',
+  description: 'Gear we recommend for every Midwest trip',
+  itemListElement: config.gearRecommendations.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.name,
+    description: item.reason,
+    offers: {
+      '@type': 'Offer',
+      price: item.affiliatePrice.replace(/[^0-9–]/g, '').split('–')[0],
+      priceCurrency: 'USD',
+      url: item.amazonAsin
+        ? `https://www.amazon.com/dp/${item.amazonAsin}?tag=${config.affiliateTag}`
+        : `https://www.amazon.com/s?k=${item.amazonSearchFallback}&tag=${config.affiliateTag}`,
+    },
+  })),
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: MIDWEST_PACKING_FAQS.map(faq => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Packing List', url: '/packing-list/' },
+];
+---
+
+<BaseLayout
+  title="Midwest Packing List 2026 — Interactive Checklist | Discover Midwest"
+  description="Free interactive packing checklist for the Midwest. Chicago wind chill hits -20°F. Covers layering, winter boots, and everything from summer festivals to Great Lakes winters. 60+ items."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Inline schema (HowTo + ItemList + FAQPage) -->
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- BreadcrumbList schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((b, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: b.name,
+      item: `https://discovermidwest.info${b.url}`,
+    })),
+  })} />
+
+  <!-- Hero -->
+  <section class="pl-hero">
+    <div class="pl-hero-inner container-content">
+      <nav class="pl-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Packing List</span>
+      </nav>
+      <h1 class="pl-hero-title">How to Pack for the Midwest</h1>
+      <p class="pl-hero-subtitle">
+        The Midwest's extreme temperature swings, notorious wind, and four dramatic seasons
+      </p>
+      <div class="pl-hero-meta">
+        <span class="pl-meta-chip">❄️ Cold / Temperate (4 seasons)</span>
+        <span class="pl-meta-chip">⚡ 120V / Type A/B</span>
+        <span class="pl-meta-chip">💵 USD</span>
+        <span class="pl-meta-chip">🌪️ Wind chill advisory: bring windproof layers</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FTC Disclosure -->
+  <FTCDisclosure placement="inline" />
+
+  <!-- Laundry Strategy -->
+  <section class="pl-laundry container-prose">
+    <div class="pl-laundry-inner">
+      <div class="pl-laundry-header">
+        <span class="pl-laundry-icon">🎒</span>
+        <h2 class="pl-laundry-title">Scott's Packing Philosophy: Pack for 5 Days, Not 3 Weeks</h2>
+      </div>
+      <p>
+        We pack for 5 days on every trip, whether we're gone for a week or three weeks. The logic is
+        simple: laundry is cheap, easy, and everywhere in the Midwest — and a lighter bag changes
+        everything about how you travel.
+      </p>
+      <p>
+        Laundromats are everywhere in Midwest cities and towns, typically running $2–4 per load for wash and dry.
+        Most Airbnbs and vacation rentals have a washer and dryer. Drop it off in the morning, pick
+        it up that afternoon or the next day. Pack for 5 days and wash every 4–5 days.
+      </p>
+      <p>
+        <strong>One important thing in winter:</strong> wool and technical layers take longer to dry than
+        cotton. If you're using a laundromat between cold-weather activities, factor in the extra drying
+        time. Most Midwest laundromats have commercial dryers that handle even heavy insulation efficiently.
+      </p>
+      <p>
+        <strong>Avoid hotel laundry services.</strong> They exist, they're convenient, and they're
+        outrageously expensive — often 10x the price of a local laundromat, charged per item. The walk
+        around the block is always worth it.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Packing List -->
+  <section class="pl-section">
+    <PackingList />
+  </section>
+
+  <!-- Gear We Recommend (SEO ItemList section) -->
+  <section class="pl-gear-section container-prose">
+    <h2>Gear We Recommend for the Midwest</h2>
+    <p>These are the items that make the biggest difference on a Midwest trip. Each pick is chosen for a specific reason — not just "bring a jacket" but why it matters here, specifically.</p>
+
+    <div class="pl-gear-cards">
+      {config.gearRecommendations.map((item, i) => {
+        const amazonUrl = item.amazonAsin
+          ? `https://www.amazon.com/dp/${item.amazonAsin}?tag=${config.affiliateTag}`
+          : `https://www.amazon.com/s?k=${item.amazonSearchFallback}&tag=${config.affiliateTag}`;
+        return (
+          <div class="pl-gear-card">
+            <div class="pl-gear-card-num">{i + 1}</div>
+            <div class="pl-gear-card-body">
+              <h3 class="pl-gear-card-name">{item.name}</h3>
+              <p class="pl-gear-card-reason">{item.reason}</p>
+              <div class="pl-gear-card-footer">
+                <span class="pl-gear-price">{item.affiliatePrice}</span>
+                <a href={amazonUrl} class="pl-gear-link" target="_blank" rel="noopener noreferrer sponsored">
+                  See on Amazon →
+                </a>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Bridge to Travel Tips -->
+  <section class="pl-editorial container-prose">
+    <p>
+      For the full story on what to buy, what to skip, and why — including specific product recommendations
+      for winter boots, layering systems, and cold-weather gear — see our
+      <a href="/practical/#packing">Midwest Travel Tips packing guide</a>.
+    </p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pl-faq container-prose">
+    <h2>Midwest Packing — Frequently Asked Questions</h2>
+    <FAQ items={MIDWEST_PACKING_FAQS} />
+  </section>
+
+  <!-- Email Capture -->
+  <div class="container-prose">
+    <EmailCapture
+      leadMagnet="Get Our Free Midwest Packing Guide PDF"
+      description="The complete printable checklist for your Midwest trip — organized by category, customized for four-season weather."
+      bullets={[
+        'Full 60+ item checklist, print-ready',
+        'Winter vs. summer packing differences',
+        'City-by-city gear essentials',
+        'What to buy locally (and save luggage space)',
+      ]}
+      guideTag="packing-midwest"
+    />
+  </div>
+
+  <!-- Related Links -->
+  <section class="pl-related container-content">
+    <h2>Plan the Rest of Your Midwest Trip</h2>
+    <div class="pl-related-links">
+      <a href="/plan/" class="pl-related-card">
+        <span class="pl-related-icon">🗺️</span>
+        <div>
+          <div class="pl-related-title">AI Trip Planner</div>
+          <div class="pl-related-desc">Build a custom day-by-day itinerary</div>
+        </div>
+      </a>
+      <a href="/practical/" class="pl-related-card">
+        <span class="pl-related-icon">🛠️</span>
+        <div>
+          <div class="pl-related-title">Travel Tips</div>
+          <div class="pl-related-desc">Driving routes, weather, and transport</div>
+        </div>
+      </a>
+      <a href="/food/" class="pl-related-card">
+        <span class="pl-related-icon">🍔</span>
+        <div>
+          <div class="pl-related-title">Food & Drink</div>
+          <div class="pl-related-desc">Deep dish, BBQ, craft beer and more</div>
+        </div>
+      </a>
+      <a href="/destinations/" class="pl-related-card">
+        <span class="pl-related-icon">🌆</span>
+        <div>
+          <div class="pl-related-title">Destinations</div>
+          <div class="pl-related-desc">Chicago, Minneapolis, Detroit and more</div>
+        </div>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Laundry Strategy */
+  .pl-laundry {
+    padding: var(--space-6) 0 var(--space-2);
+  }
+
+  .pl-laundry-inner {
+    background: var(--color-sky, #E8F4F5);
+    border-radius: 12px;
+    padding: var(--space-6) var(--space-7);
+    border-left: 4px solid var(--color-ocean-teal);
+  }
+
+  .pl-laundry-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .pl-laundry-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .pl-laundry-title {
+    font-size: 1.1rem;
+    font-weight: var(--weight-bold);
+    color: var(--color-deep-night);
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  .pl-laundry-inner p {
+    font-size: 0.95rem;
+    color: var(--color-slate);
+    line-height: 1.65;
+    margin: 0 0 var(--space-4);
+  }
+
+  .pl-laundry-inner p:last-child {
+    margin-bottom: 0;
+  }
+
+  .pl-laundry-inner strong {
+    color: var(--color-deep-night);
+  }
+
+  @media (max-width: 640px) {
+    .pl-laundry-inner {
+      padding: var(--space-5) var(--space-5);
+    }
+  }
+
+  /* Hero */
+  .pl-hero {
+    background: linear-gradient(135deg, #0D7377 0%, #095456 60%, #1A2332 100%);
+    color: white;
+    padding: calc(80px + var(--space-10)) 0 var(--space-10);
+  }
+
+  .pl-hero-inner {
+    max-width: 760px;
+  }
+
+  .pl-breadcrumb {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: var(--space-3);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .pl-breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .pl-breadcrumb a:hover {
+    color: white;
+  }
+
+  .pl-hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 0 0 var(--space-3);
+  }
+
+  .pl-hero-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.65;
+    max-width: 580px;
+    margin: 0 0 var(--space-5);
+  }
+
+  .pl-hero-meta {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .pl-meta-chip {
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 4px 12px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Sections */
+  .pl-section {
+    background: var(--color-sky, #E8F4F5);
+    padding: var(--space-4) 0;
+  }
+
+  .pl-gear-section {
+    padding: var(--space-10) var(--space-5);
+  }
+
+  .pl-gear-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.75rem;
+    color: var(--color-deep-night);
+    margin: 0 0 var(--space-3);
+  }
+
+  .pl-gear-section > p {
+    color: var(--color-slate);
+    line-height: 1.7;
+    margin: 0 0 var(--space-6);
+  }
+
+  .pl-gear-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .pl-gear-card {
+    display: flex;
+    gap: var(--space-4);
+    background: var(--color-sand, #F5F0E8);
+    border-radius: 10px;
+    padding: var(--space-4);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .pl-gear-card-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--color-ocean-teal);
+    opacity: 0.3;
+    flex-shrink: 0;
+    width: 28px;
+    padding-top: 2px;
+  }
+
+  .pl-gear-card-name {
+    font-size: 0.95rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-deep-night);
+    margin: 0 0 var(--space-1);
+  }
+
+  .pl-gear-card-reason {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    line-height: 1.6;
+    margin: 0 0 var(--space-2);
+  }
+
+  .pl-gear-card-footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .pl-gear-price {
+    font-size: 0.78rem;
+    color: var(--color-slate);
+    opacity: 0.7;
+  }
+
+  .pl-gear-link {
+    font-size: 0.82rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-warm-coral);
+    text-decoration: none;
+  }
+
+  .pl-gear-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Editorial */
+  .pl-editorial {
+    padding: var(--space-8) var(--space-5);
+  }
+
+  .pl-editorial p {
+    color: var(--color-slate);
+    line-height: 1.75;
+    margin: 0 0 var(--space-4);
+  }
+
+  /* FAQ */
+  .pl-faq {
+    padding: 0 var(--space-5) var(--space-8);
+  }
+
+  .pl-faq h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--color-deep-night);
+    margin: 0 0 var(--space-4);
+  }
+
+  /* Related */
+  .pl-related {
+    padding: var(--space-10) var(--space-5);
+  }
+
+  .pl-related h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--color-deep-night);
+    margin: 0 0 var(--space-5);
+  }
+
+  .pl-related-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .pl-related-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    background: var(--color-sand, #F5F0E8);
+    border-radius: 10px;
+    padding: var(--space-4);
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+
+  .pl-related-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .pl-related-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .pl-related-title {
+    font-size: 0.88rem;
+    font-weight: var(--weight-semibold);
+    color: var(--color-deep-night);
+    margin-bottom: 2px;
+  }
+
+  .pl-related-desc {
+    font-size: 0.75rem;
+    color: var(--color-slate);
+    opacity: 0.7;
+  }
+
+  /* Print */
+  @media print {
+    .pl-hero {
+      padding: var(--space-6) 0;
+      background: none;
+      color: var(--color-deep-night);
+    }
+
+    .pl-hero-meta,
+    .pl-breadcrumb,
+    .pl-related,
+    .pl-gear-section,
+    .pl-editorial {
+      display: none;
+    }
+
+    .pl-hero-title {
+      font-size: 1.5rem;
+    }
+
+    .pl-section {
+      background: none;
+    }
+  }
+</style>

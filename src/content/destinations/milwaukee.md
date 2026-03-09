@@ -3,6 +3,7 @@ title: "Milwaukee"
 description: "Milwaukee delivers Beer City USA credentials, a stunning lakefront, the iconic Calatrava art museum, legendary cheese curds, and Summerfest every summer."
 heroVideo: ""
 heroImage: ""
+heroAlt: "Milwaukee Art Museum Calatrava wing and Lake Michigan shoreline, Wisconsin"
 tagline: "A Great Lakes city that got over its beer and manufacturing identity crisis and emerged with a Riverwalk, a Calatrava-designed art museum, Summerfest (the world's largest music festival), and excellent Polish food"
 region: great-lakes
 bestMonths: [May, June, July, August, September]

@@ -3,6 +3,7 @@ title: "Chicago"
 description: "Explore Chicago's legendary deep-dish pizza, stunning architecture, lakefront trails, and world-class blues and jazz scene in the Midwest's crown jewel."
 heroVideo: ""
 heroImage: ""
+heroAlt: "Chicago River and Cloud Gate Bean reflecting the skyline, Illinois"
 tagline: "Deep dish or thin crust, jazz or blues, the Art Institute or the 606 Trail — Chicago is the most serious food and culture city in the Midwest by a significant margin and it knows it"
 region: great-lakes
 bestMonths: [May, June, July, August, September, October]

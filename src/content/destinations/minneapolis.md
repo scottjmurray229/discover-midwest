@@ -3,6 +3,7 @@ title: "Minneapolis"
 description: "Minneapolis dazzles with its Chain of Lakes, legendary music scene from Prince to indie rock, stunning falls, craft breweries, and year-round creativity."
 heroVideo: ""
 heroImage: ""
+heroAlt: "Stone Arch Bridge and Mill District at golden hour over the Mississippi, Minneapolis"
 tagline: "More lakes within the city limits than any American city, Prince's hometown, the Walker Art Center, excellent Vietnamese food in South Minneapolis, and winters that build the kind of character most cities only claim"
 region: plains
 bestMonths: [May, June, July, August, September]

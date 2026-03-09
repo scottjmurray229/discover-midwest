@@ -3,6 +3,7 @@ title: "Mackinac Island"
 description: "Mackinac Island travel guide 2026 — a car-free island in the Straits of Mackinac where horses and bicycles are the only transport, the Grand Hotel has been hosting guests since 1887, and fudge shops operate with an enthusiasm that has become the island's second religion."
 heroVideo: ""
 heroImage: ""
+heroAlt: "Mackinac Island Grand Hotel porch and horse-drawn carriage, Michigan"
 tagline: "A car-free island between Lake Huron and Lake Michigan where horses pull carriages past a Victorian hotel that has been open since 1887 and the fudge shops are an institution"
 region: great-lakes
 bestMonths: [May, June, July, August, September, October]

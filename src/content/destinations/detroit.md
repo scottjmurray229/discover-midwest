@@ -3,6 +3,7 @@ title: "Detroit"
 description: "Discover Detroit's stunning comeback — from Motown legends and Diego Rivera murals to Corktown craft cocktails and Eastern Market feasts."
 heroVideo: ""
 heroImage: ""
+heroAlt: "Diego Rivera Industry Murals at DIA and Detroit's riverfront renaissance, Michigan"
 tagline: "The comeback story of the decade — the Eastern Market, Corktown's restaurant explosion, Motown's original studio still playing tours, and the DIA with one of the finest art collections in America inside a city that proved everyone wrong"
 region: great-lakes
 bestMonths: [May, June, July, August, September, October]

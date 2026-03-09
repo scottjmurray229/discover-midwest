@@ -3,6 +3,7 @@ title: "Columbus"
 description: "Columbus is Ohio's secret weapon — a booming food city with killer arts districts, historic neighborhoods, and a contagious creative energy."
 heroVideo: ""
 heroImage: ""
+heroAlt: "Short North Arts District murals and Ohio State campus, Columbus, Ohio"
 tagline: "The Short North arts district, Ohio State's campus energy, a craft brewery scene that punches well above the city's national reputation, and a food scene that has been quietly excellent for years without the Chicago headlines"
 region: ohio-valley
 bestMonths: [April, May, June, July, August, September, October]

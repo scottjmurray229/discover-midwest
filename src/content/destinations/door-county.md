@@ -3,6 +3,7 @@ title: "Door County"
 description: "Door County travel guide 2026 — a 70-mile peninsula between Green Bay and Lake Michigan with cherry orchards, lighthouses, fish boils, waterfront villages, and Wisconsin's most concentrated stretch of Great Lakes scenery."
 heroVideo: ""
 heroImage: ""
+heroAlt: "Cherry orchards and Eagle Bluff Lighthouse, Door County, Wisconsin"
 tagline: "A 70-mile Wisconsin peninsula with cherry orchards, fish boils, 11 lighthouses, and the kind of lakeside scenery that makes Midwest residents wonder why they ever fly to New England"
 region: great-lakes
 bestMonths: [June, July, August, September, October]

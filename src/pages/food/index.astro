@@ -1,0 +1,541 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import EmailCapture from '../../components/EmailCapture.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Food & Drink', url: '/food/' },
+];
+
+const pageTitle = 'Midwest Food & Drink Guide 2026 — From Deep Dish to Kansas City BBQ';
+const pageDescription = "The Midwest has some of America's most underrated food cities — Chicago's deep dish wars, Kansas City's BBQ temples, Cincinnati's controversial chili, Milwaukee's bratwurst scene, and St. Louis's forgotten toasted ravioli.";
+
+const foodScenes = [
+  {
+    city: 'Chicago',
+    slug: 'chicago',
+    signature_dish: 'Deep Dish Pizza + Chicago-Style Hot Dogs',
+    where_to_eat: [
+      { name: 'Lou Malnati\'s', note: 'The gold standard for deep dish — buttery crust, chunky tomato, sausage that covers the whole pie. Multiple locations; the original is in Lincolnwood.' },
+      { name: 'Pequod\'s Pizza', note: 'Caramelized cheese crust around the edge — the secret weapon that sets it apart from every other deep dish. Pan-style, dense, addictive. Lincoln Park.' },
+      { name: 'Superdawg Drive-In', note: 'The classic Chicago hot dog experience — natural casing Vienna Beef, neon-yellow mustard, sport peppers, celery salt, no ketchup ever. Northwest Side institution since 1948.' },
+    ],
+    price_range: '$12–28 per person',
+    gradient: 'linear-gradient(135deg, #1B3A6B 0%, #2E6DB4 100%)',
+    tag: 'Deep Dish Capital',
+    scott_says: 'The deep dish wars are real — Malnati\'s loyalists and Pequod\'s partisans will argue forever. My take: Malnati\'s is more consistent across locations, Pequod\'s caramelized crust is the better pizza technically. Go to both. Also: Chicago hot dogs get overshadowed by deep dish and that\'s wrong. A Vienna Beef dog done right is a perfect food.',
+  },
+  {
+    city: 'Kansas City',
+    slug: 'kansas-city',
+    signature_dish: 'Slow-Smoked BBQ — Burnt Ends, Ribs, Brisket',
+    where_to_eat: [
+      { name: 'Joe\'s Kansas City Bar-B-Que', note: 'The most famous KC BBQ spot for good reason — burnt ends sandwich is the benchmark. Originally in a gas station (Westport location). Expect a line. Worth it.' },
+      { name: 'Arthur Bryant\'s', note: 'The historic legend — Barack Obama ate here, Calvin Trillin called it "the single best restaurant in the world." Crusty burnt ends, vinegar-forward sauce, institutional atmosphere.' },
+      { name: 'Q39', note: 'The upscale option — wood-fired BBQ in a full-service restaurant, excellent cocktails, and some of the best brisket in the city without the gas station line situation.' },
+    ],
+    price_range: '$14–32 per person',
+    gradient: 'linear-gradient(135deg, #8B1A1A 0%, #C0392B 100%)',
+    tag: 'BBQ Capital',
+    scott_says: 'Kansas City BBQ is all about the bark — that dark, spiced crust on slow-smoked brisket and burnt ends. The sauce is sweet and tomato-based (different from Memphis\'s thinner, tangier sauce or Texas\'s "no sauce needed" orthodoxy). Joe\'s is the right first stop. Arthur Bryant\'s is the right pilgrimage. KC is genuinely one of America\'s great food destinations and it costs nothing compared to NYC or SF.',
+  },
+  {
+    city: 'Cincinnati',
+    slug: 'cincinnati',
+    signature_dish: 'Cincinnati Chili — 3-Way, 4-Way, 5-Way',
+    where_to_eat: [
+      { name: 'Skyline Chili', note: 'The dominant chain and the city\'s unofficial religion — Greek-immigrant recipe from 1949, served over spaghetti with cheddar cheese. A 3-Way is the baseline order. Multiple locations everywhere.' },
+      { name: 'Gold Star Chili', note: 'The other camp in the eternal Cincinnati chili war. Slightly sweeter, slightly different spice blend. You will develop an opinion and defend it fiercely after one visit.' },
+      { name: 'Camp Washington Chili', note: 'The original-style, blue-collar chili parlor — open nearly 24 hours, James Beard American Classic award winner, serves the city\'s night-shift workers and foodies alike.' },
+    ],
+    price_range: '$6–14 per person',
+    gradient: 'linear-gradient(135deg, #6B2D8B 0%, #9B59B6 100%)',
+    tag: 'The Chili Debate',
+    scott_says: 'Cincinnati chili is not Texas chili. It is not supposed to be Texas chili. It\'s a cinnamon-and-clove-spiced meat sauce served over spaghetti, topped with a mountain of finely shredded cheddar. A 5-Way adds onions and kidney beans. It sounds wrong. It tastes exactly right. The Skyline vs. Gold Star debate is the Cincinnati equivalent of the deep dish wars — both are worth having opinions about.',
+  },
+  {
+    city: 'Milwaukee',
+    slug: 'milwaukee',
+    signature_dish: 'Bratwurst + Craft Beer',
+    where_to_eat: [
+      { name: 'Usinger\'s Famous Sausage', note: 'Milwaukee\'s legendary sausage maker since 1880 — the retail shop on Old World Third Street sells over 70 varieties. Buy bratwurst, summer sausage, and something you\'ve never heard of. Take home a cooler bag.' },
+      { name: 'Milwaukee Public Market', note: 'The city\'s great food hall — local vendors, fresh-made brats, cheese from Wisconsin dairies, and craft beer from neighborhood breweries all under one roof on the East Side.' },
+      { name: 'Lakefront Brewery', note: 'Friday night fish fry plus excellent brewery tour — the famous Friday fish fry tradition (walleye, perch, cod) paired with local beer in a working brewery is peak Milwaukee culture.' },
+    ],
+    price_range: '$10–22 per person',
+    gradient: 'linear-gradient(135deg, #C8860A 0%, #E8A820 100%)',
+    tag: 'Bratwurst & Beer',
+    scott_says: 'Milwaukee is a food city that doesn\'t market itself as a food city, which means it\'s cheap, genuine, and unpretentious. The Friday fish fry is a Wisconsin institution — every bar and restaurant does it, quality is consistently high, and it\'s usually under $15 with a Spotted Cow. German immigrant food culture here is not a tourist attraction, it\'s just how people eat. Usinger\'s alone is worth a stop.',
+  },
+  {
+    city: 'Detroit',
+    slug: 'detroit',
+    signature_dish: 'Coney Dogs + Detroit-Style Pizza + Fried Chicken',
+    where_to_eat: [
+      { name: 'American Coney Island', note: 'The original, since 1917 — a Coney dog is a natural-casing hot dog with beef-heart chili sauce, mustard, and diced onions. The neighboring Lafayette Coney Island (same family, decades-old feud) is literally next door. Go to American first.' },
+      { name: 'Buddy\'s Pizza', note: 'The inventor of Detroit-style pizza — a rectangular, deep-pan pizza with a lacey, crispy cheese edge, sauce on top of the cheese, and a thick, focaccia-like crust. Every "Detroit-style" pizza elsewhere is copying this.' },
+      { name: 'Kuzzo\'s Chicken & Waffles', note: 'Detroit\'s beloved soul food spot — excellent fried chicken, waffles, collard greens, and mac and cheese in a Livernois neighborhood institution that feels nothing like a trendy brunch place.' },
+    ],
+    price_range: '$8–24 per person',
+    gradient: 'linear-gradient(135deg, #1A3A5C 0%, #2980B9 100%)',
+    tag: 'Coney Dog City',
+    scott_says: 'Detroit has three food identities that don\'t get enough national attention: Coney dogs (which are nothing like a typical hot dog — the chili sauce is everything), Detroit-style pizza (which is genuinely different from Chicago deep dish — thinner crust, crispier, rectangular, sauce on top), and a serious soul food tradition tied to the Great Migration. The Lafayette vs. American Coney debate is Detroit\'s great food argument. Eat both in the same sitting — they\'re next door.',
+  },
+  {
+    city: 'Minneapolis',
+    slug: 'minneapolis',
+    signature_dish: 'Hotdish + Scandinavian Baking + Jucy Lucy Burger',
+    where_to_eat: [
+      { name: 'Matt\'s Bar', note: 'The inventor of the Jucy Lucy — a cheeseburger with the cheese stuffed inside the patty, sealed in, molten when it arrives. Let it cool 3 minutes or burn the roof of your mouth. Cedar-Riverside neighborhood, cash only.' },
+      { name: 'Nighthawks', note: 'The best Scandinavian-influenced modern brunch in the Twin Cities — lefse, open-faced smørrebrød, cardamom rolls, and Finnish pancakes in a relaxed Northeast Minneapolis setting.' },
+      { name: 'Kramarczuk\'s', note: 'The Ukrainian-Eastern European deli near the Mississippi that\'s been feeding Minneapolis since 1954 — kielbasa, stuffed cabbage, pierogies, and rye bread. A time capsule and a great lunch.' },
+    ],
+    price_range: '$10–26 per person',
+    gradient: 'linear-gradient(135deg, #1A6B5A 0%, #27AE8F 100%)',
+    tag: 'Jucy Lucy Country',
+    scott_says: 'Minneapolis has a surprisingly sophisticated food scene built on Scandinavian and Eastern European immigrant traditions that never went out of fashion because they were never trendy — they\'re just how Minnesotans eat. Hotdish (casserole with cream of mushroom soup and tater tots) is genuine comfort food, not ironic. The Jucy Lucy at Matt\'s Bar is a legitimate American burger achievement. And the cardamom roll culture here is serious.',
+  },
+  {
+    city: 'St. Louis',
+    slug: 'st-louis',
+    signature_dish: 'Toasted Ravioli + Provel Cheese Pizza + Ted Drewes Frozen Custard',
+    where_to_eat: [
+      { name: 'Charlie Gitto\'s on the Hill', note: 'The Italian-American neighborhood "The Hill" is where toasted ravioli was invented — breaded, deep-fried pasta pockets dusted with Parmesan. Charlie Gitto\'s version is the benchmark. The Hill is worth exploring on its own.' },
+      { name: 'Imo\'s Pizza', note: 'The St. Louis pizza chain that uses Provel — a processed cheese blend of provolone, Swiss, and cheddar that melts differently and divides opinion ferociously. St. Louis-cut pizza (cracker-thin crust, square cut) is either genius or confusing. Try it.' },
+      { name: 'Ted Drewes Frozen Custard', note: 'A Route 66 institution on Chippewa Street since 1959 — dense frozen custard served in cups, cones, and "concretes" (thick enough to be served upside down). The line in summer wraps around the building. Go anyway.' },
+    ],
+    price_range: '$9–20 per person',
+    gradient: 'linear-gradient(135deg, #B85C00 0%, #E8832A 100%)',
+    tag: 'Toasted Ravioli',
+    scott_says: 'St. Louis food is underrated nationally because its signature dishes — toasted ravioli, Provel cheese pizza, frozen custard — aren\'t glamorous. They\'re working-class Italian-American and immigrant food that became regional institutions. Toasted ravioli at Charlie Gitto\'s is genuinely excellent. Imo\'s pizza with Provel is a thing you either get immediately or spend 20 minutes arguing with yourself about. Ted Drewes is non-negotiable.',
+  },
+  {
+    city: 'Des Moines',
+    slug: 'des-moines',
+    signature_dish: 'Iowa Pork Tenderloin Sandwich + Farm-to-Table Scene',
+    where_to_eat: [
+      { name: 'Joensy\'s Restaurant', note: 'The iconic Iowa pork tenderloin sandwich — breaded, pounded thin, hanging far off the sides of the bun. A cultural institution that locals defend with genuine passion. Rural Iowa town, worth the drive.' },
+      { name: 'Exile Brewing Company', note: 'Des Moines\' most celebrated craft brewery and restaurant in the East Village — farm-influenced menu, excellent Iowa beef burgers, and their own beer program that punches above Des Moines\' reputation.' },
+      { name: 'Centro', note: 'The anchor of the Des Moines upscale dining scene — Italian-influenced, locally-sourced, consistently excellent since 2003. The city\'s food scene has grown dramatically around it.' },
+    ],
+    price_range: '$11–28 per person',
+    gradient: 'linear-gradient(135deg, #3D7A2E 0%, #5BAF42 100%)',
+    tag: 'Tenderloin Country',
+    scott_says: 'Iowa\'s pork tenderloin sandwich is one of America\'s great regional foods that has somehow escaped national fame. The breaded, deep-fried tenderloin is pounded so thin it extends three inches off every side of the bun — it looks absurd and tastes extraordinary. The Des Moines restaurant scene has also genuinely grown up in the last decade — it\'s no longer a flyover food city. The farmers market on Saturday morning is one of the best in the Midwest.',
+  },
+];
+---
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageType="destination"
+  breadcrumbs={breadcrumbs}
+>
+
+<style>
+  .food-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 var(--space-6) 60px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1B1B1B 0%, #3D1A00 50%, #8B2500 100%);
+  }
+
+  .food-hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+  }
+
+  .food-hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(27, 27, 27, 0.94) 0%, rgba(27, 27, 27, 0.3) 60%, transparent 100%);
+  }
+
+  .food-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+  }
+
+  .food-hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #FFA726;
+    margin-bottom: var(--space-3);
+  }
+
+  .food-hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: var(--weight-bold);
+    color: #fff;
+    line-height: 1.15;
+    margin: 0 0 var(--space-4);
+  }
+
+  .food-hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.6;
+    margin: 0 0 var(--space-6);
+    max-width: 640px;
+  }
+
+  .food-hero-meta {
+    display: flex;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .food-hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .food-hero-meta-label { font-size: 0.68rem; font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
+  .food-hero-meta-value { font-size: 1.4rem; font-weight: var(--weight-bold); color: #fff; }
+
+  /* Personal quote */
+  .food-personal { padding-block: var(--space-8); }
+  .food-personal-quote {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-8);
+    border-left: 4px solid #E8652A;
+    background: var(--color-sky, #fff8f3);
+    border-radius: 0 12px 12px 0;
+  }
+  .food-personal-quote p { font-size: var(--text-body, 1.05rem); color: var(--color-heading, #1a2332); line-height: 1.7; font-style: italic; margin-bottom: var(--space-3); }
+  .food-personal-quote cite { font-size: 0.85rem; color: #E8652A; font-weight: var(--weight-semibold); font-style: normal; }
+
+  /* Section */
+  .food-section { padding: var(--space-6) 0 var(--space-10); }
+  .food-section-heading { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: var(--weight-bold); color: var(--color-deep-night, #1a2332); margin: 0 0 var(--space-2); text-align: center; }
+  .food-section-sub { font-size: 1rem; color: var(--color-slate, #5a6a7a); text-align: center; margin: 0 0 var(--space-8); }
+
+  /* Food city cards */
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .food-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--color-white, #fff);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .food-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+
+  .food-card-header {
+    padding: var(--space-5) var(--space-5) var(--space-4);
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .food-card-tag { display: inline-block; font-size: 0.65rem; font-weight: var(--weight-bold); text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.18); backdrop-filter: blur(4px); padding: 3px 10px; border-radius: 20px; margin-bottom: var(--space-2); width: fit-content; }
+  .food-card-city { font-size: 1.3rem; font-weight: var(--weight-bold); color: #fff; line-height: 1.2; margin: 0 0 4px; }
+  .food-card-dish { font-size: 0.82rem; color: rgba(255,255,255,0.8); font-weight: var(--weight-medium); line-height: 1.4; }
+
+  .food-card-body { padding: var(--space-4) var(--space-5) var(--space-5); flex: 1; display: flex; flex-direction: column; gap: var(--space-4); }
+
+  .food-card-price { display: flex; align-items: center; gap: var(--space-2); font-size: 0.8rem; font-weight: var(--weight-semibold); color: #2E7D32; }
+  .food-card-price::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #2E7D32; flex-shrink: 0; }
+
+  /* Where to eat */
+  .food-where { display: flex; flex-direction: column; gap: var(--space-3); }
+  .food-where-heading { font-size: 0.72rem; font-weight: var(--weight-bold); text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-slate, #5a6a7a); }
+  .food-spot { padding: var(--space-3); background: rgba(0,0,0,0.025); border-radius: 10px; }
+  .food-spot-name { font-size: 0.88rem; font-weight: var(--weight-bold); color: var(--color-heading, #1a2332); margin-bottom: 3px; }
+  .food-spot-note { font-size: 0.81rem; color: var(--color-body, #3d4d5e); line-height: 1.6; }
+
+  /* Scott says */
+  .food-scott-says { padding: var(--space-3) var(--space-4); background: #FFF8F0; border-left: 3px solid #E8652A; border-radius: 0 8px 8px 0; }
+  .food-scott-label { font-size: 0.65rem; font-weight: var(--weight-bold); text-transform: uppercase; letter-spacing: 0.09em; color: #E8652A; margin-bottom: 4px; }
+  .food-scott-text { font-size: 0.82rem; color: var(--color-body, #3d4d5e); line-height: 1.62; font-style: italic; }
+
+  .food-dest-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; font-weight: var(--weight-semibold); color: #2E6DB4; text-decoration: none; padding-top: var(--space-2); border-top: 1px solid rgba(0,0,0,0.06); }
+  .food-dest-link:hover { text-decoration: underline; }
+
+  /* Bucket list */
+  .food-bucket { padding: var(--space-8) 0; background: linear-gradient(135deg, #1B1B1B 0%, #3D1A00 100%); }
+  .food-bucket-inner { max-width: 860px; margin: 0 auto; padding: 0 var(--space-6); }
+  .food-bucket-heading { font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: var(--weight-bold); color: #fff; margin: 0 0 var(--space-3); text-align: center; }
+  .food-bucket-intro { font-size: 0.95rem; color: rgba(255,255,255,0.72); line-height: 1.7; text-align: center; margin: 0 0 var(--space-7); max-width: 640px; margin-left: auto; margin-right: auto; }
+  .food-bucket-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-4); }
+  .food-bucket-item { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: var(--space-4) var(--space-5); }
+  .food-bucket-num { font-size: 1.8rem; font-weight: var(--weight-bold); color: #FFA726; line-height: 1; margin-bottom: var(--space-2); }
+  .food-bucket-title { font-size: 0.92rem; font-weight: var(--weight-bold); color: #fff; margin-bottom: var(--space-2); }
+  .food-bucket-text { font-size: 0.81rem; color: rgba(255,255,255,0.68); line-height: 1.6; }
+
+  /* CTA */
+  .food-cta-section { padding: var(--space-8) 0; }
+  .food-cta-card { background: linear-gradient(135deg, #1B1B1B 0%, #3D1A00 100%); border-radius: 20px; padding: var(--space-8) var(--space-6); text-align: center; color: #fff; }
+  .food-cta-heading { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: var(--weight-bold); margin: 0 0 var(--space-3); color: #fff; }
+  .food-cta-text { font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 520px; margin: 0 auto var(--space-5); line-height: 1.6; }
+  .food-cta-button { display: inline-block; background: #FFA726; color: #fff; font-size: 0.9rem; font-weight: var(--weight-semibold); padding: 12px 28px; border-radius: 40px; text-decoration: none; transition: background 0.2s ease, transform 0.2s ease; }
+  .food-cta-button:hover { background: #E65100; transform: translateY(-2px); }
+
+  /* Cross-links */
+  .food-crosslinks { padding: 0 0 var(--space-10); }
+  .food-crosslinks-heading { font-size: 1.1rem; font-weight: var(--weight-bold); color: var(--color-deep-night, #1a2332); text-align: center; margin: 0 0 var(--space-4); }
+  .food-crosslinks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); max-width: 640px; margin: 0 auto; }
+  .food-crosslink-card { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding: var(--space-5) var(--space-4); background: var(--color-white, #fff); border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; text-decoration: none; color: inherit; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .food-crosslink-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .food-crosslink-icon { font-size: 1.8rem; }
+  .food-crosslink-label { font-size: 0.95rem; font-weight: var(--weight-bold); color: var(--color-deep-night, #1a2332); }
+  .food-crosslink-desc { font-size: 0.78rem; color: var(--color-slate, #5a6a7a); line-height: 1.4; }
+
+  @media (max-width: 640px) {
+    .food-crosslinks-grid { grid-template-columns: 1fr; }
+    .food-grid { grid-template-columns: 1fr; }
+    .food-hero { padding: 0 var(--space-4) 40px; min-height: 55vh; }
+    .food-hero-meta { gap: var(--space-4); }
+    .food-bucket-list { grid-template-columns: 1fr; }
+  }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+
+  <!-- Hero -->
+  <header class="food-hero">
+    <video class="food-hero-video" autoplay muted loop playsinline preload="metadata">
+      <source src="/videos/pillar/food-hero.mp4" type="video/mp4" />
+    </video>
+    <div class="food-hero-gradient"></div>
+    <div class="food-hero-content">
+      <p class="food-hero-eyebrow">Midwest Food & Drink</p>
+      <h1 class="food-hero-title">Midwest Food & Drink Guide 2026</h1>
+      <p class="food-hero-subtitle">Deep dish pizza wars in Chicago, BBQ temples in Kansas City, controversial chili in Cincinnati, bratwurst and beer in Milwaukee — the Midwest is one of America's great underrated food regions. Here's where to eat, what to order, and what to actually expect.</p>
+      <div class="food-hero-meta">
+        <div class="food-hero-meta-item">
+          <span class="food-hero-meta-label">Food Cities</span>
+          <span class="food-hero-meta-value">8</span>
+        </div>
+        <div class="food-hero-meta-item">
+          <span class="food-hero-meta-label">Dishes Covered</span>
+          <span class="food-hero-meta-value">16+</span>
+        </div>
+        <div class="food-hero-meta-item">
+          <span class="food-hero-meta-label">Avg Meal Cost</span>
+          <span class="food-hero-meta-value">$10–28</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-content">
+    <Breadcrumb items={breadcrumbs} />
+  </div>
+
+  <!-- Personal Intro -->
+  <section class="food-personal reveal">
+    <div class="container-content">
+      <blockquote class="food-personal-quote">
+        <p>The Midwest doesn't have the PR machine of New York or the sunshine glamour of California, so its food culture gets dismissed by people who've never eaten a proper Kansas City burnt ends sandwich or ordered a Cincinnati 5-Way at 2am. The food here is immigrant food that became regional identity: German bratwurst in Milwaukee, Greek-inspired chili in Cincinnati, Italian-American ravioli in St. Louis, Hungarian kolbász in Cleveland. These dishes aren't fusion experiments — they've been refined for a century. And they're cheap. A truly excellent meal in Kansas City or Cincinnati costs half what a mediocre meal costs in San Francisco. That's not a secret worth keeping.</p>
+        <cite>— Scott Murray, Discover Midwest</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Food City Cards -->
+  <section class="food-section reveal">
+    <div class="container-content">
+      <h2 class="food-section-heading">Midwest's Best Food Cities</h2>
+      <p class="food-section-sub">Eight cities with signature dishes worth planning your trip around — from deep dish debates to frozen custard pilgrimages.</p>
+      <div class="food-grid">
+        {foodScenes.map((scene) => (
+          <div class="food-card reveal">
+            <div class="food-card-header" style={`background: ${scene.gradient};`}>
+              {scene.tag && <span class="food-card-tag">{scene.tag}</span>}
+              <h3 class="food-card-city">{scene.city}</h3>
+              <div class="food-card-dish">{scene.signature_dish}</div>
+            </div>
+            <div class="food-card-body">
+              <div class="food-card-price">{scene.price_range}</div>
+              <div class="food-where">
+                <div class="food-where-heading">Where to eat</div>
+                {scene.where_to_eat.map((spot) => (
+                  <div class="food-spot">
+                    <div class="food-spot-name">{spot.name}</div>
+                    <div class="food-spot-note">{spot.note}</div>
+                  </div>
+                ))}
+              </div>
+              <div class="food-scott-says">
+                <div class="food-scott-label">Scott says</div>
+                <div class="food-scott-text">{scene.scott_says}</div>
+              </div>
+              <a href={`/destinations/${scene.slug}/`} class="food-dest-link">Explore {scene.city} &rarr;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bucket List -->
+  <section class="food-bucket reveal">
+    <div class="food-bucket-inner">
+      <h2 class="food-bucket-heading">Midwest Food Bucket List</h2>
+      <p class="food-bucket-intro">Ten things you must eat before you can claim you've done the Midwest food scene justice.</p>
+      <div class="food-bucket-list">
+        <div class="food-bucket-item">
+          <div class="food-bucket-num">01</div>
+          <div class="food-bucket-title">Kansas City burnt ends</div>
+          <p class="food-bucket-text">The fatty, caramelized end cuts of smoked brisket — twice-cooked, sauced, and served in a pile. Joe's Kansas City, Arthur Bryant's, or Q39. Nothing in American BBQ beats a good burnt ends sandwich.</p>
+        </div>
+        <div class="food-bucket-item">
+          <div class="food-bucket-num">02</div>
+          <div class="food-bucket-title">Chicago deep dish at Pequod's</div>
+          <p class="food-bucket-text">Not delivery, not a chain location — sit in at Pequod's Lincoln Park at lunch when the caramelized crust is at its crispiest and the wait is manageable. Sausage and extra cheese, no arguments.</p>
+        </div>
+        <div class="food-bucket-item">
+          <div class="food-bucket-num">03</div>
+          <div class="food-bucket-title">Cincinnati 5-Way chili</div>
+          <p class="food-bucket-text">Skyline or Gold Star, first thing in the morning when the chili parlor opens. Spaghetti, chili, onions, kidney beans, and a mountain of finely shredded cheddar. You'll order it again before you leave Cincinnati.</p>
+        </div>
+        <div class="food-bucket-item">
+          <div class="food-bucket-num">04</div>
+          <div class="food-bucket-title">Iowa pork tenderloin sandwich</div>
+          <p class="food-bucket-text">The flattened, breaded pork tenderloin hanging off the bun by three inches — at a gas station restaurant in rural Iowa where it costs $7. This is peak Midwest: extraordinary food, zero pretension.</p>
+        </div>
+        <div class="food-bucket-item">
+          <div class="food-bucket-num">05</div>
+          <div class="food-bucket-title">Milwaukee Friday fish fry</div>
+          <p class="food-bucket-text">At a neighborhood bar, not a restaurant. Walleye or perch, coleslaw, rye bread, tartar sauce, and a Spotted Cow or Lakefront. Under $15. The most Midwestern dining experience available.</p>
+        </div>
+        <div class="food-bucket-item">
+          <div class="food-bucket-num">06</div>
+          <div class="food-bucket-title">Jucy Lucy at Matt's Bar</div>
+          <p class="food-bucket-text">Minneapolis's cheese-inside burger, cash only, Cedar-Riverside neighborhood. Wait the 3 minutes before biting — the cheese is molten enough to burn. The variation at the 5-8 Club is also excellent.</p>
+        </div>
+        <div class="food-bucket-item">
+          <div class="food-bucket-num">07</div>
+          <div class="food-bucket-title">Detroit Coney dog at American Coney Island</div>
+          <p class="food-bucket-text">Natural casing dog, beef-heart chili sauce, yellow mustard, raw onion. Walk next door to Lafayette and have a second one to form your opinion on the great Detroit food debate.</p>
+        </div>
+        <div class="food-bucket-item">
+          <div class="food-bucket-num">08</div>
+          <div class="food-bucket-title">St. Louis toasted ravioli on The Hill</div>
+          <p class="food-bucket-text">The Italian-American neighborhood where it was invented — breaded, deep-fried pasta pockets dusted with Parmesan and served with marinara. Charlie Gitto's, Zia's, or Mama Toscano's. All excellent.</p>
+        </div>
+        <div class="food-bucket-item">
+          <div class="food-bucket-num">09</div>
+          <div class="food-bucket-title">Ted Drewes concrete in St. Louis</div>
+          <p class="food-bucket-text">The thick frozen custard served upside-down to prove it won't spill. Route 66 institution since 1959. Get the Terramizzou or a Cardinal Sin — go in summer when the line wraps around the building.</p>
+        </div>
+        <div class="food-bucket-item">
+          <div class="food-bucket-num">10</div>
+          <div class="food-bucket-title">Detroit-style pizza at Buddy's</div>
+          <p class="food-bucket-text">The original. Rectangular pan pizza with a lacey burned cheese edge, thick focaccia crust, sauce on top of the cheese. Every other "Detroit-style" place is copying this. Go to the source.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="food-cta-section reveal">
+    <div class="container-content">
+      <div class="food-cta-card">
+        <h2 class="food-cta-heading">Plan Your Midwest Food Road Trip</h2>
+        <p class="food-cta-text">Our AI travel planner can build a custom Midwest itinerary routing you through the food cities you want to hit — factoring in your dates, budget, and how far you're willing to drive for a burnt ends sandwich.</p>
+        <a href="/plan/" class="food-cta-button">Start Planning &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ items={[
+    {
+      question: "What is the best food city in the Midwest?",
+      answer: "Chicago wins on sheer volume and variety — deep dish pizza, Chicago hot dogs, Italian beef sandwiches, a Michelin-starred dining scene, and some of the country's best Mexican and Polish food in neighborhoods most visitors never see. But Kansas City is the answer if you're specifically talking about a singular world-class food identity: nowhere does BBQ like Kansas City. For value, Cincinnati and Milwaukee both offer extraordinary food at prices that feel like you've traveled back in time. The honest answer is that it depends what you're after — the Midwest has no weak food cities."
+    },
+    {
+      question: "Is Chicago food overrated?",
+      answer: "Deep dish specifically gets criticized by New York pizza loyalists, but the criticism is mostly genre confusion — deep dish is a different dish than pizza, more like a pie than a flatbread. Judge it on its own terms and the best Chicago deep dish (Pequod's caramelized crust, Malnati's buttery cracker-thin alternative) is extraordinary. What IS underrated about Chicago food: the Italian beef sandwich (wet, on Italian bread), the Chicago hot dog (Vienna Beef, sport peppers, no ketchup), and the city's extraordinary Mexican food in Pilsen and Little Village. The tourist spots serve good food. The neighborhood spots serve the real thing."
+    },
+    {
+      question: "Is Kansas City or Memphis BBQ better?",
+      answer: "This is a genuine regional debate with no right answer, but here's the breakdown: Kansas City BBQ uses a wider variety of meats (pork ribs, beef brisket, burnt ends, chicken), relies on a sweet tomato-based sauce, and emphasizes a thick bark from the rub. Memphis BBQ focuses more exclusively on pork — ribs either dry (rubbed only) or wet (sauced) — with a thinner, tangier vinegar-forward sauce. Kansas City has more variety; Memphis has purer pork focus. Texas does brisket and beef ribs with minimal sauce. All three are worth visiting. Kansas City's burnt ends are a unique achievement with no Memphis equivalent."
+    },
+    {
+      question: "What is Cincinnati chili and why does it have cinnamon in it?",
+      answer: "Cincinnati chili was created in 1922 by Macedonian immigrant Tom Kiradjieff, who adapted a Macedonian meat stew with spices including cinnamon, cloves, allspice, and chocolate — spices common in Mediterranean cooking but unusual in American chili. Served over spaghetti (a nod to both immigrant practicality and the region's German and Italian worker communities), topped with finely shredded cheddar. A '3-Way' is spaghetti + chili + cheese. A '5-Way' adds onions and kidney beans. It does not taste like Texas chili and it's not supposed to. The cinnamon is the point."
+    },
+    {
+      question: "What are the best cheap eats in the Midwest?",
+      answer: "The Midwest is genuinely the best region in America for affordable quality food. Cincinnati chili: a full 3-Way at Skyline is around $7. Iowa pork tenderloin sandwich at a rural gas station: $6–8. Milwaukee Friday fish fry at a neighborhood bar: $12–15 with beer. Detroit Coney dog at American Coney Island: $4–6 each. Kansas City BBQ sandwich at Joe's: $14 for one of America's great sandwiches. Minneapolis Jucy Lucy at Matt's Bar: $10. None of these are compromises — they're what the locals eat. Skip the hotel restaurant, ask the front desk where they actually go for lunch."
+    }
+  ]} />
+
+  <!-- Email Capture -->
+  <div class="container-content reveal" style="padding-bottom: var(--space-6);">
+    <EmailCapture
+      leadMagnet="Get the Midwest Food & Drink City Guide"
+      description="City-by-city breakdown of what to eat, where to go, and what each regional dish actually tastes like — no food-media hype, just honest picks."
+      bullets={[
+        'Kansas City BBQ: ranked spots and what to order at each',
+        'Chicago deep dish guide — Malnati\'s vs Pequod\'s vs everyone else',
+        'Cincinnati chili explained + Skyline vs Gold Star vs Camp Washington',
+        'Midwest food road trip: a 7-day eating itinerary',
+      ]}
+      guideTag="pillar-food-midwest"
+    />
+  </div>
+
+  <!-- Cross-links -->
+  <section class="food-crosslinks reveal">
+    <div class="container-content">
+      <h3 class="food-crosslinks-heading">Keep Exploring the Midwest</h3>
+      <div class="food-crosslinks-grid">
+        <a href="/destinations/" class="food-crosslink-card">
+          <span class="food-crosslink-icon">&#127963;</span>
+          <span class="food-crosslink-label">All Destinations</span>
+          <span class="food-crosslink-desc">Every Midwest city explored with honest guides and local tips</span>
+        </a>
+        <a href="/festivals/" class="food-crosslink-card">
+          <span class="food-crosslink-icon">&#127939;</span>
+          <span class="food-crosslink-label">Midwest Festivals</span>
+          <span class="food-crosslink-desc">State fairs, music festivals, and cultural events worth planning around</span>
+        </a>
+        <a href="/road-trips/" class="food-crosslink-card">
+          <span class="food-crosslink-icon">&#128663;</span>
+          <span class="food-crosslink-label">Road Trips</span>
+          <span class="food-crosslink-desc">Connect the food cities — great Midwest road trip routes</span>
+        </a>
+        <a href="/practical/" class="food-crosslink-card">
+          <span class="food-crosslink-icon">&#128204;</span>
+          <span class="food-crosslink-label">Trip Planning</span>
+          <span class="food-crosslink-desc">Getting around the Midwest — flights, drives, and how to plan</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+  }
+</script>

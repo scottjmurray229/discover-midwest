@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://discovermidwest.info/sitemap-index.xml
+Sitemap: https://discovermidwest.info/video-sitemap.xml

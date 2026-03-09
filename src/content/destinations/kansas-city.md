@@ -43,11 +43,66 @@ highlights:
     icon: "🛍️"
 relatedDestinations: [st-louis, minneapolis, chicago]
 gradientColors: "from-amber-900 via-orange-800 to-amber-900"
-contentStatus: draft
+faqItems:
+  - question: "What makes Kansas City BBQ different?"
+    answer: "Kansas City BBQ emphasizes slow-smoked beef (especially burnt ends — the charred, caramelized ends of the brisket that were originally given away free), pork ribs, and a thick, sweet, tomato-based sauce. The smoke ring, bark, and tenderness standards are extremely high at the top joints. Multiple 'BBQ trails' have developed, but the key destinations are Joe's Kansas City, Gates Bar-B-Q, and Arthur Bryant's."
+  - question: "Where is the best BBQ in Kansas City?"
+    answer: "Joe's Kansas City (formerly Oklahoma Joe's) is the most-hyped and deservedly excellent. Get the Z-Man sandwich and the burned ends. Gates Bar-B-Q is the local institution — multiple locations and lines out the door. Arthur Bryant's is the historic landmark — less polished but authentic. Don't try to hit all three in one day; one serious BBQ meal per day is the right pace."
+  - question: "What is the 18th and Vine Jazz District?"
+    answer: "18th and Vine is the historic center of Kansas City jazz — the intersection where Charlie Parker developed his bebop style in the 1940s and where dozens of KC jazz legends played. The American Jazz Museum and Negro Leagues Baseball Museum occupy a shared complex here. Both are excellent — the jazz museum has listening stations and live performances; the baseball museum documents one of American history's most important parallel institutions."
+  - question: "When is the Kansas City Jazz and Heritage Festival?"
+    answer: "The American Jazz Museum hosts events year-round including the Charlie Parker Birthday Celebration each August and the Kansas City Jazz and Blues festival in summer. Check americanjazzmuseum.org for current events."
+  - question: "Is Kansas City worth a dedicated trip?"
+    answer: "Yes, for 2-3 days. The BBQ alone justifies it if you're serious about barbecue. Add the Nelson-Atkins Museum of Art (free, one of the top art museums in the country), the Jazz Museum, the River Market farmers market, and the Boulevard Brewing tour, and you have a full trip."
+  - question: "What else should I do in Kansas City beyond BBQ?"
+    answer: "Nelson-Atkins Museum of Art (free, excellent contemporary sculpture park with shuttlecocks by Claes Oldenburg). Boulevard Brewing Company tours. Country Club Plaza (Spanish-architecture outdoor shopping and dining district). Kauffman Stadium for Royals baseball (one of the best ballparks in MLB). The River Market on Saturday morning."
+  - question: "What is Kansas City, Missouri vs Kansas City, Kansas?"
+    answer: "Kansas City straddles the state line — Kansas City, Missouri (the larger city with most tourist destinations) and Kansas City, Kansas (KCK) are separate cities. Most BBQ joints, the jazz district, the Nelson-Atkins, and the Plaza are in Missouri. Joe's Kansas City is actually in a gas station in Kansas City, Kansas."
+  - question: "How do I get to Kansas City?"
+    answer: "Kansas City International Airport (MCI) underwent a complete rebuild — a new terminal opened in 2023. Direct flights from most major US cities. Amtrak Southwest Chief stops in Kansas City on the LA-Chicago route."
+affiliatePicks:
+  - name: "Hotel Phillips Kansas City"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/hotel-phillips-curio-collection-by-hilton.html?aid=2778866"
+    description: "Art Deco landmark in downtown KC — beautiful historic interior, central location."
+    priceRange: "$$"
+  - name: "Kansas City BBQ Tour"
+    type: tour
+    url: "https://www.getyourguide.com/kansas-city-l2561/?partner_id=IVN6IQ3&q=Kansas+City+BBQ+tour"
+    description: "Guided BBQ tour hitting the city's top smoke houses with tasting."
+    priceRange: "$$"
+  - name: "Jazz District and History Walking Tour"
+    type: tour
+    url: "https://www.getyourguide.com/kansas-city-l2561/?partner_id=IVN6IQ3&q=Kansas+City+jazz+tour"
+    description: "Guided 18th and Vine district walking tour with American Jazz Museum entry."
+    priceRange: "$"
+scottTips:
+  logistics: "Kansas City International Airport (MCI) has direct flights from major US hubs. Downtown is compact. The Country Club Plaza area (midtown) is the main tourist and dining zone. 18th and Vine is southeast of downtown."
+  bestTime: "April–October for good weather and outdoor events. BBQ is a year-round pilgrimage. November–March is fine but less atmospheric."
+  gettingAround: "Car recommended — Kansas City is spread out. Uber/Lyft work well. The streetcar (free) runs 2.2 miles on Main Street through downtown."
+  money: "Kansas City is affordable. Hotels run $100–180/night in good locations. BBQ meals run $15–30/person at the top joints. Nelson-Atkins is free."
+  safety: "Downtown and the Plaza are safe tourist areas. Some parts of KCMO's east and west sides have elevated crime rates — standard urban awareness."
+  packing: "Casual clothing appropriate for BBQ joints (you will get sauce on yourself). Layers for Midwest weather variability."
+  localCulture: "Kansas City is deeply proud of its BBQ, its jazz heritage, and its underdog status relative to the coasts. The BBQ community is competitive and opinionated — locals have strong opinions about which joint is best and will share them enthusiastically."
+contentStatus: published
 draft: false
 ---
+Kansas City is America's barbecue capital — a city on the Missouri-Kansas border with a BBQ tradition going back over a century, featuring slow-smoked burnt ends and ribs at legendary joints like Joe's Kansas City, Gates, and Arthur Bryant's. It also has world-class jazz heritage (the 18th & Vine district) and a collection of Midwest cultural institutions that surprise most visitors.
+
 
 # Kansas City: The BBQ Capital Has So Much More
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/kansas-city-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #dc2626, #92400e, #1e40af);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Kansas City: Burnt Ends and Jazz</div>
+    <p class="ib-text">The BBQ capital, jazz heritage, and the best boulevards in the Midwest.</p>
+  </div>
+</div>
+
 
 I came to Kansas City for the barbecue. That is the honest truth. I figured I would eat my weight in burnt ends, check a box, and move on. That was five visits ago. Kansas City keeps pulling me back, and while the BBQ remains a legitimate reason to plan a trip, the city's jazz heritage, thriving arts scene, and genuinely warm culture have made it one of my favorite stops in the entire Midwest.
 

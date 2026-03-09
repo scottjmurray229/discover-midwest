@@ -43,11 +43,66 @@ highlights:
     icon: "🌊"
 relatedDestinations: [indianapolis, st-louis, chicago]
 gradientColors: "from-red-900 via-rose-800 to-red-900"
-contentStatus: draft
+faqItems:
+  - question: "What is Cincinnati chili?"
+    answer: "Cincinnati chili is a regional specialty that bears little resemblance to Texas chili — it's a thin, sauce-like meat preparation seasoned with cinnamon, allspice, and chocolate, served over spaghetti noodles, topped with shredded cheddar, beans, and onions in combinations called 'ways' (2-way: chili and pasta, 3-way: add cheese, 4-way: add onions or beans, 5-way: everything). Skyline Chili and Gold Star are the chains. Most visitors either love it or find it bizarre."
+  - question: "Is Cincinnati worth visiting?"
+    answer: "Yes, as part of a Midwest road trip. The Eden Park hill overlooking the Ohio River, the Cincinnati Art Museum (free), the Roebling Suspension Bridge (predecessor to the Brooklyn Bridge), and Over-the-Rhine (OTR — the largest intact urban historic district in the country) together make a compelling full day."
+  - question: "What is Over-the-Rhine?"
+    answer: "Over-the-Rhine (OTR) is Cincinnati's most historically significant neighborhood — a dense grid of 19th-century Italianate architecture built by German immigrants in the 1800s. After decades of decline, it's become Cincinnati's most vibrant restaurant and bar district while retaining its remarkable architectural fabric. The Findlay Market anchors the northern end."
+  - question: "What is Findlay Market?"
+    answer: "Findlay Market is Cincinnati's oldest public market — operating continuously since 1855. Saturday morning is the main event, with 40+ indoor vendors and 100+ outdoor vendors selling produce, meat, cheese, and prepared food. It's a genuine food culture experience."
+  - question: "Is Cincinnati's art museum worth visiting?"
+    answer: "The Cincinnati Art Museum has an excellent collection of 67,000 objects and is entirely free to enter. The European Old Masters, American art, and a notable collection of ancient Near Eastern art are particular strengths."
+  - question: "What should I eat in Cincinnati?"
+    answer: "Cincinnati chili (Skyline for the experience). Goetta (a pork-oat breakfast sausage unique to the region — try it at Taste of Belgium). German cuisine at Mecklenburg Gardens (since 1865). Contemporary dining in OTR."
+  - question: "When is the best time to visit Cincinnati?"
+    answer: "April–October for the Ohio River scenery and outdoor activities. The Cincinnati Music Festival (July, Riverbend amphitheater) is the premier summer event. Reds baseball (April–October) at Great American Ball Park on the river."
+  - question: "How do I get to Cincinnati?"
+    answer: "Cincinnati/Northern Kentucky International Airport (CVG) is actually in Kentucky — 15 miles south of downtown. No rail connection; Uber/Lyft to downtown runs $25-35. Amtrak doesn't serve Cincinnati directly."
+affiliatePicks:
+  - name: "21c Museum Hotel Cincinnati"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/21c-museum-hotel-cincinnati.html?aid=2778866"
+    description: "Contemporary art museum hotel in OTR with art installations throughout and excellent rooftop."
+    priceRange: "$$$"
+  - name: "Cincinnati Food and Neighborhood Tour"
+    type: tour
+    url: "https://www.getyourguide.com/cincinnati-l2537/?partner_id=IVN6IQ3&q=Cincinnati+food+tour"
+    description: "Guided food tour through OTR and Findlay Market covering chili, goetta, and local restaurants."
+    priceRange: "$$"
+  - name: "Ohio River Skyline Cruise"
+    type: tour
+    url: "https://www.getyourguide.com/cincinnati-l2537/?partner_id=IVN6IQ3&q=Cincinnati+river+cruise"
+    description: "Sightseeing cruise on the Ohio River with Cincinnati skyline views."
+    priceRange: "$"
+scottTips:
+  logistics: "CVG airport is in Kentucky. Downtown Cincinnati is on the Ohio River — Kentucky (Newport and Covington) is directly across the bridge. Covington's Mainstrasse Village is a good dining alternative to OTR."
+  bestTime: "April–October. Reds season (April–October) adds ballpark energy. Findlay Market runs year-round but Saturday in warm weather is the peak experience."
+  gettingAround: "Streetcar (The Connector) runs through OTR and downtown. Car helpful for Eden Park and outer neighborhoods. Downtown is walkable."
+  money: "Cincinnati is very affordable. Art museum is free. Hotels in OTR and downtown run $100–180/night."
+  safety: "OTR and downtown are safe tourist areas. Parts of Cincinnati have elevated crime rates away from tourist zones."
+  packing: "Comfortable shoes for OTR's brick streets. Layer for Ohio River breezes."
+  localCulture: "Cincinnati chili is genuinely divisive — don't dismiss it as wrong. Try it with an open mind (it's a different dish, not a bad version of Texas chili). The German heritage runs deep — look for references to '1850s German immigrant' on menus and at Findlay Market."
+contentStatus: published
 draft: false
 ---
+Cincinnati is the Ohio River city that gave the world chili served on spaghetti — a regional cult food that divides the nation. Beyond the chili debate, Cincinnati has a remarkable Victorian architecture heritage, the best skyline on the Ohio River, an exceptional contemporary art museum, and the oldest professional baseball team in America (the Reds).
+
 
 # Cincinnati: The Comeback City of the Ohio Valley
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/cincinnati-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #dc2626, #1e40af, #166534);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Cincinnati: The Queen City</div>
+    <p class="ib-text">Cincinnati chili, the Reds, and a skyline built for the river.</p>
+  </div>
+</div>
+
 
 Cincinnati has one of the best comeback stories in the Midwest. A decade ago, Over-the-Rhine was a neighborhood people warned you away from. Today it is one of the most exciting urban districts in America, packed into gorgeous 19th-century Italianate buildings that other cities tore down decades ago. Cincinnati kept them, and now the city is reaping the rewards. Add in a food culture that goes far beyond the famous chili, a craft beer scene that rivals any in the region, and a riverfront that finally lives up to the city's setting, and you have a destination that deserves serious attention.
 

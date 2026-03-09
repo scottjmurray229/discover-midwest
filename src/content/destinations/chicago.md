@@ -43,11 +43,66 @@ highlights:
     icon: "🚴"
 relatedDestinations: [milwaukee, indianapolis, minneapolis]
 gradientColors: "from-blue-900 via-sky-800 to-blue-900"
-contentStatus: draft
+faqItems:
+  - question: "What is the best way to get around Chicago?"
+    answer: "The CTA 'L' train covers most tourist destinations — the Loop, Millennium Park, Lincoln Park, Wicker Park, and both airports. Day passes ($5) are excellent value. The Lakefront Trail (18 miles of paved path along Lake Michigan) is the best way to see the city on a nice day. Taxis and Uber are easy but slow during rush hour."
+  - question: "Is Chicago safe for tourists?"
+    answer: "The tourist areas — the Loop, Magnificent Mile, Lincoln Park, Wicker Park, River North — are safe and active. Chicago's high crime statistics are concentrated in specific South and West Side neighborhoods far from tourist areas. Standard urban awareness applies. The Lakefront is very safe at all hours in summer."
+  - question: "When is the best time to visit Chicago?"
+    answer: "June through September is peak season — warm lakefront weather, outdoor festivals (Lollapalooza, Chicago Jazz Festival, Taste of Chicago), and the city at its most beautiful. May and October are shoulder season with fewer crowds and lower prices. Winter (December–March) is cold and grey but has the Chicago Symphony, world-class restaurants, and significantly cheaper hotel rates."
+  - question: "How many days do I need for Chicago?"
+    answer: "Three days covers the essentials: architecture cruise, Millennium Park, Art Institute, and one neighborhood deep-dive (Pilsen, Wicker Park, or Logan Square). Five days allows for Wrigley Field (summer), the Chicago Blues Festival, day trips to the Indiana Dunes, and a proper exploration of the food scene."
+  - question: "What neighborhoods should I prioritize?"
+    answer: "The Loop for architecture and the Art Institute. Lincoln Park for the zoo and upscale dining. Wicker Park for independent restaurants and bars. Pilsen for Mexican food and murals. Logan Square for the most interesting young-chef restaurant scene. Hyde Park for the University of Chicago and the Obama Presidential Center."
+  - question: "Is the Chicago architecture boat tour worth it?"
+    answer: "Yes — it's one of the best 90 minutes you can spend in Chicago. The Chicago Architecture Center runs excellent river tours that cover 50+ buildings with knowledgeable guides. Book in advance for summer weekend times. Evening tours with the buildings lit up are also excellent."
+  - question: "What is the best deep-dish pizza in Chicago?"
+    answer: "Lou Malnati's is the classic (multiple locations, the sausage deep-dish is canonical). Pequod's in Lincoln Park has a caramelized cheese crust edge that is genuinely different. Chicago-style thin crust (tavern cut) is also worth trying — Vito & Nick's on the South Side is the benchmark."
+  - question: "What is Chicago's music scene like?"
+    answer: "Chicago blues is one of the great American art forms — the electric Chicago blues sound (Muddy Waters, Howlin' Wolf) developed on the South Side. Rosa's Lounge and SPACE in Evanston are the living venues. The Chicago Jazz Festival (Labor Day weekend, free) and the Chicago Blues Festival (June, free) are both worth planning around."
+affiliatePicks:
+  - name: "The Langham Chicago"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/the-langham-chicago.html?aid=2778866"
+    description: "Iconic luxury hotel on the Chicago River in the former IBM Building. Architecture views and exceptional service."
+    priceRange: "$$$$"
+  - name: "Chicago Architecture Boat Tour"
+    type: tour
+    url: "https://www.getyourguide.com/chicago-l143/?partner_id=IVN6IQ3&q=architecture+boat+tour"
+    description: "The Chicago Architecture Center's river cruise — the single best introduction to Chicago's built environment."
+    priceRange: "$$"
+  - name: "Millennium Park Walking Tour"
+    type: tour
+    url: "https://www.getyourguide.com/chicago-l143/?partner_id=IVN6IQ3&q=Millennium+Park+tour"
+    description: "Guided walking tour of Millennium Park, the Bean, the Pritzker Pavilion, and nearby Grant Park."
+    priceRange: "$"
+scottTips:
+  logistics: "O'Hare (ORD) is the main international airport — Blue Line 'L' train to downtown costs $5 and takes 45 minutes. Midway (MDW) is smaller and often cheaper for domestic flights — Orange Line to downtown. Both are reliable transit options. Union Station handles Amtrak routes from most major Midwest cities."
+  bestTime: "June–September for lakefront weather, outdoor festivals, and the full Chicago experience. October and May are excellent shoulder seasons. January–March is Chicago's hardest test — cold and grey, but world-class restaurant access at off-peak prices and no crowds at the Art Institute."
+  gettingAround: "CTA 'L' train is the backbone — reliable, safe in tourist areas, and covers all major destinations. Ventra card (reloadable) is cheaper than single-ride tickets. Walk along the lakefront whenever weather permits. Rent a bike (Divvy bikeshare) for the Lakefront Trail."
+  money: "Chicago has a strong mid-range hotel market around $150–250/night in the Loop. The Art Institute is $25/adult but worth every dollar. Budget $50–80 for a proper deep-dish dinner for two. Theater, the Symphony, and sports (Cubs, White Sox, Bears) are additional. Chicago's restaurant scene is genuinely world-class and better value than New York or San Francisco equivalents."
+  safety: "Tourist zones are safe. Avoid wandering off main streets in unfamiliar South/West Side neighborhoods after dark — Chicago's crime statistics are real but geographically specific. The 'L' is safe except at late hours when you should ride with other passengers."
+  packing: "Chicago weather is notorious for variability — pack layers in any season. The wind off Lake Michigan can be severe in winter and spring. Comfortable walking shoes for significant distances. Layers in summer too — air conditioning in museums and restaurants is aggressive."
+  localCulture: "Chicago has a chip on its shoulder about New York and Los Angeles, which produces a deeply unpretentious food and arts scene — people here evaluate things on quality, not hype. The neighborhood structure (each with its own distinct character) rewards exploration off the tourist trail. Blues and jazz are treated as living culture here, not nostalgia."
+contentStatus: published
 draft: false
 ---
+Chicago is the Midwest's indisputable capital — a city of 2.7 million people on the southwestern shore of Lake Michigan with world-class architecture, the Art Institute, deep-dish pizza, legendary blues and jazz, and a lakefront trail system that makes it one of the most livable large cities in America. The El train running through the Loop is the most cinematic urban transit experience in the country.
+
 
 # Chicago: The Midwest's Undeniable Capital
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/chicago-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #1e40af, #0369a1, #166534);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Chicago: The City That Works</div>
+    <p class="ib-text">Architecture, the Lake, deep-dish, and the blues.</p>
+  </div>
+</div>
+
 
 I have a confession: I have never been able to stay away from Chicago for more than a few months at a time. There is something about the way the skyline hits you as you drive north on Lake Shore Drive, the wind carrying the smell of Italian beef from a stand you cannot quite see, the low rumble of the 'L' overhead -- it grabs you and does not let go. Chicago is not just a great Midwest city. It is one of the great cities on Earth, and I will argue that with anyone.
 

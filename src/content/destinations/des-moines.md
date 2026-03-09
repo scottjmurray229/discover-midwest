@@ -43,11 +43,66 @@ highlights:
     icon: "🍔"
 relatedDestinations: [omaha, madison, columbus]
 gradientColors: "from-emerald-900 via-teal-800 to-emerald-900"
-contentStatus: draft
+faqItems:
+  - question: "Is Des Moines worth visiting?"
+    answer: "More than most people expect. The Des Moines Art Center (free) is genuinely excellent — a three-building complex designed by Eliel Saarinen, I.M. Pei, and Richard Meier, with a strong 20th-century and contemporary collection. The East Village neighborhood has an excellent restaurant and bar scene. The Iowa State Fair (August) is one of the great American events."
+  - question: "What is the Iowa State Fair?"
+    answer: "The Iowa State Fair runs 11 days in mid-August and draws 1 million visitors annually. It's one of the largest and most traditional state fairs in the US — butter sculptures (an Iowa cow sculpted in butter is the signature), livestock judging, carnival rides, live music, and a legendary variety of food on a stick. The political significance in presidential primary years (Iowa caucuses) means major candidates campaign here."
+  - question: "What is the East Village in Des Moines?"
+    answer: "The East Village is Des Moines's most vibrant neighborhood — a walkable stretch of restaurants, bars, boutiques, and galleries east of the State Capitol building. The Iowa Capitol (golden dome) at the neighborhood's edge is one of the most beautiful in the country."
+  - question: "What should I eat in Des Moines?"
+    answer: "Centro for upscale Italian in the East Village. Zombie Burger for creative burgers. Iowa Machine Shed for farm-style comfort food. The Greater Des Moines Botanical Garden cafe for a lighter option. Craft beer at Exile Brewing or 515 Brewing Company."
+  - question: "When is the best time to visit Des Moines?"
+    answer: "August for the State Fair. June–September for pleasant weather. Spring (April–May) for Des Moines arts events and lower crowds."
+  - question: "How do I get to Des Moines?"
+    answer: "Des Moines International Airport (DSM) has direct flights from Chicago, Minneapolis, Dallas, Denver, and other hubs. I-80 runs through the city."
+  - question: "What outdoor activities are near Des Moines?"
+    answer: "High Trestle Trail (25-mile bike trail with a dramatic bridge over the Des Moines River). Pappajohn Sculpture Park (free outdoor sculpture in the Western Gateway neighborhood — large-scale works including Alexander Calder). Gray's Lake Park for running and kayaking."
+  - question: "What is the World Food Prize?"
+    answer: "The World Food Prize is the foremost international award for achievement in food and agriculture, founded by Nobel Peace Prize laureate Norman Borlaug. The annual symposium in Des Moines each October draws global agricultural leaders."
+affiliatePicks:
+  - name: "AC Hotel Des Moines East Village"
+    type: hotel
+    url: "https://www.booking.com/region/us/midwest.html?aid=2778866&ss=Des+Moines+IA"
+    description: "Modern hotel in the East Village, walkable to the best restaurants and the State Capitol."
+    priceRange: "$$"
+  - name: "Des Moines Art Center and East Village Tour"
+    type: tour
+    url: "https://www.getyourguide.com/?partner_id=IVN6IQ3&q=Des+Moines+Iowa+tour"
+    description: "Guided tour of the Des Moines Art Center and East Village neighborhood."
+    priceRange: "$"
+  - name: "Iowa State Fair Experience"
+    type: activity
+    url: "https://www.getyourguide.com/?partner_id=IVN6IQ3&q=Iowa+State+Fair+tour"
+    description: "Guide to the Iowa State Fair — best food, events, and logistics for the 11-day August event."
+    priceRange: "$"
+scottTips:
+  logistics: "DSM airport has good connections to major Midwest hubs and some national cities. East Village and downtown are walkable. I-80 corridor puts Des Moines equidistant from Omaha (2.5 hrs) and Chicago (5 hrs)."
+  bestTime: "August for the State Fair. June–September for the full city experience."
+  gettingAround: "Car helpful — Des Moines is spread out. East Village is walkable once there."
+  money: "Very affordable. Art Center is free. Hotels run $90–150/night. Restaurant meals $15–35/person."
+  safety: "One of the safer mid-size Midwest cities."
+  packing: "Comfortable clothing for State Fair (it's outdoors in August heat). Walking shoes."
+  localCulture: "Des Moines has a quietly strong civic identity — Iowans are genuinely proud of the State Fair as a living cultural institution, not just a tourist attraction."
+contentStatus: published
 draft: false
 ---
+Des Moines is Iowa's capital — a mid-size city that consistently surprises visitors with its quality of life, strong arts institutions (the Des Moines Art Center is one of the best mid-size art museums in the US), a craft beer scene that punches well above its weight, and the Iowa State Fair (the second-largest state fair in the US).
+
 
 # Des Moines: The City That Made Me Rethink Iowa
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/des-moines-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #166534, #1e40af, #f59e0b);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Des Moines: Iowa's Capital Surprise</div>
+    <p class="ib-text">Art museum, Iowa State Fair, and a city that keeps getting better.</p>
+  </div>
+</div>
+
 
 Let me tell you something that will sound ridiculous: Des Moines is legitimately cool. I know. I didn't believe it either. For most people, Iowa conjures images of cornfields and caucuses, and Des Moines gets reduced to a punchline about flyover country. But something happened here over the past decade or so, and the result is a city with outstanding public art, a food and drink scene that has no business being this good, and a quality of life that's making a lot of people from bigger cities quietly relocate.
 

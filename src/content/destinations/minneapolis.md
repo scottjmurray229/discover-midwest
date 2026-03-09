@@ -43,11 +43,66 @@ highlights:
     icon: "🍺"
 relatedDestinations: [milwaukee, chicago, kansas-city]
 gradientColors: "from-violet-900 via-purple-800 to-violet-900"
-contentStatus: draft
+faqItems:
+  - question: "How cold does Minneapolis actually get?"
+    answer: "Very. Average January lows are around -3°F, with wind chills regularly reaching -20°F to -30°F. The skyway system (80 connected blocks downtown) was built specifically to make winter functional. That said, Minneapolis fully embraces winter culture — outdoor ice skating, ice fishing, cross-country skiing in the city parks — and locals don't hide inside."
+  - question: "When is the best time to visit Minneapolis?"
+    answer: "June through September is the peak outdoor season — the Chain of Lakes is beautiful, the Mississippi River trails are active, and the State Fair (late August) is a genuine cultural experience. December offers the Walker Art Center, the Guthrie Theater season, and the Mall of America in full holiday mode."
+  - question: "What is the Chain of Lakes?"
+    answer: "The Chain of Lakes is a series of connected lakes (Lake Calhoun/Bde Maka Ska, Lake of the Isles, Lake Harriet, Lake Nokomis) in Minneapolis's southwest neighborhoods, connected by parkways and trails. It's the center of outdoor life in the city — running, biking, paddleboarding, swimming in summer, skating and cross-country skiing in winter."
+  - question: "Is Minneapolis a good arts city?"
+    answer: "Exceptional. Minneapolis has more theater seats per capita than any US city except New York. The Guthrie Theater (overlooking the Mississippi) is one of the country's best regional theaters. The Walker Art Center has a world-class contemporary art collection. First Avenue music venue launched Prince's career and remains one of the best mid-size venues in the US."
+  - question: "What are the best restaurants in Minneapolis?"
+    answer: "The Twin Cities food scene punches well above its weight. Hai Hai for Vietnamese-inspired cocktail bar food. Owamni by the Sioux Chef for Indigenous American cuisine (James Beard Award winner). Bachelor Farmer for New Nordic-style Minnesota ingredients. Cardamom for Indian-inspired contemporary cooking."
+  - question: "Is the Mall of America worth visiting?"
+    answer: "For the spectacle, yes — it's the largest mall in the US by some measures, with an indoor amusement park, an aquarium, and its own zip code. As a shopping destination, it's a regular mall. Worth 2-3 hours as a cultural artifact, not as a reason to visit Minneapolis."
+  - question: "How do I get to the Boundary Waters from Minneapolis?"
+    answer: "The Boundary Waters Canoe Area Wilderness is 4-5 hours north of Minneapolis via US-61 and MN-1 to Ely or Grand Marais. Entry requires a permit from Recreation.gov. A paddle outfitter in Ely will provide canoe, camping gear, and route planning — recommended for first-time visitors."
+  - question: "What is First Avenue?"
+    answer: "First Avenue is a concert venue in downtown Minneapolis that opened in 1970 in a former Greyhound bus depot. Prince filmed Purple Rain here in 1984, and the venue has remained one of the great mid-size music venues in the country. The exterior is painted black with stars for artists who have played there."
+affiliatePicks:
+  - name: "Hewing Hotel Minneapolis"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/hewing.html?aid=2778866"
+    description: "Boutique hotel in a converted 1897 warehouse in the North Loop. Rooftop pool, locally designed interiors."
+    priceRange: "$$$"
+  - name: "Minneapolis Architecture and Neighborhoods Tour"
+    type: tour
+    url: "https://www.getyourguide.com/minneapolis-l2684/?partner_id=IVN6IQ3&q=Minneapolis+tour"
+    description: "Guided walking tour covering the North Loop, Mill District, and riverfront architecture."
+    priceRange: "$"
+  - name: "Boundary Waters Outfitter Package"
+    type: activity
+    url: "https://www.getyourguide.com/minnesota-l142/?partner_id=IVN6IQ3&q=Boundary+Waters+canoe+trip"
+    description: "Outfitted canoe trip package for the Boundary Waters — canoe, camping gear, and permits."
+    priceRange: "$$$"
+scottTips:
+  logistics: "Minneapolis-St. Paul International Airport (MSP) is one of the better hub airports in the US — direct flights from most major cities. The light rail (Blue Line) runs from the airport to downtown and Mall of America. The skyway connects 80 city blocks — essential in winter."
+  bestTime: "June–September for outdoor recreation and the full Twin Cities experience. August/late August for the Minnesota State Fair (12 days, 2 million visitors, extraordinary food-on-a-stick culture). January–March is the full winter experience — cold but culturally active."
+  gettingAround: "Light rail and buses handle downtown and airport connections. The Chain of Lakes is bikeable via Divvy-equivalent Nice Ride bikeshare. Car helpful for exploring suburbs and Boundary Waters trips."
+  money: "Minneapolis is affordable by major-city standards. Hotels run $130–220/night for solid options. Guthrie Theater tickets are $25–75. The Walker Art Center is free on the first Sunday of each month."
+  safety: "Minneapolis has had high-profile policing issues (George Floyd was killed at 38th and Chicago Ave) and elevated crime rates in some areas. Downtown and the Chain of Lakes neighborhoods are safe for tourists. Be aware of the context."
+  packing: "Full winter kit if visiting October–April. The skyway makes short downtown trips manageable in any weather, but outdoor commutes require serious layers. Sun protection in summer — Minneapolis gets strong UV."
+  localCulture: "Minneapolis has a strong Scandinavian heritage (Minnesota Nice is real) and a significant Somali and Hmong immigrant community that shows up in the food scene. Prince is everywhere — Paisley Park (Eden Prairie, 20 miles west) offers studio tours. The city takes arts seriously in a way that most Midwest cities don't."
+contentStatus: published
 draft: false
 ---
+Minneapolis is the Midwest's most livable city — a surprisingly cosmopolitan metro of 3.7 million people in Minnesota with a serious arts scene (more theater seats per capita than any US city outside New York), excellent restaurants, the Chain of Lakes park system, and a skyway network of 80 connected blocks that makes winter survivable. It's also the entry point to the Boundary Waters Canoe Area Wilderness.
+
 
 # Minneapolis: The Creative Powerhouse of the Upper Midwest
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/minneapolis-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #1e40af, #7c3aed, #0369a1);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Minneapolis: The Northern Metropolis</div>
+    <p class="ib-text">Skyways, Chain of Lakes, Prince's hometown, and -20°F winters.</p>
+  </div>
+</div>
+
 
 Minneapolis does not get enough credit. While Chicago hogs the Midwest spotlight, Minneapolis has quietly built one of the most livable, creative, and genuinely fun cities in America. The music scene produced Prince, Husker Du, and The Replacements. The food scene has exploded with immigrant cuisines and James Beard-winning chefs. And the lakes -- my God, the lakes. In summer, this city transforms into something almost Scandinavian in its embrace of the outdoors.
 

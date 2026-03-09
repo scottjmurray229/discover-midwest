@@ -43,11 +43,66 @@ highlights:
     icon: "🎨"
 relatedDestinations: [cincinnati, chicago, st-louis]
 gradientColors: "from-emerald-900 via-green-800 to-emerald-900"
-contentStatus: draft
+faqItems:
+  - question: "Is the Indianapolis Motor Speedway worth visiting even if I don't care about racing?"
+    answer: "For the scale alone, yes. The Indianapolis Motor Speedway seats 250,000 spectators — a number so large that the entire populations of Monaco, San Marino, and Liechtenstein could fit inside. The IMS Museum has excellent exhibits on American automotive and racing history. The track tour is worthwhile."
+  - question: "What is the best thing to do in Indianapolis?"
+    answer: "The Children's Museum of Indianapolis — consistently ranked the best children's museum in the world (5 floors, 14 museums-within-a-museum, a full Dinosphere, and a Chihuly glass tower). Adults without children often enjoy it too. The Eiteljorg Museum of American Indians and Western Art is excellent and underrated."
+  - question: "When is the Indianapolis 500?"
+    answer: "The Indianapolis 500 (the 'Greatest Spectacle in Racing') runs on the Sunday of Memorial Day weekend — late May. Qualifying runs the preceding weekend. Hotel rooms within 30 miles book solid for race weekend. If you want to attend, plan 6+ months ahead and budget for premium pricing on everything."
+  - question: "What is Mass Ave?"
+    answer: "Massachusetts Avenue (Mass Ave) is Indianapolis's arts and culture corridor — a stretch of restaurants, galleries, bars, and theaters northeast of downtown. Locally the most active nightlife and dining strip."
+  - question: "Is Indianapolis easy to navigate?"
+    answer: "Very easy — the downtown circle layout (Monument Circle at the center) is logically organized, walkable, and well-connected. Most tourist attractions are within easy walking distance of the hotel cluster."
+  - question: "What should I eat in Indianapolis?"
+    answer: "The Indy restaurant scene has improved dramatically. Milktooth for the most Instagram-worthy brunch in the Midwest. St. Elmo Steak House (1902) for the legendary shrimp cocktail (horseradish-forward, very spicy). Tinker Street for local farm ingredients."
+  - question: "When is the best time to visit Indianapolis beyond race weekend?"
+    answer: "May (Indy 500) if you want racing. June–September for pleasant weather and the outdoor canal walk. The Brick Yard 400 (NASCAR, late July) is a second major racing event."
+  - question: "What is the Indiana State Fair?"
+    answer: "The Indiana State Fair runs for 17 days in August — one of the largest state fairs in the US. The usual state fair attractions (livestock, rides, food-on-a-stick) plus major musical acts."
+affiliatePicks:
+  - name: "Bottleworks Hotel Indianapolis"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/bottleworks-hotel-indianapolis.html?aid=2778866"
+    description: "Indianapolis's coolest hotel — in a converted 1931 Coca-Cola bottling plant with a microbrewery and food hall."
+    priceRange: "$$$"
+  - name: "Indianapolis Motor Speedway Tour"
+    type: tour
+    url: "https://www.getyourguide.com/indianapolis-l2537/?partner_id=IVN6IQ3&q=Indianapolis+Motor+Speedway+tour"
+    description: "Track and museum tour at the IMS — includes riding the track by bus."
+    priceRange: "$"
+  - name: "Indianapolis Food and Neighborhoods Tour"
+    type: tour
+    url: "https://www.getyourguide.com/indianapolis-l2537/?partner_id=IVN6IQ3&q=Indianapolis+food+tour"
+    description: "Guided food tour through Mass Ave and the Fountain Square neighborhood."
+    priceRange: "$$"
+scottTips:
+  logistics: "Indianapolis International Airport (IND) is 15 miles southwest — no rail, but the airport shuttle and Lyft are reliable. Downtown is very compact — the Circle Centre shopping mall, Monument Circle, and most hotels are within a few walkable blocks."
+  bestTime: "May for the 500 (if you can get tickets and lodging). June–September for good weather. Year-round for the Children's Museum and IMS Museum."
+  gettingAround: "Walkable downtown. Car or Lyft for IMS and outer neighborhoods. The Broad Ripple neighborhood (8 miles north) requires transportation."
+  money: "Very affordable. Children's Museum is $30/adult, $25/child. IMS Museum and track tour is $15–25. Hotels in the $100–160/night range."
+  safety: "Downtown and Mass Ave are safe tourist areas."
+  packing: "Comfortable walking shoes for the downtown circle. Camera for Monument Circle."
+  localCulture: "Indianapolis is earnest Midwestern — genuinely friendly, unpretentious, and proud of the 500 in a way that feels like civic religion. The racing heritage is real, not just marketing."
+contentStatus: published
 draft: false
 ---
+Indianapolis is the racing capital of the world — home to the Indianapolis 500, the most-attended single-day sporting event on the planet. Beyond Motor Speedway, it's a surprisingly accessible mid-size city with the best children's museum in the US, a renovated canal walk, and the bulk of its tourist attractions within walking distance of the convention hotel strip.
+
 
 # Indianapolis: The Midwest Crossroads That Finally Gets Its Due
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/indianapolis-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #1e40af, #dc2626, #f59e0b);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Indianapolis: Racing Capital of the World</div>
+    <p class="ib-text">Indy 500, the Children's Museum, and a canal walk.</p>
+  </div>
+</div>
+
 
 Indianapolis has spent decades being overshadowed by flashier Midwest cities, and honestly, the city used to deserve its reputation as a drive-through destination. Not anymore. Over the past fifteen years, Indy has undergone a genuine transformation. The downtown is walkable and alive. The food scene has exploded. The arts districts have real energy. And yes, the racing heritage is still a massive draw -- but there is so much more here than the Indy 500.
 

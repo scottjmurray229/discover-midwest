@@ -43,11 +43,66 @@ highlights:
     icon: "🚗"
 relatedDestinations: [cleveland, madison, columbus]
 gradientColors: "from-blue-900 via-slate-800 to-blue-900"
-contentStatus: draft
+faqItems:
+  - question: "Is Detroit safe to visit?"
+    answer: "Detroit's reputation for danger is significantly outdated for tourist areas. Midtown, Corktown, Eastern Market, and the Riverfront are safe and active. The widely-photographed abandoned buildings are in distressed areas that are generally not dangerous in daylight but not tourist-friendly either. Standard urban awareness applies throughout."
+  - question: "What should I do in Detroit?"
+    answer: "Motown Museum (Hitsville U.S.A.) is the essential cultural pilgrimage — you walk through the original studio where Marvin Gaye, the Four Tops, and the Supremes recorded. Eastern Market on Saturday morning is one of the best urban farmers markets in the US. The Detroit Institute of Arts has a world-class collection. Corktown for the restaurant and bar scene."
+  - question: "What is Detroit's music heritage?"
+    answer: "Detroit produced two of the most globally influential American music genres: Motown (the label that created pop music's multi-racial appeal in the 1960s) and techno (the electronic dance music genre invented at Detroit high school parties in the 1980s by Juan Atkins, Derrick May, and Kevin Saunderson — the 'Belleville Three'). Both legacies are living culture in the city."
+  - question: "Is the Motown Museum worth visiting?"
+    answer: "Absolutely essential. Hitsville U.S.A. is the original Motown headquarters on West Grand Boulevard. You tour Studio A (where virtually all classic Motown was recorded), the offices, and the Berry Gordy Jr. bedroom where he composed. Buy tickets online — tours fill up."
+  - question: "What neighborhoods should I explore?"
+    answer: "Midtown for the DIA, the Museum of Contemporary Art Detroit, and Wayne State University area restaurants. Corktown (Detroit's oldest neighborhood) for the best food and bars. Eastern Market for Saturday morning. Mexicantown (Southwest Detroit) for authentic Mexican food. Rivertown for the casino hotels and riverfront views."
+  - question: "When is the best time to visit Detroit?"
+    answer: "May through October for reasonable weather and outdoor activities. The Detroit Jazz Festival (Labor Day weekend, free) is worth planning around — the largest free jazz festival in North America. Summer is the most active season."
+  - question: "How do I get around Detroit?"
+    answer: "Detroit is a driving city — public transit is limited. The QLine streetcar runs along Woodward Avenue through Midtown but covers limited ground. Rent a car for flexibility. Uber/Lyft are reliable."
+  - question: "What is Detroit style pizza?"
+    answer: "Detroit-style pizza is rectangular, baked in oiled steel pans (originally automotive parts), with a thick, crispy, cheesy edge from the cheese being spread all the way to the pan walls. Buddy's Pizza invented it in 1946. The cheese (Wisconsin brick) melts over the dough edge and creates a caramelized crust that's unlike anything else."
+affiliatePicks:
+  - name: "Siren Hotel Detroit"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/siren-hotel.html?aid=2778866"
+    description: "Boutique hotel in the historic Wurlitzer Building in downtown Detroit. Art-forward and well-positioned."
+    priceRange: "$$$"
+  - name: "Motown Museum and Music History Tour"
+    type: tour
+    url: "https://www.getyourguide.com/detroit-l2537/?partner_id=IVN6IQ3&q=Motown+Museum+tour"
+    description: "Guided tour of Hitsville U.S.A. and Detroit's Motown and techno music history."
+    priceRange: "$"
+  - name: "Detroit Architecture and Mural Walking Tour"
+    type: tour
+    url: "https://www.getyourguide.com/detroit-l2537/?partner_id=IVN6IQ3&q=Detroit+architecture+tour"
+    description: "Guided walk through Detroit's historic architecture, murals, and comeback story."
+    priceRange: "$"
+scottTips:
+  logistics: "Detroit Metropolitan Airport (DTW) is 20 miles southwest — no rail connection, but Uber/Lyft to downtown runs $35-45. Windsor, Ontario (Canada) is directly across the Detroit River — border crossing is easy and Windsor has its own restaurant scene."
+  bestTime: "May–October. The Detroit Jazz Festival over Labor Day weekend is the peak cultural event. Summers are warm and active. Winters are cold and grey — the city is less vibrant but hotel rates drop significantly."
+  gettingAround: "Car essential for most Detroit exploration — the city is built for cars. QLine streetcar covers Woodward Avenue corridor. Lyft and Uber are easy."
+  money: "Detroit is affordable. Hotels in Midtown run $120–200/night. Detroit Institute of Arts is $14/adult. Eastern Market is free to walk. The restaurant scene in Corktown and Midtown is excellent value."
+  safety: "Tourist areas (Midtown, Corktown, Eastern Market, Riverfront) are safe. Avoid wandering into distressed neighborhoods without local knowledge. Detroit's most famous decay-porn ruins are in areas that are not tourist-appropriate."
+  packing: "Comfortable walking shoes for Midtown and Corktown exploration. Layers for spring/fall. Camera for the architecture."
+  localCulture: "Detroit has an unparalleled sense of civic pride forged by decades of difficulty. Locals are genuinely enthusiastic about visitors and committed to the city's comeback. The 313 area code is worn as a badge of identity. Respect the city's complexity — the poverty and inequality are real alongside the restaurants and galleries."
+contentStatus: published
 draft: false
 ---
+Detroit is one of America's great urban comeback stories — a post-industrial city rebuilding from one of the most dramatic municipal declines in American history, with an extraordinary arts and music heritage (Motown, techno), a booming food and craft cocktail scene in Midtown and Corktown, and the best collection of late 19th and early 20th century architecture in the Midwest.
+
 
 # Detroit: The Comeback City That Never Really Left
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/detroit-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #dc2626, #1e40af, #92400e);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Detroit: The Comeback City</div>
+    <p class="ib-text">Motown, techno, Corktown, and architecture that refused to die.</p>
+  </div>
+</div>
+
 
 I'll be honest — the first time I drove into Detroit, I wasn't sure what to expect. I'd heard the usual narratives: bankruptcy, blight, decline. What I found instead was one of the most electrifying, creative, and genuinely welcoming cities I've visited anywhere in the Midwest. Detroit didn't die. It evolved. And what's happening here right now is nothing short of extraordinary.
 

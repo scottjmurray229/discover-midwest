@@ -43,11 +43,66 @@ highlights:
     icon: "🌊"
 relatedDestinations: [detroit, columbus, madison]
 gradientColors: "from-red-900 via-stone-800 to-red-900"
-contentStatus: draft
+faqItems:
+  - question: "Is the Rock and Roll Hall of Fame worth visiting?"
+    answer: "For music fans, it's essential — a thoughtfully designed museum by I.M. Pei covering rock history from its blues and gospel roots through contemporary artists. Budget 3-4 hours. The inductee exhibits go deep on individual artists' contributions. Buy tickets online to skip the line."
+  - question: "What is the West Side Market?"
+    answer: "West Side Market is the best public market in the Midwest — a 1912 Beaux-Arts building in Ohio City with 100+ vendors selling produce, meat, cheese, Eastern European specialty foods, and prepared foods. Saturday morning is peak (very crowded). The pierogi (from Reilly's) and smoked meats are particular standouts."
+  - question: "What neighborhoods should I explore?"
+    answer: "Ohio City for the West Side Market, restaurants, and craft breweries. Tremont for the arts district and excellent dining. Downtown Cleveland for the Rock Hall, the Flats (riverfront), and Playhouse Square (the largest theater district outside NYC). Little Italy for the Cleveland Museum of Art and cafes."
+  - question: "Is the Cleveland Museum of Art worth visiting?"
+    answer: "Genuinely excellent and free (with a paid special exhibitions wing). The CMA has one of the top art collections in the US — particularly strong in medieval European, ancient Egyptian, and Asian art. The atrium design and gallery layout are exceptional."
+  - question: "When is the best time to visit Cleveland?"
+    answer: "May–October for Lake Erie access and outdoor activities. The Cleveland Orchestra (Severance Hall) runs September–May — one of the great orchestras in the world. Summer brings outdoor festivals and Indians/Guardians baseball."
+  - question: "What food is Cleveland known for?"
+    answer: "Polish Boy (kielbasa, fries, coleslaw, and BBQ sauce in a bun — a uniquely Cleveland creation). Pierogis at West Side Market. Corned beef sandwiches at Slyman's. Contemporary dining at Lola Bistro (Michael Symon's flagship)."
+  - question: "Is Cleveland safe?"
+    answer: "The tourist areas — Ohio City, Tremont, University Circle, downtown — are safe and active. Cleveland has elevated crime rates in some inner-city neighborhoods away from visitor zones. Standard urban awareness applies."
+  - question: "What is Playhouse Square?"
+    answer: "Playhouse Square is the largest performing arts center outside New York City — six restored historic theaters in a single city block downtown, with programming including Broadway shows, opera, ballet, and the Cleveland Orchestra pops. The restored chandeliers and grand lobby of the State Theatre alone are worth seeing."
+affiliatePicks:
+  - name: "Metropolitan at the 9 Cleveland"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/metropolitan-at-the-9-cleveland.html?aid=2778866"
+    description: "Boutique hotel in historic Euclid Avenue building. Well-positioned for downtown and Ohio City access."
+    priceRange: "$$$"
+  - name: "Rock and Roll Hall of Fame Tickets"
+    type: activity
+    url: "https://www.getyourguide.com/cleveland-l2537/?partner_id=IVN6IQ3&q=Rock+and+Roll+Hall+of+Fame"
+    description: "Book Rock Hall tickets in advance for the best experience and skip-the-line access."
+    priceRange: "$$"
+  - name: "Cleveland Food and Neighborhoods Tour"
+    type: tour
+    url: "https://www.getyourguide.com/cleveland-l2537/?partner_id=IVN6IQ3&q=Cleveland+food+tour"
+    description: "West Side Market, Ohio City, and Tremont guided food and neighborhood tour."
+    priceRange: "$$"
+scottTips:
+  logistics: "Cleveland Hopkins International Airport (CLE) is 15 miles southwest — RTA Red Line light rail connects to downtown. Downtown Cleveland is compact and walkable for the major tourist sites."
+  bestTime: "May–October for the full experience. Cleveland Orchestra season (September–May) is a reason to visit in winter. West Side Market runs year-round."
+  gettingAround: "RTA light rail for airport and downtown. Car helpful for Ohio City, Tremont, and University Circle clusters. Uber/Lyft available."
+  money: "Cleveland is very affordable. Cleveland Museum of Art is free. Hotels run $100–175/night in Ohio City and downtown. Rock Hall is $32/adult."
+  safety: "Tourist zones are safe. Cleveland has crime challenges in specific neighborhoods."
+  packing: "Layers for Lake Erie wind — the lake creates its own microclimate."
+  localCulture: "Cleveland has an endearing civic pride forged by decades of being the butt of jokes. The LeBron James legacy (born in Akron, won Cleveland's first title in 2016) is a genuine source of emotional meaning for the city. Cleveland sports fandom is intense and loyal."
+contentStatus: published
 draft: false
 ---
+Cleveland is the underdog city on Lake Erie that gave the world the Rock and Roll Hall of Fame, a world-class art museum (free on Sundays), the best food market in the Midwest (West Side Market), and LeBron James. It's a post-industrial city in genuine cultural renaissance, with a thriving arts and restaurant scene in neighborhoods like Ohio City and Tremont.
+
 
 # Cleveland: The Underdog City That Keeps Winning Me Over
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/cleveland-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #dc2626, #1e40af, #f59e0b);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Cleveland: Rock City on the Lake</div>
+    <p class="ib-text">Rock Hall, West Side Market, and a city rising.</p>
+  </div>
+</div>
+
 
 Every time I visit Cleveland, I leave thinking the same thing: why doesn't everyone know about this place? It's a city that's been the butt of jokes for decades — the burning river, the sports heartbreaks, the rust belt decline — and yet Cleveland in the 2020s is a genuinely fantastic place to spend a long weekend. The museums are world-class. The food scene is thriving. And there's a scrappy, self-aware pride here that makes the whole city feel like it's rooting for you.
 

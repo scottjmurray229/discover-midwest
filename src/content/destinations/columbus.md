@@ -43,11 +43,66 @@ highlights:
     icon: "🏈"
 relatedDestinations: [cleveland, detroit, des-moines]
 gradientColors: "from-scarlet-900 via-gray-800 to-scarlet-900"
-contentStatus: draft
+faqItems:
+  - question: "Is Columbus worth visiting?"
+    answer: "Yes, especially for foodies and design travelers. The Short North arts district has one of the better restaurant and gallery concentrations in the Midwest. The Ohio State campus (62,000 students) creates energy that spills into the surrounding neighborhoods. It's a city that locals are genuinely proud of."
+  - question: "What is the Short North?"
+    answer: "The Short North is Columbus's arts and dining district — a mile of High Street north of downtown with galleries, restaurants, boutiques, and bars. The Columbus Museum of Art is at the south end. Gallery Hop (first Saturday of each month) turns the district into an open arts evening."
+  - question: "What should I eat in Columbus?"
+    answer: "Jeni's Splendid Ice Creams (started here — multiple locations). Dirty Frank's Hot Dog Palace. Thurman Cafe for the massive Thurmanator burger. The North Market (year-round covered market, smaller than West Side Market but excellent). Skillet for brunch. Brassica for excellent fast-casual Mediterranean."
+  - question: "What is Columbus known for beyond Ohio State?"
+    answer: "The Columbus Museum of Art (good contemporary collection), the Franklin Park Conservatory and Botanical Gardens, the Short North gallery scene, and the Columbus Food Truck Scene (hundreds of trucks, strong year-round culture). Also COSI (Center of Science and Industry) for families."
+  - question: "When is the best time to visit Columbus?"
+    answer: "May–October for pleasant weather and outdoor Short North activity. Ohio State football season (September–November) means massive crowds and hotel premium pricing on game days — plan around it or embrace it."
+  - question: "How do I get around Columbus?"
+    answer: "Columbus is a driving city — public transit is limited. Uber/Lyft are the practical options. The Short North is walkable once you're there."
+  - question: "What is the National Veterans Memorial and Museum?"
+    answer: "The National Veterans Memorial and Museum (opened 2018) is a powerful and architecturally extraordinary building in downtown Columbus dedicated to the service and sacrifice of American veterans. Free admission. The elliptical concrete form creates an internal space that's genuinely affecting."
+  - question: "Is Columbus near other Midwest destinations?"
+    answer: "Columbus is about 2 hours from Cleveland, 1.5 hours from Cincinnati, and 3 hours from Pittsburgh. It's a viable base for an Ohio road trip hitting all three cities."
+affiliatePicks:
+  - name: "Graduate Columbus"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/graduate-columbus.html?aid=2778866"
+    description: "Short North boutique hotel with Ohio State-inspired design. Walking distance to the best restaurants."
+    priceRange: "$$"
+  - name: "Columbus Short North Food Tour"
+    type: tour
+    url: "https://www.getyourguide.com/columbus-l2537/?partner_id=IVN6IQ3&q=Columbus+Ohio+food+tour"
+    description: "Guided food tour through the Short North covering the Columbus dining scene."
+    priceRange: "$$"
+  - name: "Franklin Park Conservatory Botanical Gardens"
+    type: activity
+    url: "https://www.getyourguide.com/columbus-l2537/?partner_id=IVN6IQ3&q=Columbus+botanical+garden"
+    description: "Guided tour of the Franklin Park Conservatory — Chihuly glass art in botanical settings."
+    priceRange: "$"
+scottTips:
+  logistics: "John Glenn Columbus International Airport (CMH) has good connections to major US hubs. Downtown and Short North are 15 minutes from the airport. Hotels cluster in Short North and downtown."
+  bestTime: "May–October for outdoor Short North life. Avoid Ohio State home football weekends unless you want the game experience."
+  gettingAround: "Car or Lyft/Uber. Short North is walkable. North Market and Ohio State campus are bikeable from Short North."
+  money: "Columbus is affordable. Hotels run $100–160/night in Short North. Restaurant meals in the $20–40/person range at most Short North spots."
+  safety: "Short North and downtown are safe. Columbus has elevated crime rates in some neighborhoods away from tourist zones."
+  packing: "Comfortable walking shoes for Short North. Camera for the gallery hop."
+  localCulture: "Columbus has an earnest Midwest identity without the chip-on-shoulder of Detroit or Cleveland. The OSU culture is omnipresent — Buckeye gear everywhere. Jeni's Splendid Ice Creams is a point of civic pride that locals genuinely love."
+contentStatus: published
 draft: false
 ---
+Columbus is Ohio's largest city and one of America's fastest-growing metros — a Big Ten university city with a young, entrepreneurial energy, a thriving Short North arts and restaurant district, and the National Veterans Memorial and Museum. It's the least-visited major Ohio city by tourists but has the best restaurant scene of the three.
+
 
 # Columbus: The Midwest Food City Nobody Saw Coming
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/columbus-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #dc2626, #1e40af, #166534);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Columbus: Ohio's Rising Capital</div>
+    <p class="ib-text">Short North, OSU, and the best food scene in Ohio.</p>
+  </div>
+</div>
+
 
 Columbus is the biggest city in Ohio that nobody outside the Midwest seems to think about. And honestly? That's part of its charm. While Cleveland gets the tourist attention and Cincinnati gets the chili debates, Columbus has been quietly building one of the most exciting food scenes, arts districts, and young-creative-professional cultures anywhere between the coasts. This city surprises people. It surprised me.
 

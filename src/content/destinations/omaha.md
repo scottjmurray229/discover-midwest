@@ -43,11 +43,66 @@ highlights:
     icon: "🌉"
 relatedDestinations: [des-moines, madison, columbus]
 gradientColors: "from-amber-900 via-stone-800 to-amber-900"
-contentStatus: draft
+faqItems:
+  - question: "Is Omaha worth visiting?"
+    answer: "Absolutely for a 1-2 night stop. The Henry Doorly Zoo is legitimately extraordinary — widely considered the best zoo in the United States and often called the best in the world. The Old Market historic district has excellent dining and bars. The strategic location on I-80 makes it a natural road trip stop between Chicago and Denver."
+  - question: "What is the Henry Doorly Zoo?"
+    answer: "The Henry Doorly Zoo is consistently ranked the best zoo in the United States by USA Today and Tripadvisor. It has the world's largest indoor desert (Desert Dome), one of the largest indoor jungles, a free-flight aviary, aquarium, and butterfly pavilion. Budget a full day — it's a serious destination."
+  - question: "What is the Old Market?"
+    answer: "The Old Market is Omaha's historic commercial district — a walkable neighborhood of 1880s brick warehouses converted to restaurants, bars, galleries, and boutiques. The best urban historic district between Chicago and Denver. Saturday night in the Old Market is a genuine scene."
+  - question: "What should I eat in Omaha?"
+    answer: "A steak at Gorat's (Warren Buffett's favorite), Mahogany, or Upstream Brewing. The Old Market's dining options range from Italian to sushi. Block 16 for some of the most creative sandwiches in the Midwest. Charleston's for the prime rib experience."
+  - question: "What is the Berkshire Hathaway Annual Meeting?"
+    answer: "The Berkshire Hathaway Annual Meeting (Warren Buffett's company) draws 40,000+ shareholders to Omaha every May — effectively the 'Woodstock of capitalism.' Hotels book solid for a full week. If you're interested in the investment world, it's a remarkable event."
+  - question: "When is the best time to visit Omaha?"
+    answer: "May–October for pleasant weather and outdoor Old Market. The Berkshire Hathaway meeting (early May) brings a fascinating crowd but fills hotels."
+  - question: "How do I get to Omaha?"
+    answer: "Eppley Airfield (OMA) has direct flights from Chicago, Dallas, Denver, Minneapolis, and other hubs. I-80 puts Omaha 5 hours from Chicago and 8 hours from Denver."
+  - question: "What else is worth seeing in Omaha?"
+    answer: "Joslyn Art Museum (free Sundays, strong collection). Durham Museum (in the historic Union Station). The Lewis & Clark National Historic Trail Visitor Center. Strategic Air Command & Aerospace Museum (30 miles southwest, outstanding Cold War aviation collection)."
+affiliatePicks:
+  - name: "Kimpton Cottonwood Hotel Omaha"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/the-cottonwood-hotel.html?aid=2778866"
+    description: "Historic 1926 hotel beautifully restored — Omaha's most characterful lodging option."
+    priceRange: "$$$"
+  - name: "Henry Doorly Zoo Tickets"
+    type: activity
+    url: "https://www.getyourguide.com/?partner_id=IVN6IQ3&q=Omaha+Zoo+Henry+Doorly"
+    description: "Book Henry Doorly Zoo tickets in advance for the best experience at this world-class facility."
+    priceRange: "$$"
+  - name: "Omaha Old Market Food and History Tour"
+    type: tour
+    url: "https://www.getyourguide.com/?partner_id=IVN6IQ3&q=Omaha+Nebraska+food+tour"
+    description: "Guided walking tour of the Old Market's restaurants, history, and architecture."
+    priceRange: "$"
+scottTips:
+  logistics: "Eppley Airfield has decent Midwest connections. Old Market is 10 minutes from downtown hotels. The zoo is 5 miles from the Old Market."
+  bestTime: "May–October. Avoid Berkshire meeting week (early May) unless attending."
+  gettingAround: "Car recommended — Omaha is spread out. Old Market and downtown are walkable. Zoo requires car or rideshare."
+  money: "Very affordable. Zoo is $23/adult. Hotels in Old Market run $120–180/night."
+  safety: "Old Market and downtown are safe. Omaha has some elevated crime rates in inner-city neighborhoods."
+  packing: "Comfortable shoes for Old Market and zoo walking. Camera — the zoo's environments are photogenic."
+  localCulture: "Omaha's steak culture is genuine — this is cattle country, and a proper Omaha steak dinner is a cultural experience. Warren Buffett's enduring presence (he lives in the same modest house he bought in 1958) gives the city an underdog-made-good identity."
+contentStatus: published
 draft: false
 ---
+Omaha is Warren Buffett's hometown and Nebraska's largest city — a surprisingly sophisticated mid-size city with the Old Market district (the best urban historic commercial district in the Plains), an extraordinary zoo (consistently ranked in the top 5 in the US), and a steak culture that takes beef consumption seriously.
+
 
 # Omaha: The Midwest City That Keeps Exceeding Expectations
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/omaha-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #92400e, #1e40af, #166534);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Omaha: Warren Buffett's Hometown</div>
+    <p class="ib-text">Old Market, the best zoo in America, and steak culture.</p>
+  </div>
+</div>
+
 
 I'll be straightforward with you: the first time someone told me to visit Omaha, I thought they were joking. Nebraska? Really? But I've been back four times now, and every visit confirms what I learned on that first trip — Omaha is one of the most genuinely enjoyable cities in the Midwest. The food is outstanding (and not just the steaks, though my God, the steaks). The zoo is no exaggeration the best I've ever been to. And there's a friendliness here that doesn't feel performative — people in Omaha are just genuinely, reflexively kind.
 

@@ -43,11 +43,66 @@ highlights:
     icon: "🎺"
 relatedDestinations: [kansas-city, chicago, indianapolis]
 gradientColors: "from-red-900 via-rose-800 to-red-900"
-contentStatus: draft
+faqItems:
+  - question: "Is the Gateway Arch worth going inside?"
+    answer: "Yes — the tram ride to the top is a unique experience. The small, capsule-like trams hold 5 people and rotate as they travel the curved interior of the Arch. The view from the observation windows at the top extends 30 miles on a clear day. The Museum of Westward Expansion at the base is also good. Buy tram tickets in advance on the website."
+  - question: "What is toasted ravioli?"
+    answer: "Toasted ravioli is a St. Louis invention — pasta squares stuffed with meat, breaded, and deep-fried. They're served everywhere in St. Louis, often with marinara for dipping. The Pasta House Company and Charlie Gitto's are credited with the invention. Every Italian restaurant in the city serves them."
+  - question: "Is the St. Louis Zoo really free?"
+    answer: "Yes, entirely free (with paid parking). The St. Louis Zoo in Forest Park is consistently ranked among the top zoos in the United States and has no admission charge. The same applies to the St. Louis Art Museum, Missouri History Museum, and the Science Center in Forest Park — all excellent and all free."
+  - question: "What is Forest Park?"
+    answer: "Forest Park is the center of St. Louis culture — 1,300 acres (larger than Central Park) hosting the zoo, art museum, history museum, science center, a golf course, and the Jewel Box greenhouse. The park was the site of the 1904 World's Fair. It's walkable, bikeable, and free to access."
+  - question: "When is the best time to visit St. Louis?"
+    answer: "April–May and September–October. Spring and fall have ideal temperatures (60s–70s°F) for Forest Park walking and the outdoor attractions. Summer is hot and humid (90s°F). Winter is grey and cold."
+  - question: "What is Ted Drewes?"
+    answer: "Ted Drewes Frozen Custard is a St. Louis institution — an outdoor frozen custard stand on Chippewa Street that has been making concrete (custard with mixed-in flavors, so thick it's served upside down) since 1931. The lines are real; the custard is worth it."
+  - question: "What neighborhoods should I explore in St. Louis?"
+    answer: "The Central West End for cafe culture and the nearby museums. The Delmar Loop (University City) for Blueberry Hill and the music venue strip. Lafayette Square for Victorian architecture. Cherokee Street for Mexican food and local shops."
+  - question: "How do I get to the Gateway Arch?"
+    answer: "The Gateway Arch National Park is on the Mississippi riverfront, walkable from downtown hotels. The Arch itself has free park admission but tram tickets to the top are $13–17/adult and require advance booking in peak season."
+affiliatePicks:
+  - name: "Magnolia Hotel St. Louis"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/magnolia-st-louis.html?aid=2778866"
+    description: "Boutique hotel in a 1914 historic building, central downtown location near the Arch."
+    priceRange: "$$"
+  - name: "Gateway Arch Tram Ride and Museum"
+    type: tour
+    url: "https://www.getyourguide.com/st-louis-l2547/?partner_id=IVN6IQ3&q=Gateway+Arch+tram+tour"
+    description: "Tram ride to the Arch observation deck plus Museum of Westward Expansion."
+    priceRange: "$"
+  - name: "St. Louis Food and Neighborhood Tour"
+    type: tour
+    url: "https://www.getyourguide.com/st-louis-l2547/?partner_id=IVN6IQ3&q=St+Louis+food+tour"
+    description: "Guided food tour covering toasted ravioli, custard, local Italian, and neighborhood history."
+    priceRange: "$$"
+scottTips:
+  logistics: "St. Louis Lambert International Airport (STL) has direct flights from most US hubs. MetroLink light rail connects the airport to downtown and Forest Park. Downtown is walkable for most tourist sites."
+  bestTime: "April–May and September–October. Forest Park and outdoor attractions are ideal in mild weather. Cardinals baseball (April–October) adds energy."
+  gettingAround: "MetroLink light rail for airport, downtown, and Forest Park. Walkable for Central West End and Forest Park cluster. Car for neighborhoods like Cherokee Street and the Delmar Loop."
+  money: "St. Louis is extremely affordable. The zoo, art museum, and science center are all free. Gateway Arch tram is $15. Hotels run $100–180/night for solid options."
+  safety: "Downtown and Forest Park areas are safe for tourists. St. Louis has a high overall crime rate concentrated in specific neighborhoods — the tourist zones are well-separated from those areas."
+  packing: "Comfortable walking shoes for Forest Park. Layers for Midwest weather variability. Cardinals gear if you're going to a game."
+  localCulture: "St. Louis has a genuine civic identity anchored in Forest Park, Cardinals baseball, and the brewing heritage. The free museum culture in Forest Park is remarkable — Midwesterners take for granted access that would cost $25+ in most US cities."
+contentStatus: published
 draft: false
 ---
+St. Louis is the Midwest's gateway city — anchored by the 630-foot Gateway Arch on the Mississippi River, home to one of the world's most visited free attractions (the St. Louis Zoo), and a brewing city with a craft beer scene that has grown from the Anheuser-Busch legacy. The Ted Drewes frozen custard stand and Toasted Ravioli are the local food institutions that matter.
+
 
 # St. Louis: The Most Underrated City in America
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/st-louis-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #dc2626, #92400e, #1e40af);"></div>
+  <div class="ib-content">
+    <div class="ib-title">St. Louis: Gateway to the West</div>
+    <p class="ib-text">The Arch, the zoo, the river, and toasted ravioli.</p>
+  </div>
+</div>
+
 
 I do not say this lightly: St. Louis might be the best value destination in the entire Midwest. Half the major attractions are free. The food scene is genuinely excellent. And the city has a scrappy, proud energy that reminds me of what makes this part of the country special. People sleep on St. Louis, and honestly, that is part of its charm.
 

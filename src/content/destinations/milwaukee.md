@@ -43,11 +43,66 @@ highlights:
     icon: "🐟"
 relatedDestinations: [chicago, minneapolis, indianapolis]
 gradientColors: "from-amber-900 via-yellow-800 to-amber-900"
-contentStatus: draft
+faqItems:
+  - question: "Is Milwaukee worth visiting on its own or just as a Chicago day trip?"
+    answer: "Worth visiting independently for 1-2 nights. The Milwaukee Art Museum alone justifies the trip. Add the Third Ward (food, galleries), a craft brewery circuit, Bradford Beach on Lake Michigan in summer, and the Harley-Davidson Museum, and you have a solid full-day-plus destination."
+  - question: "What is the Milwaukee Art Museum?"
+    answer: "The Milwaukee Art Museum is home to one of the most beautiful buildings in the United States — the Quadracci Pavilion by Santiago Calatrava, with a brise soleil (movable sunscreen) that opens like wings twice daily. The collection includes 35,000 works. The building is the reason to go; the collection is the reason to stay."
+  - question: "What beer should I try in Milwaukee?"
+    answer: "Lakefront Brewery for a proper Milwaukee craft brewery tour (reservations required, highly rated). Miller Brewing Company for the historic mega-brewery experience. Any of the Third Ward's craft beer bars for Wisconsin-brewed craft options. The Beer Garden at Estabrook Park in summer is a local institution."
+  - question: "What is the Third Ward?"
+    answer: "The Historic Third Ward is Milwaukee's arts and dining district — a redeveloped warehouse district with galleries, restaurants, boutiques, and the Milwaukee Public Market (year-round covered market with excellent food vendors)."
+  - question: "When is Summerfest?"
+    answer: "Summerfest is the world's largest music festival by attendance — 11 days in late June/early July on the Lake Michigan lakefront, with 80+ stages and 1,000+ performances. It runs the gamut from headliner stadium acts to local bands. Tickets are reasonable. Milwaukee hotels book solid for the run."
+  - question: "How do I get to Milwaukee from Chicago?"
+    answer: "Amtrak Hiawatha (90 minutes, $23-35) from Chicago Union Station to Milwaukee is one of the best train connections in the Midwest. Takes you from center to center without driving. Also easy via I-94 north (1.5 hours without traffic)."
+  - question: "What is the Harley-Davidson Museum?"
+    answer: "The Harley-Davidson Museum is a 130,000-square-foot campus in Milwaukee's Menomonee Valley documenting the history of the iconic motorcycle brand from 1903 to present. Whether or not you ride motorcycles, the design history and American industrial story are well told."
+  - question: "What is Milwaukee known for food?"
+    answer: "Friday fish fry is a Milwaukee tradition — perch, walleye, and cod at supper clubs and taverns every Friday night. Butter burgers (Culver's was founded in nearby Sauk City). Serbian food from a significant immigrant community. And the Milwaukee Public Market for local Wisconsin cheeses, brats, and specialty foods."
+affiliatePicks:
+  - name: "The Pfister Hotel Milwaukee"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/the-pfister-hotel.html?aid=2778866"
+    description: "Milwaukee's historic grand hotel (1893) with a renowned Victorian art collection displayed throughout."
+    priceRange: "$$$"
+  - name: "Lakefront Brewery Tour"
+    type: tour
+    url: "https://www.getyourguide.com/milwaukee-l2532/?partner_id=IVN6IQ3&q=Milwaukee+brewery+tour"
+    description: "The most entertaining brewery tour in Milwaukee — guided, with beer tasting and comedy."
+    priceRange: "$"
+  - name: "Milwaukee Art Museum and Third Ward Walking Tour"
+    type: tour
+    url: "https://www.getyourguide.com/milwaukee-l2532/?partner_id=IVN6IQ3&q=Milwaukee+art+museum+tour"
+    description: "Guided tour of the Calatrava building and Third Ward art district."
+    priceRange: "$"
+scottTips:
+  logistics: "Mitchell International Airport (MKE) has decent connections but Chicago O'Hare has more direct flights. Amtrak Hiawatha from Chicago (90 min) is the easiest connection. Downtown Milwaukee is compact and walkable."
+  bestTime: "May–September for lakefront weather and outdoor events. Summerfest (late June/early July) requires advance planning. June–August for the full beer garden and outdoor Milwaukee experience."
+  gettingAround: "Downtown and Third Ward are walkable. Bublr Bikes (bikeshare) available. Car helpful for Harley-Davidson Museum and outer neighborhoods."
+  money: "Milwaukee is affordable — hotel rates run $100–180/night for solid options. The Art Museum is $20/adult. Brewery tours are $10–15. Lakefront seafood and supper clubs run $25–45/person."
+  safety: "Downtown and Third Ward are safe tourist areas. Milwaukee has high crime rates in some inner-city neighborhoods away from the visitor zones."
+  packing: "Layers for Lake Michigan weather — the lake creates its own climate with cool breezes even in summer. Sun protection on the lakefront."
+  localCulture: "Milwaukee is proudly unpretentious — a working-class city with a German-heritage identity, strong union history, and genuine community investment in its neighborhoods. The fish fry on Friday is a religious institution."
+contentStatus: published
 draft: false
 ---
+Milwaukee is the city that beer built — a Great Lakes industrial city on Lake Michigan with a German heritage that produced Pabst, Miller, and Schlitz, a world-class art museum (the Santiago Calatrava-designed Milwaukee Art Museum is one of the most beautiful buildings in the US), a revitalized Third Ward district, and easy proximity to Chicago (90 minutes south).
+
 
 # Milwaukee: Chicago's Cooler, More Relaxed Neighbor
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/milwaukee-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #92400e, #1e40af, #166534);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Milwaukee: The Beer City on the Lake</div>
+    <p class="ib-text">Art, beer, the Calatrava, and 90 minutes from Chicago.</p>
+  </div>
+</div>
+
 
 I know what you are thinking. Milwaukee? Really? Yes. Really. I used to treat Milwaukee as Chicago's less interesting little sibling, and I was completely wrong. Milwaukee has its own identity, its own rhythms, and -- I will say it -- better beer, better cheese curds, and a lakefront that might actually be more enjoyable because you can find a spot to sit down.
 

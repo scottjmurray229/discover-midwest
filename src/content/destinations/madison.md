@@ -43,11 +43,66 @@ highlights:
     icon: "🌈"
 relatedDestinations: [detroit, cleveland, des-moines]
 gradientColors: "from-red-900 via-white to-red-900"
-contentStatus: draft
+faqItems:
+  - question: "What makes Madison's Farmers Market special?"
+    answer: "The Dane County Farmers Market on Capitol Square (Saturdays, late April through November) is the largest producer-only farmers market in the United States — 150+ vendors circling the Wisconsin State Capitol, selling everything from cheese curds to heirloom tomatoes. Arrive early (7am–8am) for the best selection."
+  - question: "Is Madison worth visiting for non-UW visitors?"
+    answer: "Yes — the city's character extends well beyond campus. The State Street pedestrian corridor connecting the Capitol to the university, the lakefront parks (both Mendota and Monona), and the restaurant scene in the Willy Street and Monroe Street neighborhoods all reward exploration."
+  - question: "What are the best outdoor activities near Madison?"
+    answer: "Devil's Lake State Park (45 miles northwest) is Wisconsin's most visited state park — a glacially carved lake surrounded by quartzite bluffs with excellent hiking and swimming. The Military Ridge Trail (40 miles of paved cycling trail) runs west from the city. Olbrich and Vilas beaches on Lake Mendota are local swimming destinations."
+  - question: "What should I eat in Madison?"
+    answer: "Cheese curds are mandatory (the squeakier the fresher). Graze for farm-to-table Wisconsin ingredients. The Old Fashioned for the Wisconsin cocktail culture and cheese plates. Great Dane Pub for the original Madison brew pub experience. Ian's Pizza for the slice scene near campus."
+  - question: "What is the Wisconsin State Capitol worth seeing?"
+    answer: "The Wisconsin State Capitol is arguably the most beautiful state capitol building in the US — a Beaux-Arts dome taller than the US Capitol in Washington, visible from miles away. Free tours run throughout the day."
+  - question: "When is the best time to visit Madison?"
+    answer: "May–October for the Farmers Market, outdoor lakes, and campus energy. Wisconsin Badgers football season (September–November) transforms the city on game days — electric atmosphere but crowded and expensive."
+  - question: "How do I get to Madison?"
+    answer: "Dane County Regional Airport (MSN) has direct flights from Chicago, Minneapolis, Detroit, and a few other cities. Chicago to Madison is 2.5 hours by car. Amtrak has no direct Madison service."
+  - question: "What is the Willy Street neighborhood?"
+    answer: "Willy Street (Williamson Street) is Madison's most eclectic neighborhood — a diverse, progressive corridor with the Willy Street Co-op, independent restaurants, bike shops, and a strong community identity. Best explored on foot in the afternoon."
+affiliatePicks:
+  - name: "Graduate Madison Hotel"
+    type: hotel
+    url: "https://www.booking.com/hotel/us/graduate-madison.html?aid=2778866"
+    description: "University-area boutique hotel on State Street, walking distance to Capitol Square and the Farmers Market."
+    priceRange: "$$"
+  - name: "Madison Food and Farmers Market Tour"
+    type: tour
+    url: "https://www.getyourguide.com/madison-l2537/?partner_id=IVN6IQ3&q=Madison+Wisconsin+food+tour"
+    description: "Guided tour of Capitol Square Farmers Market and Wisconsin food culture."
+    priceRange: "$"
+  - name: "Devil's Lake State Park Guided Hike"
+    type: tour
+    url: "https://www.getyourguide.com/madison-l2537/?partner_id=IVN6IQ3&q=Devil's+Lake+Wisconsin+hiking"
+    description: "Guided half-day hike at Devil's Lake — the bluff trails and lake views are spectacular."
+    priceRange: "$"
+scottTips:
+  logistics: "MSN airport has limited direct connections — Chicago O'Hare to Madison by car (2.5 hrs) is often the practical approach. State Street is the pedestrian spine — park once and walk."
+  bestTime: "June–October for the full Madison experience. Saturday morning Farmers Market is a year-round reason to visit (April–November outdoor, indoor in winter). Avoid Badgers home football weekends for calm."
+  gettingAround: "State Street and Capitol Square are walkable. Bike-share (BCycle) is excellent for the isthmus. Car for Devil's Lake and outer neighborhoods."
+  money: "Madison is affordable. Hotels run $100–170/night. Restaurant meals on State Street run $15–35/person. Farmers Market is free to walk."
+  safety: "Madison is one of the safest mid-size cities in the US."
+  packing: "Layers for lake weather. Bike-appropriate clothing if using BCycle. Camera for the Capitol dome."
+  localCulture: "Madison is consistently rated the most politically liberal city in the Midwest — heavily influenced by university culture and progressive Wisconsin politics. The Farmers Market is a genuine community institution, not a tourist performance."
+contentStatus: published
 draft: false
 ---
+Madison is Wisconsin's state capital and home to the University of Wisconsin — a progressive college city built on an isthmus between two lakes, with a thriving Farmers Market on the Capitol Square (the largest producer-only farmers market in the US), excellent restaurants, and easy access to Devil's Lake State Park and Wisconsin's lake country.
+
 
 # Madison: The Best College Town in America (And I Mean It)
+
+<div class="immersive-break-inline">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/destinations/madison-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="ib-gradient" style="background: linear-gradient(135deg, #dc2626, #166534, #1e40af);"></div>
+  <div class="ib-content">
+    <div class="ib-title">Madison: Isthmus City</div>
+    <p class="ib-text">Two lakes, the Farmers Market, and the best college town in the Midwest.</p>
+  </div>
+</div>
+
 
 Madison, Wisconsin occupies one of the most beautiful urban settings in the Midwest — a narrow isthmus between Lake Mendota and Lake Monona, with the gleaming white State Capitol dome rising from the center like a beacon. It's a city that manages to be simultaneously progressive and unpretentious, intellectual and outdoorsy, politically engaged and deeply fun. Every time I visit, I understand why so many people move here for college and never leave.
 

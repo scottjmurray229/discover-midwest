@@ -22,7 +22,7 @@ export const MIDWEST_CONFIG: PackingConfig = {
   currency: 'USD',
   plugType: 'Type A/B',
   plugVoltage: '120V',
-  affiliateTag: 'discovermore-20',
+  affiliateTag: 'discoverphili-20',
   destinationEssentials: MIDWEST_ESSENTIALS,
   gearRecommendations: MIDWEST_GEAR_RECOMMENDATIONS,
 };

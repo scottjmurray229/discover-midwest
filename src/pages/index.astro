@@ -64,6 +64,7 @@ const pillarLinks = [
   { icon: '📋', label: 'Practical Tips', desc: 'Getting around & travel info', url: '/practical/' },
 ];
 ---
+import NetworkCrossLinks from '../components/NetworkCrossLinks.astro';
 <BaseLayout
   title="Discover Midwest — Travel Guides by Scott"
   description="Your immersive guide to the American Midwest — honest recommendations, real prices, and insider tips from years of exploring the heartland."
@@ -392,6 +393,7 @@ const pillarLinks = [
   <div class="container-content">
     <FTCDisclosure placement="inline" />
   </div>
+<NetworkCrossLinks currentSite="Midwest" cluster="north-america" />
 </BaseLayout>
 
 <!-- Scroll Reveal Observer -->

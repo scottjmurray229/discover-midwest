@@ -3,6 +3,14 @@ title: "Milwaukee"
 description: "Milwaukee delivers Beer City USA credentials, a stunning lakefront, the iconic Calatrava art museum, legendary cheese curds, and Summerfest every summer."
 heroVideo: ""
 heroImage: ""
+aeoFacts:
+  currency: "USD (US Dollar)"
+  plugType: "A/B, 120V"
+  language: "English"
+  bestTime: "June to August (summer)"
+  visaInfo: "US territory — no visa for US citizens"
+  timeZone: "UTC-5 to UTC-6 (varies by state)"
+  emergencyNumber: "911"
 heroAlt: "Milwaukee Art Museum Calatrava wing and Lake Michigan shoreline, Wisconsin"
 tagline: "A Great Lakes city that got over its beer and manufacturing identity crisis and emerged with a Riverwalk, a Calatrava-designed art museum, Summerfest (the world's largest music festival), and excellent Polish food"
 region: great-lakes
@@ -125,7 +133,7 @@ The **Milwaukee Art Museum** ($22) is worth visiting for the building alone. San
 
 The lakefront itself runs for miles and connects to parks, beaches, and the Lakeshore State Park (the only state park inside a city in Wisconsin). On summer evenings, the **South Shore Terrace** beer garden (beers $5-8) in South Shore Park is one of the most pleasant places to drink a beer in the Midwest. Period.
 
-## Where to Eat
+## What Should I Eat in Milwaukee?
 
 **Cheese curds** are not optional in Milwaukee. Fresh, squeaky cheese curds are available everywhere, but the fried version is the star. **Lakefront Brewery** makes the best I have had (see above). **AJ Bombers** (curds $9, burgers $12-16) does an excellent fried curd with a crispy beer batter.
 

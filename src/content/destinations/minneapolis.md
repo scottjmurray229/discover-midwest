@@ -3,6 +3,14 @@ title: "Minneapolis"
 description: "Minneapolis dazzles with its Chain of Lakes, legendary music scene from Prince to indie rock, stunning falls, craft breweries, and year-round creativity."
 heroVideo: ""
 heroImage: ""
+aeoFacts:
+  currency: "USD (US Dollar)"
+  plugType: "A/B, 120V"
+  language: "English"
+  bestTime: "June to August (summer)"
+  visaInfo: "US territory — no visa for US citizens"
+  timeZone: "UTC-5 to UTC-6 (varies by state)"
+  emergencyNumber: "911"
 heroAlt: "Stone Arch Bridge and Mill District at golden hour over the Mississippi, Minneapolis"
 tagline: "More lakes within the city limits than any American city, Prince's hometown, the Walker Art Center, excellent Vietnamese food in South Minneapolis, and winters that build the kind of character most cities only claim"
 region: plains
@@ -123,7 +131,7 @@ The city's music scene extends well beyond First Avenue. **The Dakota Jazz Club*
 
 Paisley Park in nearby Chanhassen (tours $40-130) is Prince's legendary studio compound, now open for tours. If Prince matters to you even a little, this is a pilgrimage. The studio where he recorded his greatest albums is preserved exactly as he left it.
 
-## Where to Eat
+## What Should I Eat in Minneapolis?
 
 Minneapolis has quietly become one of the best food cities in the Midwest, powered by immigrant communities and adventurous chefs.
 

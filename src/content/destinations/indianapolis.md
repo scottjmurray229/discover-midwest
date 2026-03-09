@@ -3,6 +3,14 @@ title: "Indianapolis"
 description: "Indianapolis surprises with the legendary Indy 500, a walkable downtown canal, vibrant Mass Ave arts district, and the Midwest's best pork tenderloin sandwich."
 heroVideo: ""
 heroImage: ""
+aeoFacts:
+  currency: "USD (US Dollar)"
+  plugType: "A/B, 120V"
+  language: "English"
+  bestTime: "June to August (summer)"
+  visaInfo: "US territory — no visa for US citizens"
+  timeZone: "UTC-5 to UTC-6 (varies by state)"
+  emergencyNumber: "911"
 heroAlt: "Indianapolis Motor Speedway and White River State Park, Indiana"
 tagline: "The Speedway at 500-mile race weekend is the largest single-day sporting event in the world — and the rest of the year Indianapolis has Mass Ave, excellent NCAA facilities, and a downtown that has been substantially rebuilt"
 region: ohio-valley
@@ -123,7 +131,7 @@ For a smaller-scale thrill, the **Brickyard Crossing golf course** actually has 
 
 For drinks, **Hotel Tango** is Indiana's first veteran-owned artisan distillery, and the cocktails ($10-14) are crafted with their house-made spirits. **Libertine Liquor Bar** ($12-16) does some of the most creative cocktail work in the state in a cozy, dimly-lit space.
 
-## Where to Eat
+## What Should I Eat in Indianapolis?
 
 Indianapolis has a food identity that revolves around a few iconic items and an increasingly sophisticated dining scene.
 

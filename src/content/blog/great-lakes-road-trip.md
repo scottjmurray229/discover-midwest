@@ -2,6 +2,7 @@
 title: "Great Lakes Road Trip: The Complete Route"
 description: "The full loop around the Great Lakes — Chicago to Detroit to Cleveland to Pittsburgh (bonus) to Toronto to Milwaukee — with the best stops, drives, and why this is America's most underrated road trip."
 pubDate: 2026-03-08
+dateModified: 2026-03-08
 heroImage: ""
 heroVideo: ""
 author: "Scott"

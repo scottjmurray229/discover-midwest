@@ -2,6 +2,7 @@
 title: "Why Chicago Keeps Pulling Us Back Every Year"
 description: "We've returned to Chicago more times than any other American city. Here's what keeps bringing us back and what we've learned after multiple visits."
 pubDate: 2026-03-01
+dateModified: 2026-03-08
 heroImage: ""
 heroVideo: ""
 author: "Scott"

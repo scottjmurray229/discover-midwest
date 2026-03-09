@@ -2,6 +2,7 @@
 title: "Chicago Architecture Boat Tour: Is It Worth It?"
 description: "Honest review of the Chicago architecture river cruise — what you see, which tours are best, how long it takes, and why it's the single best 90 minutes you can spend in the city."
 pubDate: 2026-03-08
+dateModified: 2026-03-08
 heroImage: ""
 heroVideo: ""
 author: "Scott"

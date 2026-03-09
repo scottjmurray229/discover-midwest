@@ -2,6 +2,7 @@
 title: "Road Tripping the Great Lakes: Our Honest Route"
 description: "We drove the Great Lakes loop over 12 days. What the route actually looks like, what surprised us, and what we'd change on a second attempt."
 pubDate: 2026-03-01
+dateModified: 2026-03-08
 heroImage: ""
 heroVideo: ""
 author: "Scott"

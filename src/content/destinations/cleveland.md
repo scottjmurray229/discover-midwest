@@ -3,7 +3,7 @@ title: "Cleveland"
 description: "Cleveland rocks harder than you think — world-class museums, a legendary market, Lake Erie sunsets, and a food scene that punches way above its weight."
 heroVideo: ""
 heroImage: ""
-tagline: "Rock, roll, and revelation"
+tagline: "The Rock and Roll Hall of Fame is the obvious reason to visit and not actually the best reason — West Side Market, the Detroit-Shoreway arts district, and a restaurant scene that has quietly become exceptional"
 region: great-lakes
 bestMonths: [May, June, July, August, September, October]
 budgetPerDay:

@@ -3,7 +3,7 @@ title: "St. Louis"
 description: "Discover St. Louis: the Gateway Arch, world-class BBQ, free museums in Forest Park, and the quirky City Museum in Missouri's most underrated city."
 heroVideo: ""
 heroImage: ""
-tagline: "Gateway to something greater"
+tagline: "The Gateway Arch rises 630 feet above the Mississippi and the free-to-visit grounds are more interesting than the monument itself — plus the St. Louis Art Museum, the Cardinals, and the best craft beer scene in the Midwest"
 region: plains
 bestMonths: [April, May, June, September, October]
 budgetPerDay:

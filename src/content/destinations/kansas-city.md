@@ -3,7 +3,7 @@ title: "Kansas City"
 description: "Kansas City serves America's best BBQ, a legendary jazz heritage, stunning art museums, and a thriving arts district straddling the Kansas-Missouri border."
 heroVideo: ""
 heroImage: ""
-tagline: "Where smoke meets soul"
+tagline: "The best American barbecue debate ends here — Joe's KC, Q39, Gates, Burnt End BBQ — and the jazz history on 18th and Vine is a genuine American cultural landmark that most visitors never find"
 region: plains
 bestMonths: [April, May, June, September, October]
 budgetPerDay:

@@ -3,7 +3,7 @@ title: "Des Moines"
 description: "Des Moines is Iowa's coolest surprise — world-class sculpture, a booming East Village, legendary diners, and a farmers market that draws 25,000 every Saturday."
 heroVideo: ""
 heroImage: ""
-tagline: "Iowa's improbable cool capital"
+tagline: "Iowa's capital punches above its weight with a downtown art center, the most walkable farmers market in the Midwest on Saturdays, and a food scene anchored by chefs who trained in Chicago and chose to come home"
 region: plains
 bestMonths: [May, June, July, August, September, October]
 budgetPerDay:

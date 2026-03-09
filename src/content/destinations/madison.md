@@ -3,7 +3,7 @@ title: "Madison"
 description: "Madison sits on an isthmus between two lakes, radiating college-town energy, world-class farmers markets, and Wisconsin's finest cheese curds."
 heroVideo: ""
 heroImage: ""
-tagline: "Lakes, curds, and radical charm"
+tagline: "The Wisconsin capital on an isthmus between two lakes — the State Street corridor from Capitol to UW campus is lined with independent shops, the Saturday farmers market around the Capitol square is the state's best, and cheese is a serious subject"
 region: great-lakes
 bestMonths: [May, June, July, August, September, October]
 budgetPerDay:

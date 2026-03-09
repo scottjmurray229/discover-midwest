@@ -3,7 +3,7 @@ title: "Omaha"
 description: "Omaha delivers world-class steaks, the planet's best indoor zoo, a thriving Old Market district, and a warmth that catches every visitor off guard."
 heroVideo: ""
 heroImage: ""
-tagline: "Steak, soul, and surprise"
+tagline: "Warren Buffett's hometown has a genuinely excellent Old Market district, the Durham Museum in a restored Union Station, and Omaha steaks that the locals have always known are the real story before the mail-order brand existed"
 region: plains
 bestMonths: [April, May, June, July, August, September, October]
 budgetPerDay:

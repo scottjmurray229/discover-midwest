@@ -3,7 +3,7 @@ title: "Cincinnati"
 description: "Cincinnati charms with its legendary chili, the revitalized Over-the-Rhine district, Findlay Market, stunning Union Terminal, and a booming craft beer scene."
 heroVideo: ""
 heroImage: ""
-tagline: "The Queen City rises again"
+tagline: "Skyline Chili (yes, over spaghetti, yes you should try it), the Cincinnati Art Museum free admission on weekdays, Over-the-Rhine's preserved German immigrant architecture, and the Reds playing at a downtown riverfront stadium with Cincinnati hill views"
 region: ohio-valley
 bestMonths: [April, May, June, July, August, September, October]
 budgetPerDay:

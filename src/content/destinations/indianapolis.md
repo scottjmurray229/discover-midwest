@@ -3,7 +3,7 @@ title: "Indianapolis"
 description: "Indianapolis surprises with the legendary Indy 500, a walkable downtown canal, vibrant Mass Ave arts district, and the Midwest's best pork tenderloin sandwich."
 heroVideo: ""
 heroImage: ""
-tagline: "More than the race"
+tagline: "The Speedway at 500-mile race weekend is the largest single-day sporting event in the world — and the rest of the year Indianapolis has Mass Ave, excellent NCAA facilities, and a downtown that has been substantially rebuilt"
 region: ohio-valley
 bestMonths: [April, May, June, July, August, September, October]
 budgetPerDay:

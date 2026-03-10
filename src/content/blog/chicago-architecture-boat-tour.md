@@ -7,7 +7,7 @@ heroImage: ""
 heroVideo: ""
 author: "Scott"
 tags: ["chicago", "architecture", "boat-tour", "river-cruise", "illinois", "midwest"]
-category: "activity"
+category: "destination"
 relatedDestinations: ["chicago"]
 readingTime: 7
 draft: false

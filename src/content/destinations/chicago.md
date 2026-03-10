@@ -74,17 +74,20 @@ affiliatePicks:
     type: hotel
     url: "https://www.booking.com/hotel/us/the-langham-chicago.html?aid=2778866"
     description: "Iconic luxury hotel on the Chicago River in the former IBM Building. Architecture views and exceptional service."
-    priceRange: "$$$$"
+    price: "$400–600/night"
+    personalNote: "Worth it for a special occasion — the river views and service are genuinely exceptional."
   - name: "Chicago Architecture Boat Tour"
     type: tour
     url: "https://www.getyourguide.com/chicago-l143/?partner_id=IVN6IQ3&q=architecture+boat+tour"
     description: "The Chicago Architecture Center's river cruise — the single best introduction to Chicago's built environment."
-    priceRange: "$$"
+    price: "~$50/person"
+    personalNote: "The single best 90 minutes you can spend in Chicago — book in advance, it sells out."
   - name: "Millennium Park Walking Tour"
     type: tour
     url: "https://www.getyourguide.com/chicago-l143/?partner_id=IVN6IQ3&q=Millennium+Park+tour"
     description: "Guided walking tour of Millennium Park, the Bean, the Pritzker Pavilion, and nearby Grant Park."
-    priceRange: "$"
+    price: "~$25/person"
+    personalNote: "Great orientation for first-timers — covers the Bean, Pritzker Pavilion, and Crown Fountain."
 scottTips:
   logistics: "O'Hare (ORD) is the main international airport — Blue Line 'L' train to downtown costs $5 and takes 45 minutes. Midway (MDW) is smaller and often cheaper for domestic flights — Orange Line to downtown. Both are reliable transit options. Union Station handles Amtrak routes from most major Midwest cities."
   bestTime: "June–September for lakefront weather, outdoor festivals, and the full Chicago experience. October and May are excellent shoulder seasons. January–March is Chicago's hardest test — cold and grey, but world-class restaurant access at off-peak prices and no crowds at the Art Institute."

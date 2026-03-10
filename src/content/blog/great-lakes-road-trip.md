@@ -7,7 +7,7 @@ heroImage: ""
 heroVideo: ""
 author: "Scott"
 tags: ["midwest", "road-trip", "great-lakes", "chicago", "detroit", "cleveland", "milwaukee", "michigan", "road-trip-itinerary"]
-category: "itinerary"
+category: "destination"
 relatedDestinations: ["chicago", "detroit", "cleveland", "milwaukee", "minneapolis"]
 readingTime: 10
 draft: false

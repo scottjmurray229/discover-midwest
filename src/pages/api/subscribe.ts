@@ -71,7 +71,7 @@ async function sendWelcomeEmail(apiKey: string, to: string, guideName: string): 
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: 'Discover Midwest <hello@discovermidwest.info>',
+      from: 'Discover Midwest <hello@discovermore.travel>',
       to: [to],
       reply_to: 'info@discovermore.travel',
       subject: `Your ${guideName} — Welcome to Discover Midwest`,

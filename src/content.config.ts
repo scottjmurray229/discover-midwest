@@ -13,7 +13,7 @@ const destinations = defineCollection({
     heroVideo: z.string().default(''),
     heroImage: z.string().default(''),
     tagline: z.string().default(''),
-    region: z.enum(['great-lakes', 'plains', 'ohio-valley']),
+    region: z.string(),
     bestMonths: z.array(z.string()).default([]),
     budgetPerDay: z.object({
       backpacker: z.number().default(0),
@@ -58,7 +58,7 @@ const destinations = defineCollection({
       badge: z.string().optional(),
     })).default([]),
     lastVerified: z.coerce.date().optional(),
-    contentStatus: z.enum(['draft', 'review', 'published', 'needs-update']).default('draft'),
+    contentStatus: z.string().optional(),
     draft: z.boolean().default(true),
     fmContentType: z.string().optional(),
   }),

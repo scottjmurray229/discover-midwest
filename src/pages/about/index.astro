@@ -6,6 +6,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import scottImg from '../../images/scott-murray.jpg';
+import jeniceImg from '../../images/jenice-murray.jpg';
 ---
 
 <BaseLayout
@@ -70,10 +71,10 @@ import scottImg from '../../images/scott-murray.jpg';
 <!-- PROFILE CARD -->
 <section class="profiles-section">
   <div class="profiles-header">
-    <div class="section-eyebrow">Meet the Writer</div>
-    <h2 class="section-title">The Person Behind the Pages</h2>
+    <div class="section-eyebrow">Meet the Team</div>
+    <h2 class="section-title">The People Behind the Pages</h2>
   </div>
-  <div class="profiles-grid profiles-grid--single">
+  <div class="profiles-grid">
     <div class="profile-card reveal">
       <div class="profile-banner scott"><div class="profile-banner-bg"></div></div>
       <Image src={scottImg} alt="Scott Murray" class="profile-avatar scott-av" width={96} height={96} format="webp" loading="lazy" />
@@ -85,6 +86,22 @@ import scottImg from '../../images/scott-murray.jpg';
           <div class="profile-stat"><div class="profile-stat-num">13</div><div class="profile-stat-label">Midwest cities covered</div></div>
           <div class="profile-stat"><div class="profile-stat-num">40+</div><div class="profile-stat-label">Countries traveled</div></div>
         </div>
+      </div>
+    </div>
+    <div class="profile-card reveal">
+      <div class="profile-banner jenice"><div class="profile-banner-bg"></div></div>
+      <Image src={jeniceImg} alt="Jenice Murray" class="profile-avatar jenice-av" width={96} height={96} format="webp" loading="lazy" />
+      <div class="profile-body">
+        <div class="profile-name">Jenice Murray</div>
+        <div class="profile-role">Cultural Explorer &middot; Food Enthusiast</div>
+        <p class="profile-bio">Born in the Philippines and based in San Diego. Cultural explorer who brings warmth, personal storytelling, and food expertise to Discover Midwest. The one who discovers the Polish deli in Chicago that's been there since 1962, finds the jazz venue in Kansas City that locals keep secret, and brings the human dimension that makes the heartland feel like home even on your first visit.</p>
+        <div class="profile-stats">
+          <div class="profile-stat"><div class="profile-stat-num">Heartland</div><div class="profile-stat-label">Culture &amp; food</div></div>
+          <div class="profile-stat"><div class="profile-stat-num">40+</div><div class="profile-stat-label">Countries traveled</div></div>
+        </div>
+      </div>
+      <div class="profile-cta">
+        <a href="/about/jenice/" class="profile-cta-link">Read Jenice's full bio &rarr;</a>
       </div>
     </div>
   </div>

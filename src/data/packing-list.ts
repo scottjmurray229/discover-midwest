@@ -5,6 +5,26 @@ export const MIDWEST_ESSENTIALS: PackingItem[] = [
   { id: 'mw-windproof', name: 'Windproof Outer Layer', category: 'destination', description: 'The Midwest is flat and there is nothing to stop the wind. A jacket that\'s warm enough in still air becomes dangerously inadequate in Chicago lakefront winds. Wind-resistant outer shell is essential.', essential: true, climate: ['cold'], amazonSearchFallback: 'windproof+jacket+outdoor+cold+weather', affiliatePrice: '$60–120' },
   { id: 'mw-walkshoes', name: 'Waterproof / Insulated Footwear', category: 'destination', description: 'Midwest winters mean ice, slush, and snow on sidewalks. Sneakers become wet and cold within minutes. Waterproof boots with insulation are non-negotiable October–March.', essential: true, climate: ['cold'], amazonSearchFallback: 'waterproof+insulated+boots+winter+walking', affiliatePrice: '$80–150' },
   { id: 'mw-handwarmers', name: 'Hand Warmers (disposable)', category: 'destination', description: 'Stadium tailgating, outdoor festivals, and simply walking to your car at -10°F — disposable hand warmers are cheap insurance against the brutal cold. Pack more than you think you\'ll need.', essential: false, climate: ['cold'], amazonSearchFallback: 'hand+warmers+disposable+hothands', affiliatePrice: '$8–15' },
+  {
+    id: 'vpn-subscription',
+    name: 'VPN Subscription',
+    category: 'electronics',
+    description: 'Secure your data on public WiFi — essential for hotel, airport, and cafe networks abroad.',
+    essential: false,
+    affiliateUrl: 'https://go.nordvpn.net/aff_c?offer_id=15&aff_id=XXXXX&url_id=902',
+    affiliatePrice: '~$3/month',
+    affiliatePartner: 'NordVPN',
+  },
+  {
+    id: 'phone-gimbal',
+    name: 'Phone Gimbal for Travel Vlogging',
+    category: 'electronics',
+    description: 'Stabilized video from your phone — no editing needed.',
+    essential: false,
+    affiliateUrl: 'https://www.insta360.com/sal/flow-2-pro?utm_source=AffiliateCenter&utm_medium=copylink&utm_term=INRSG7H5RTR',
+    affiliatePrice: '~$149',
+    affiliatePartner: 'Insta360',
+  },
 ];
 
 export const MIDWEST_GEAR_RECOMMENDATIONS: GearRecommendation[] = [
